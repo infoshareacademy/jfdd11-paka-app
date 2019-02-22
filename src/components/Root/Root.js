@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import MainMenu from '../MainMenu';
+
+
+import SignUp from '../SignUp';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class Root extends Component {
@@ -9,9 +12,7 @@ class Root extends Component {
     return (
       <Router>
         <div style={{ display: 'flex', width: '100%' }}>
-          <div style={{ width: '20%', background: '#eee' }}>
-            <MainMenu />
-          </div>
+          
 
           <div
             style={{
@@ -22,6 +23,7 @@ class Root extends Component {
             }}
           >
           <Route path="/" render={() => 'Hi'} />
+          <Route path="/sign-up" component={SignUp} />
             
           </div>
         </div>
