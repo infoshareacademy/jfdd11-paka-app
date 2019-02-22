@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
-import SignUp from '../SignUp';
 
+import SignUp from '../SignUp';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class Root extends Component {

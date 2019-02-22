@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Alert } from 'reactstrap';
 
+
 import './SignUp.css'
 
 class SignUp extends Component {
