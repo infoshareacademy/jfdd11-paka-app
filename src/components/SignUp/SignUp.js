@@ -13,17 +13,18 @@ class SignUp extends Component {
       <Form>
         <FormGroup className="">
           <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-          <Input type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
+          <Input type="email" name="email" id="exampleEmail" placeholder="your email" />
         </FormGroup>
         <FormGroup className="">
           <Label for="examplePassword" className="mr-sm-2">Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" />
+          <Input type="password" name="password" id="examplePassword" placeholder="Don't forget!" />
+        </FormGroup>
+        <FormGroup className="">
+          <Label for="examplePassword" className="mr-sm-2">Password</Label>
+          <Input type="password" name="password" id="examplePassword" placeholder="Please repeat your password" />
         </FormGroup>
         <Button>Sign In</Button>
-     
-      <Alert color="primary">
-        This is a primary alert — check it out!
-      </Alert>
+  
       </Form>
     )
   }
