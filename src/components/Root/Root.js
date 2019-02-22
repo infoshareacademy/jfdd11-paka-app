@@ -18,7 +18,8 @@ class Root extends Component {
               flexGrow: 1,
               minHeight: '100vh',
               padding: 20,
-              boxSizing: 'border-box',
+              boxSizing: 'border-box'
+              
             }}
           >
           <Route path="/" render={() => 'Hi'} />

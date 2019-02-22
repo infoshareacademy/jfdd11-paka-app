@@ -12,7 +12,9 @@ class MainMenu extends Component {
           <li>
             <NavLink exact to="/">Home</NavLink>
           </li>
-       
+          <li>
+            <NavLink exact to="./PetOwnerPage">PetOwnerPage</NavLink>
+          </li>
           
         </ul>
       </div>
