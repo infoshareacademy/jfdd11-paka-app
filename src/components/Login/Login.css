@@ -1,0 +1,29 @@
+.Login {
+
+}
+.login {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    height: 100%;
+}
+.logo{
+    align-content: center;
+    text-align: center;
+}
+.buttons {
+    text-align: center;
+}
+button {
+    color: #fff3d5;
+    background-color: #f78d4c;
+    text-decoration: none;
+    padding: 30px 40px;
+    font-size: 1em;
+    margin: 0 10px;
+    border-radius: 30px;
+    text-shadow: 0 2px 2px black;
+    box-shadow: 2px 2px 2px black;
+}
