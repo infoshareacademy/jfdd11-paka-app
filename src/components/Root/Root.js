@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import MainMenu from '../MainMenu';
+import PetOwnerPage from '../PetOwnerPage';
 
 
 class Root extends Component {
@@ -23,7 +24,7 @@ class Root extends Component {
             }}
           >
           <Route path="/" render={() => 'Hi'} />
-            
+          <Route path="/PetOwnerPage" component={PetOwnerPage} />  
           </div>
         </div>
       </Router>

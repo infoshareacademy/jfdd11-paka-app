@@ -1,3 +1,31 @@
 .PetOwnerPage {
+  margin: 0;
   
+}
+
+.photoInput{
+    width: 30vw;
+    
+    background-color: grey;
+    float: right;
+    
+}
+
+.inputWraper{
+    display: flex;
+}
+
+.inputSmallWraper{
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  
+}
+
+.inputSmall{
+    display: block;
+    margin-top: 2px;
+    border: 1px solid grey;
+    border-radius: 5%;
+    margin-right: 2vw;
 }
