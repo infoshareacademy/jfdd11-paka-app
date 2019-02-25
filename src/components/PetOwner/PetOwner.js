@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import './PetOwnerPage.css'
+import './PetOwner.css'
 
-class PetOwnerPage extends Component {
+class PetOwner extends Component {
   render() {
     return (
       <div className="PetOwnerPage"><p>PetOwnerPagee</p>
@@ -25,4 +25,4 @@ class PetOwnerPage extends Component {
   }
 }
 
-export default PetOwnerPage
+export default PetOwner
