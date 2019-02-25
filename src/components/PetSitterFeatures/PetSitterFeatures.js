@@ -5,7 +5,16 @@ import './PetSitterFeatures.css'
 class PetSitterFeatures extends Component {
   render() {
     return (
-      <div className="PetSitterFeatures">PetSitterFeatures</div>
+      <div className="wrapper">
+      <div className="smallwrapper">
+      <input type="checkbox"></input>
+      <input type="checkbox"></input>
+      <input type="checkbox"></input>
+      <input type="checkbox"></input>
+      <input type="checkbox"></input>
+      </div>
+      </div>
+
     )
   }
 }
