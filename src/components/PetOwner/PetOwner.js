@@ -9,10 +9,10 @@ class PetOwner extends Component {
         <form>
           <div className="inputWraper">
             <div className="inputSmallWraper">
-              <input className="inputSmall" type="text" placeholder="Name" name="name"/>
-              <input className="inputSmall" type="text" placeholder="Age"name="age"/>
-              <input className="inputSmall" type="text" placeholder="Sex"name="sex"/>
-              <input className="inputSmall" type="text" placeholder="Breed"name="breed"/>
+              <input className="inputSmall" type="text" placeholder="Name"  name="name"/>
+              <input className="inputSmall" type="text" placeholder="Age"   name="age"/>
+              <input className="inputSmall" type="text" placeholder="Sex"   name="sex"/>
+              <input className="inputSmall" type="text" placeholder="Breed" name="breed"/>
             </div>
             <input type="image" alt="Your dog's picture" className="photoInput"/>
           </div>

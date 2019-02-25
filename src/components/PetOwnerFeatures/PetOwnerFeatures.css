@@ -1,3 +1,14 @@
 .PetOwnerFeatures {
-  
+    margin: 1%;
+}
+
+.checkboxSmallWraper{
+    list-style-type: none;
+}
+
+.checkboxSmallWraper .inputCheckbox{
+    display: inline-block;
+    margin-right: 10px;
+    
+    
 }

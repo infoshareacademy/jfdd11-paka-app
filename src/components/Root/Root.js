@@ -24,8 +24,8 @@ class Root extends Component {
               
             }}
           >
-          <Route exact path="/PetOwnerFeatures" component={PetOwnerFeatures} /> 
-          <Route path="/PetOwner" component={PetOwner} />  
+          <Route path="/PetOwner/PetOwnerFeatures" component={PetOwnerFeatures} /> 
+          <Route exact path="/PetOwner" component={PetOwner} />  
           <Route exact path="/login" component={Login} />
           <Route exact path="/map" component={Map} />
           <Route path="/sign-up" component={SignUp} />
