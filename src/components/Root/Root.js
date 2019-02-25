@@ -3,8 +3,8 @@ import Login from "../Login";
 import Map from "../Map";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
-import PetOwnerPage from '../PetOwnerPage';
+import PetOwnerFeatures from '../PetOwnerFeatures';
+import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -24,8 +24,8 @@ class Root extends Component {
               
             }}
           >
-          
-          <Route path="/PetOwnerPage" component={PetOwnerPage} />  
+          <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} /> 
+          <Route exact path="/petowner" component={PetOwner} />  
           <Route exact path="/login" component={Login} />
           <Route exact path="/map" component={Map} />
           <Route path="/sign-up" component={SignUp} />
