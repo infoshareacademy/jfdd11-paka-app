@@ -1,9 +1,9 @@
 .PetOwnerPage {
-  margin: 0;
+  margin: 1%;
 }
 
 .photoInput{
-    width: 35vw;
+    width: 38vw;
     float: right;
     border: 1px solid #f78d4c;
     border-radius: 5px;
@@ -33,7 +33,14 @@
 }
 
 textarea{
-    width: 85vw;
+    width: 88vw;
     border-radius: 5px;
     border: 1px solid #f78d4c;
+}
+
+.submit{
+    width: 88vw;
+    border-radius: 40px;
+    font-size: 1rem;
+    padding: 20px;
 }

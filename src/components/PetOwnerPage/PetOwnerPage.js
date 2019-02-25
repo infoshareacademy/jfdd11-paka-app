@@ -18,6 +18,7 @@ class PetOwnerPage extends Component {
           </div>
           <p>Short description of your dog:</p>
           <textarea rows= "4" ></textarea>
+          <button className="submit">Submit</button>
         </form>
       </div>
     )
