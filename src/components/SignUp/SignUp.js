@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Alert } from 'reactstrap';
 
+import firebase from 'firebase';
 
 import './SignUp.css'
 
