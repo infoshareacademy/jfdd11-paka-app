@@ -9,15 +9,20 @@
     align-content: flex-start;
     height: 100%;
 }
+
+.row1 {
+    display: flex;
+    flex-direction: column;
+}
 .logo{
     align-content: center;
     text-align: center;
 }
 .buttons {
-    text-align: center;
+    /* text-align: center; */
 }
 button {
-    color: #fff3d5;
+    /* color: #fff3d5;
     background-color: #f78d4c;
     text-decoration: none;
     padding: 30px 40px;
@@ -25,5 +30,5 @@ button {
     margin: 0 10px;
     border-radius: 30px;
     text-shadow: 0 2px 2px black;
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black; */
 }
