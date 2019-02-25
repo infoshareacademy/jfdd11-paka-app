@@ -29,3 +29,7 @@
     border-radius: 5%;
     margin-right: 2vw;
 }
+
+textarea{
+    width: 70vw;
+}

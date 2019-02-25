@@ -14,10 +14,10 @@ class PetOwnerPage extends Component {
               <input className="inputSmall" type="text" placeholder="Sex"name="sex"/>
               <input className="inputSmall" type="text" placeholder="Breed"name="breed"/>
             </div>
-            <input type="image" className="photoInput"/>
+            <input type="image" alt="Your dog's picture" className="photoInput"/>
           </div>
-          <p>Short description:</p>
-          <textarea rows= "4" cols="50"></textarea>
+          <p>Short description of your dog:</p>
+          <textarea rows= "4" ></textarea>
         </form>
       </div>
     )
