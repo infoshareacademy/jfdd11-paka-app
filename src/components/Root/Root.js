@@ -14,9 +14,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class Root extends Component {
-  render() {
 
-    const loggedIn = firebase.auth().onAuthStateChanged(user => this.setState({ user }));
+  state = {
+    user: null
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user
+      })
+    })
+  }
+  render() {
+    const loggedIn = this.state.user !== null
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
@@ -30,7 +41,7 @@ class Root extends Component {
 
             }}
           >
-          {loggedIn && <Nav />}
+           {loggedIn && <Nav />}
             <Route exact path="/" component={Login} />
             <Route exact path="/map" component={Map} />
             <Route exact path="/sign-up" component={SignUp} />
