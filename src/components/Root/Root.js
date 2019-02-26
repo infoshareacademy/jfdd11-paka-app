@@ -7,6 +7,7 @@ import PetOwnerFeatures from '../PetOwnerFeatures';
 import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ProfessionSelection from "../ProfessionSelection";
 
 
 class Root extends Component {
@@ -14,22 +15,23 @@ class Root extends Component {
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
-        
+
           <div
             style={{
               flexGrow: 1,
               minHeight: "100vh",
               padding: 20,
               boxSizing: 'border-box'
-              
+
             }}
           >
-          <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} /> 
-          <Route exact path="/petowner" component={PetOwner} />  
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/map" component={Map} />
-          <Route path="/sign-up" component={SignUp} />
-            
+            <Route exact path="/" component={Login} />
+            <Route exact path="/map" component={Map} />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/profession-selection" component={ProfessionSelection} />
+            <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
+            <Route exact path="/petowner" component={PetOwner} />
+
           </div>
         </div>
       </Router>
