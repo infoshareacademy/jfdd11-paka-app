@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+import firebase from 'firebase'
+
 import './PetSitter.css'
 
 
 
 class PetSitter extends Component {
+
+  state= {
+   name: [],
+   age: [],
+   adress: [],
+   
+
+  }
+
   render() {
     return (
       <div className="PetSitter"><p>PetSitter</p>
@@ -22,8 +33,7 @@ class PetSitter extends Component {
           </div>
           <p>Short description of you:</p>
           <textarea rows= "4" ></textarea>
-          <button>Sumbit</button>
-          <Link to={`/petsitter/petsitterfeatures`}><button>My Features</button></Link>
+          <Link to={`/petsitter/petsitterfeatures`}><button>Next</button></Link>
           
         </form>
         </div>
