@@ -41,6 +41,8 @@
 .submit{
     width: 88vw;
     border-radius: 40px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 20px;
+    background-color: #f78d4c;
+    color: white;
 }

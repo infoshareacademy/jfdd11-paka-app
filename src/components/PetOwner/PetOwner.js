@@ -10,6 +10,7 @@ class PetOwner extends Component {
           <div className="inputWraper">
             <div className="inputSmallWraper">
               <input className="inputSmall" type="text" placeholder="Name"  name="name"/>
+              <input className="inputSmall" type="text" placeholder="Surname"  name="surname"/>
               <input className="inputSmall" type="text" placeholder="Age"   name="age"/>
               <input className="inputSmall" type="text" placeholder="Sex"   name="sex"/>
               <input className="inputSmall" type="text" placeholder="Breed" name="breed"/>
