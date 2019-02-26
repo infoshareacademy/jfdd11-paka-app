@@ -3,17 +3,38 @@ import React, { Component } from 'react'
 import './PetOwner.css'
 
 class PetOwner extends Component {
+
+  state = {
+    name: '',
+    surname: '',
+    age: '',
+    sex: '',
+    breed: ''
+
+  }
+
+  handleChange = event => {
+    const fieldName = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      [fieldName]: value,
+    });
+  };
+
+
+
   render() {
     return (
       <div className="PetOwnerPage"><p>PetOwnerPagee</p>
         <form>
           <div className="inputWraper">
             <div className="inputSmallWraper">
-              <input className="inputSmall" type="text" placeholder="Name"  name="name"/>
-              <input className="inputSmall" type="text" placeholder="Surname"  name="surname"/>
-              <input className="inputSmall" type="text" placeholder="Age"   name="age"/>
-              <input className="inputSmall" type="text" placeholder="Sex"   name="sex"/>
-              <input className="inputSmall" type="text" placeholder="Breed" name="breed"/>
+              <input value={this.state.name} className="inputSmall"   type="text"   placeholder="Name"    name="name"    onChange={this.handleChange}/>
+              <input value={this.state.surname} className="inputSmall" type="text"  placeholder="Surname" name="surname" onChange={this.handleChange}/>
+              <input value={this.state.age}   className="inputSmall"  type="number"   placeholder="Age"     name="age"     onChange={this.handleChange}/>
+              <input value={this.state.sex}   className="inputSmall"  type="text"   placeholder="Sex"     name="sex"     onChange={this.handleChange}/>
+              <input value={this.state.breed} className="inputSmall"  type="text"   placeholder="Breed"   name="breed"   onChange={this.handleChange}/>
             </div>
             <input type="image" alt="Your dog's picture" className="photoInput"/>
           </div>
