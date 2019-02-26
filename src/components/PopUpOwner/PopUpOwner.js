@@ -16,10 +16,11 @@ class PopUpOwner extends Component {
   };
 
   componentDidMount() {
+    const { userId } = this.props.match.params;
+
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
-        const userId = currentUser.id
-        const email = currentUser.email
+       
 
         firebase
         .database()
@@ -33,7 +34,7 @@ class PopUpOwner extends Component {
           this.setState({
             name: user.name,
             surname: user.surname,
-            email: email,
+            email: user.email,
             adress: user.adress,
             phone: user.phone,
             photo: user.photo,
