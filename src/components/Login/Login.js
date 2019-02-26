@@ -21,14 +21,17 @@ class Login extends Component {
   };
 
   handleSubmit = event => {
+
     event.preventDefault();
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(data =>
-        this.setState({ error: null, success: "Logged-in successfully" })
-      )
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(data => this.setState({ error: null, success: 'Logged-in successfully' }))
+      .then(data => {
+        this.props.history.push("/myprofile")
+        this.setState({ error: null, success: "Thank you" })
+      })
       .catch(error => this.setState({ error: error, success: null }));
   };
 
@@ -39,6 +42,11 @@ class Login extends Component {
           <img className='login-logo' src={homezoonew} alt="logo" />
         </div>
         <div className="Login-container">
+        {this.state.error && (
+        <p style={{ color: 'red' }}>{this.state.error.message}</p>
+      )}{this.state.success && (
+        <p style={{ color: 'green' }}>{this.state.success}</p>
+      )}
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>

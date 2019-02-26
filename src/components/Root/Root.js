@@ -8,6 +8,7 @@ import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ProfessionSelection from "../ProfessionSelection";
+import UserProfile from '../UserProfile';
 
 
 class Root extends Component {
@@ -31,6 +32,7 @@ class Root extends Component {
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
             <Route exact path="/petowner" component={PetOwner} />
+            <Route exact path="/myprofile" component={UserProfile} />
 
           </div>
         </div>
