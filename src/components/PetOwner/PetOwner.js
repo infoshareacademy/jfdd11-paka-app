@@ -34,6 +34,7 @@ class PetOwner extends Component {
       <div className="PetOwnerPage"><p>PetOwnerPagee</p>
         <form>
           <div className="inputWraper">
+          
             <div className="inputSmallWraper">Owner's name and surname
               <input value={this.state.name} className="inputSmall"   type="text"   placeholder="Name"    name="name"    onChange={this.handleChange}/>
               <input value={this.state.surname} className="inputSmall"type="text"   placeholder="Surname" name="surname" onChange={this.handleChange}/>
