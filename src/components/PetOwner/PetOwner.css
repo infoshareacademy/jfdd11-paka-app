@@ -1,0 +1,46 @@
+.PetOwnerPage {
+  margin: 1%;
+}
+
+.photoInput{
+    width: 38vw;
+    float: right;
+    border: 1px solid #f78d4c;
+    border-radius: 5px;
+}
+
+.inputWraper{
+    display: flex;
+}
+
+.inputSmallWraper{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.inputWraper+p{
+    margin-top: 16px;
+    margin-bottom: -2px;
+}
+
+.inputSmall{
+    display: block;
+    margin-bottom: 6px;
+    border: 1px solid #f78d4c;
+    border-radius: 5px;
+    margin-right: 2vw;
+}
+
+textarea{
+    width: 88vw;
+    border-radius: 5px;
+    border: 1px solid #f78d4c;
+}
+
+.submit{
+    width: 88vw;
+    border-radius: 40px;
+    font-size: 1rem;
+    padding: 20px;
+}
