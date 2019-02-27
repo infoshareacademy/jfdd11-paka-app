@@ -38,6 +38,11 @@ class PetSitter extends Component {
     onAdressChange && onAdressChange(event.target.value)
   }
 
+  handleDescriptionChange= (event) => {
+    const { onDescriptionChange } = this.props
+    onDescriptionChange && onDescriptionChange(event.target.value)
+  }
+
   render() {
     return (
       <div className="PetSitter"><p>PetSitter</p>
@@ -80,7 +85,7 @@ class PetSitter extends Component {
             <input type="image" alt="Your Pic" className="photoInput"/>
           </div>
           <p>Short description of you:</p>
-          <textarea rows= "4" ></textarea>
+          <textarea rows= "4" onChange={this.handleDescriptionChange} ></textarea>
           
         </form>
         </div>
