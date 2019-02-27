@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom';
-
 import './PetSitterFeatures.css'
 
 class PetSitterFeatures extends Component {
+
+  state = {
+    features: []
+  }
+
+  handleSubmit = () => {
+    const { onSubmit } = this.props
+    onSubmit && onSubmit()
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -20,8 +28,8 @@ class PetSitterFeatures extends Component {
 
 
         </div>
-        <Link to={`/petsitter`}><button>Return</button></Link>
-        <button>Submit</button>
+      
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
 
     )
