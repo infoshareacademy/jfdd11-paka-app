@@ -12,6 +12,21 @@ class Chat extends Component {
       },
     ],
   }
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  // }
+
+  // handleChange = event => {
+  //   const fieldAuthor = event.target.author;
+  //   const value =
+  //   event.target.type === 'checkbox'
+  //   ? event.target.checked
+  //   : event.target.value;
+
+  //   this.state({
+  //     [fieldAuthor]: value
+  //   })
+  // }
 
 
   render() {
