@@ -36,7 +36,7 @@ class PetOwnerFeatures extends Component {
                   type="checkbox" 
                   value= {this.state.dogWalking} 
                   onChange={this.handleChange} 
-                  name="dog-walking"
+                  name="dogWalking"
                   />Dog walking schedule: fit your schedule walks to</li>
               <li>
                 <input 
@@ -44,7 +44,7 @@ class PetOwnerFeatures extends Component {
                   type="checkbox" 
                   value= {this.state.dogWalking} 
                   onChange={this.handleChange} 
-                  name="day-care"
+                  name="dayCare"
                 />Doggy day-care: daytime care in your sitter's dog friendly home.</li>
               <li>
                 <input 
@@ -52,7 +52,7 @@ class PetOwnerFeatures extends Component {
                   type="checkbox" 
                   value= {this.state.dogWalking} 
                   onChange={this.handleChange} 
-                  name="day-night-care"
+                  name="dayNightCare"
                 />Daily or overnight house sitting: perfect for your long working hours.</li>
               <li>
                 <input 
@@ -60,7 +60,7 @@ class PetOwnerFeatures extends Component {
                   type="checkbox" 
                   value= {this.state.dogWalking} 
                   onChange={this.handleChange} 
-                  name="drop-in"
+                  name="dropIn"
                 />Drop-in visit's: for whenever u need a check-in or a play date</li>
             </ul>
         </form>
