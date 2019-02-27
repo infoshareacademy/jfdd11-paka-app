@@ -36,13 +36,59 @@ class PetOwner extends Component {
           <div className="inputWraper">
           
             <div className="inputSmallWraper">Owner's name and surname
-              <input value={this.state.name} className="inputSmall"   type="text"   placeholder="Name"    name="name"    onChange={this.handleChange}/>
-              <input value={this.state.surname} className="inputSmall"type="text"   placeholder="Surname" name="surname" onChange={this.handleChange}/>
+              <input 
+              value={this.state.name} 
+              className="inputSmall"   
+              type="text"   
+              placeholder="Name"    
+              name="name"    
+              onChange={this.handleChange}
+              />
+
+              <input 
+              value={this.state.surname} 
+              className="inputSmall"
+              type="text"   
+              placeholder="Surname" 
+              name="surname" 
+              onChange={this.handleChange}
+              />
+
               Info about dog
-              <input value={this.state.dogsname}  className="inputSmall"   type="text"   placeholder="Dog's name"    name="dogsname"    onChange={this.handleChange}/>
-              <input value={this.state.age}   className="inputSmall"  type="number" min="1" max="25" placeholder="Age"     name="age"     onChange={this.handleChange}/>
-              <input value={this.state.sex}   className="inputSmall"  type="text"   placeholder="Sex"     name="sex"     onChange={this.handleChange}/>
-              <input value={this.state.breed} className="inputSmall"  type="text"   placeholder="Breed"   name="breed"   onChange={this.handleChange}/>
+              <input 
+              value={this.state.dogsname}  
+              className="inputSmall"   
+              type="text"   
+              placeholder="Dog's name"    
+              name="dogsname"    
+              onChange={this.handleChange}
+              />
+
+              <input 
+              value={this.state.age}   
+              className="inputSmall"  
+              type="number" min="1" max="25" 
+              placeholder="Age"     name="age"     
+              onChange={this.handleChange}
+              />
+
+              <input 
+              value={this.state.sex}   
+              className="inputSmall"  
+              type="text"   
+              placeholder="Sex"     
+              name="sex"     
+              onChange={this.handleChange}
+              />
+              
+              <input 
+              value={this.state.breed} 
+              className="inputSmall"  
+              type="text"   
+              placeholder="Breed"   
+              name="breed"   
+              onChange={this.handleChange}
+              />
               
             </div>
             <input type="file" alt="Your dog's picture" className="photoInput"/>
