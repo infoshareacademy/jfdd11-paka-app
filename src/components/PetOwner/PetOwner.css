@@ -7,6 +7,7 @@
     float: right;
     border: 1px solid #f78d4c;
     border-radius: 5px;
+    margin-bottom: 6px;
 }
 
 .inputWraper{
@@ -41,6 +42,8 @@
 .submit{
     width: 88vw;
     border-radius: 40px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 20px;
+    background-color: #f78d4c;
+    color: white;
 }
