@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Login from "../Login";
 import Map from "../Map";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PetSitterFeatures from '../PetSitterFeatures';
-import PetSitter from '../PetSitter';
+
 import PetOwnerFeatures from '../PetOwnerFeatures';
 import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
@@ -11,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import ProfessionSelection from "../ProfessionSelection";
 import PopUpOwner from "../PopUpOwner";
 
+import PetSitterWizard from "../PetSitterWizard";
 
 class Root extends Component {
   render() {
@@ -33,10 +33,8 @@ class Root extends Component {
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
             <Route exact path="/petowner" component={PetOwner} />
-            <Route exact path="/petsitter" component={PetSitter} />
-            <Route path="/petsitter/petsitterfeatures" component={PetSitterFeatures} />
+            <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
-
           </div>
         </div>
       </Router>
