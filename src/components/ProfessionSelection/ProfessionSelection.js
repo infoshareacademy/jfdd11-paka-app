@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 import './ProfessionSelection.css'
 

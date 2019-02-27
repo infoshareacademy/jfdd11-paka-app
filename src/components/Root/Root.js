@@ -7,7 +7,7 @@ import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
 import UserProfile from '../UserProfile';
-import Nav from '../Nav'
+import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -28,6 +28,7 @@ class Root extends Component {
   }
   render() {
     const loggedIn = this.state.user !== null
+    console.log(this.state.user, this.state.user !== null)
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
@@ -41,7 +42,7 @@ class Root extends Component {
 
             }}
           >
-           {loggedIn && <Nav />}
+           {loggedIn && <NavigationBar />}
             <Route exact path="/" component={Login} />
             <Route exact path="/map" component={Map} />
             <Route exact path="/sign-up" component={SignUp} />

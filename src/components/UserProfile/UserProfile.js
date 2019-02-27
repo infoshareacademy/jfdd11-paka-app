@@ -6,7 +6,7 @@ class UserProfile extends Component {
   render() {
     return (
       <div className="UserProfile">UserProfile
-      <h1>Hi user!</h1>
+      <h1>Hi there!</h1>
       </div>
     )
   }
