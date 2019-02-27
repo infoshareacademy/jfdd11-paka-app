@@ -6,11 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink } from 'reactstrap';
   import firebase from 'firebase'
   import { withRouter } from 'react-router-dom'
 
@@ -54,23 +50,16 @@ class NavigationBar extends Component {
               <NavItem>
                 <NavLink href="/petowner/petownerfeatures">Add your dog</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Become a petsitter
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem >
-                   option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={this.logOut}>
-                  Log out
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/petowner/petownerfeatures"> Become a petsitter</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="">Chat</NavLink>
+              </NavItem>
+              <NavItem onClick={this.logOut}>
+                <NavLink>Log out</NavLink>
+              </NavItem>
+               
             </Nav>
           </Collapse>
         </Navbar>
