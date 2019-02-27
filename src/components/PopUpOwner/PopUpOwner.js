@@ -48,7 +48,7 @@ class PopUpOwner extends Component {
       <div className="PopUpOwner">
       <h1>Owner Profile</h1>
      
-      <p>photo: {this.state.photo}</p>
+      <p>photo: <img src={this.state.photo}/></p>
       <p>name: {this.state.name}</p>
       <p>surname: {this.state.surname}</p>
       <p>email: {this.state.email}</p>
