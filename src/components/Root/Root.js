@@ -11,6 +11,8 @@ import ProfessionSelection from "../ProfessionSelection";
 import PopUpOwner from "../PopUpOwner";
 
 import PetSitterWizard from "../PetSitterWizard";
+import Chat from "../Chat";
+
 
 class Root extends Component {
   render() {
@@ -35,6 +37,8 @@ class Root extends Component {
             <Route exact path="/petowner" component={PetOwner} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
+            <Route path="/chat" component={Chat} />
+           
           </div>
         </div>
       </Router>
