@@ -10,19 +10,38 @@ class PetOwnerFeatures extends Component {
     dropIn : false
   }
 
+  handleSubmit = () => {
+    const { onSubmit } = this.props
+    onSubmit && onSubmit()
+  }
 
-  handleChange = event => {
-    const fieldName = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
+  handleDogWalking = (event) => {
+  
+      const { onDogWalking } = this.props
+      onDogWalking && onDogWalking(event.target.checked)
 
-    this.setState({
-      [fieldName]: value,
-    });
-  };
+  }
 
+  handleDayCare = (event) => {
+  
+    const { onDayCare } = this.props
+    onDayCare && onDayCare(event.target.checked)
+
+}
+
+handleDayNightCare = (event) => {
+  
+  const { onDayNightCare } = this.props
+  onDayNightCare && onDayNightCare(event.target.checked)
+
+}
+
+handleDropIn = (event) => {
+  
+  const { onDropIn } = this.props
+  onDropIn && onDropIn(event.target.checked)
+
+}
 
   render() {
     return (
@@ -34,35 +53,33 @@ class PetOwnerFeatures extends Component {
                 <input 
                   className="inputCheckbox" 
                   type="checkbox" 
-                  value= {this.state.dogWalking} 
-                  onChange={this.handleChange} 
+                  onChange={this.handleDogWalking} 
                   name="dogWalking"
                   />Dog walking schedule: fit your schedule walks to</li>
               <li>
                 <input 
                   className="inputCheckbox" 
                   type="checkbox" 
-                  value= {this.state.dogWalking} 
-                  onChange={this.handleChange} 
+                  onChange={this.handleDayCare} 
                   name="dayCare"
                 />Doggy day-care: daytime care in your sitter's dog friendly home.</li>
               <li>
                 <input 
                   className="inputCheckbox" 
                   type="checkbox" 
-                  value= {this.state.dogWalking} 
-                  onChange={this.handleChange} 
+                  onChange={this.handleDayNightCare} 
                   name="dayNightCare"
                 />Daily or overnight house sitting: perfect for your long working hours.</li>
               <li>
                 <input 
                   className="inputCheckbox" 
                   type="checkbox" 
-                  value= {this.state.dogWalking} 
-                  onChange={this.handleChange} 
+                  onChange={this.handleDropIn} 
                   name="dropIn"
                 />Drop-in visit's: for whenever u need a check-in or a play date</li>
             </ul>
+            <button className="submit" onClick={this.handleSubmit}>Submit</button>
+            
         </form>
       </div>
     )

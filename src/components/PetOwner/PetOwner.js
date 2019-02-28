@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import './PetOwner.css'
-import PetOwnerFeatures from '../PetOwnerFeatures/PetOwnerFeatures';
+
 
 const initialState = {
   name: '',
@@ -16,50 +16,39 @@ const initialState = {
 class PetOwner extends Component {
   state = initialState;
   
+  handleName = (event) => {
+    const { onNameChange } = this.props
+    onNameChange && onNameChange(event.target.value)
+  }
 
-  handleChange = event => {
-    const fieldName = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
+  handleSurname = (event) => {
+    const { onSurnameChange } = this.props
+    onSurnameChange && onSurnameChange(event.target.value)
+  }
 
-    this.setState({
-      [fieldName]: value,
-    });
-  };
-/*
-  addContact = (name, surname, dogsname, age, gender, breed) => {
-    this.setState({
-      users: this.state.users.concat({
-        id: Date.now(),
-        name,
-        surname,
-        dogsname,
-        age,
-        gender,
-        breed
-      }),
-    });
-  };
+  handleDogsname= (event) => {
+    const { onDogsnameChange } = this.props
+    onDogsnameChange && onDogsnameChange(event.target.value)
+  }
 
-const getUsersPromise = () =>
-  firebase
-    .database()
-    .ref('PetOwner')
-    .once('value')
-    .then(snapshot => snapshot.val())
-    .then(data =>
-      Object.entries(data || {}).map(([id, value]) => ({
-        id,
-        ...value,
-      }))
-    );
+  handleAge= (event) => {
+    const { onAgeChange } = this.props
+    onAgeChange && onAgeChange(event.target.value)
+  }
 
-  */
+  handleGender= (event) => {
+    const { onGenderChange } = this.props
+    onGenderChange && onGenderChange(event.target.value)
+  }
+
+  handleBreed= (event) => {
+    const { onBreedChange } = this.props
+    onBreedChange && onBreedChange(event.target.value)
+  }
+
   render() {
     return (
-      <div className="PetOwnerPage"><p>PetOwnerPagee</p>
+      <div className="PetOwnerPage">
         <form>
           Owner's name and surname
           <div className="inputWraper">
@@ -69,18 +58,18 @@ const getUsersPromise = () =>
                 value={this.state.name}
                 className="inputSmall"
                 type="text"
-                placeholder="Name"
+                placeholder=" Name"
                 name="name"
-                onChange={this.handleChange}
+                onChange={this.handleName}
               />
 
               <input
                 value={this.state.surname}
                 className="inputSmall"
                 type="text"
-                placeholder="Surname"
+                placeholder=" Surname"
                 name="surname"
-                onChange={this.handleChange}
+                onChange={this.handleSurname}
               />
 
               Info about dog
@@ -88,36 +77,36 @@ const getUsersPromise = () =>
                 value={this.state.dogsname}
                 className="inputSmall"
                 type="text"
-                placeholder="Dog's name"
+                placeholder=" Dog's name"
                 name="dogsname"
-                onChange={this.handleChange}
+                onChange={this.handleDogsName}
               />
 
               <input
                 value={this.state.age}
                 className="inputSmall"
                 type="number" min="1" max="25"
-                placeholder="Age" 
+                placeholder=" Age" 
                 name="age"
-                onChange={this.handleChange}
+                onChange={this.handleAge}
               />
 
               <input
-                value={this.state.sex}
+                value={this.state.gender}
                 className="inputSmall"
                 type="text"
-                placeholder="Gender"
+                placeholder=" Gender"
                 name="gender"
-                onChange={this.handleChange}
+                onChange={this.handleGender}
               />
 
               <input
                 value={this.state.breed}
                 className="inputSmall"
                 type="text"
-                placeholder="Breed"
+                placeholder=" Breed"
                 name="breed"
-                onChange={this.handleChange}
+                onChange={this.handleBreed}
               />
 
             </div>
@@ -125,9 +114,8 @@ const getUsersPromise = () =>
           </div>
           <p>Short description of your dog:</p>
           <textarea rows="4" ></textarea>
-          <PetOwnerFeatures />
 
-          <button className="submit">Submit</button>
+          
         </form>
       </div>
     )
