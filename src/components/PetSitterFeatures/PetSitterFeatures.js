@@ -26,24 +26,25 @@ class PetSitterFeatures extends Component {
 
   handleDaycareChange = (event) => {
   
-    const { onScheduleChange } = this.props
-    onScheduleChange && onScheduleChange(event.target.checked)
+    const { onDaycareChange } = this.props
+    onDaycareChange && onDaycareChange(event.target.checked)
 
 }
 
 handleHousesittingChange = (event) => {
   
-  const { onScheduleChange } = this.props
-  onScheduleChange && onScheduleChange(event.target.checked)
+  const { onHousesittingChange } = this.props
+  onHousesittingChange && onHousesittingChange(event.target.checked)
 
 }
 
 handleVisitsChange = (event) => {
   
-  const { onScheduleChange } = this.props
-  onScheduleChange && onScheduleChange(event.target.checked)
+  const { onVisitsChange } = this.props
+  onVisitsChange && onVisitsChange(event.target.checked)
 
 }
+
 
   render() {
     return (
