@@ -28,7 +28,10 @@ class SignUp extends Component {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password1)
-        .then(data => this.setState({ error: null, success: "Thank you" }))
+        .then(data => {
+          this.props.history.push("/profession-selection")
+          this.setState({ error: null, success: "Thank you" })
+        })
         .catch(error => this.setState({ error: error, success: null }))
     } else {
       this.setState({ error: new Error('Passwords do not match each other'), success: null })

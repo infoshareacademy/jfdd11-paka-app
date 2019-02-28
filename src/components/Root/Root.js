@@ -11,7 +11,9 @@ import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import PopUpOwner from "../PopUpOwner";
 
+import PetSitterWizard from "../PetSitterWizard";
 
 class Root extends Component {
 
@@ -50,8 +52,8 @@ class Root extends Component {
             <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
             <Route exact path="/petowner" component={PetOwner} />
             <Route exact path="/myprofile" component={UserProfile} />
-           
-
+            <Route path="/petsitter" component={PetSitterWizard} />
+            <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
           </div>
         </div>
       </Router>
