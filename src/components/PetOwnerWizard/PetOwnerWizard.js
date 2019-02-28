@@ -10,10 +10,11 @@ class PetOwnerWizard extends Component {
   state = {
     name: '',
     surname: '',
-    email: '',
-    adress: '',
-    phone: '',
-    photo: '',
+    dogsname: '',
+    age: '',
+    gender: '',
+    breed: '',
+    description: '',
     dogWalking : false,
     dayCare : false,
     dayNightCare : false,
@@ -21,29 +22,66 @@ class PetOwnerWizard extends Component {
   };
 
   handleSubmit = () => {
-      const { name, surname, email, adress, phone, photo, dogWalking, dayCare, dayNightCare, dropIn } = this.state
+      const { name, surname, dogsname, age, gender, breed, dogWalking, dayCare, dayNightCare, dropIn } = this.state
       
       console.log('handlesubmit', this.state)
        firebase
        .database()
        .ref('users')
-       .push({ name, surname, email, adress, phone, photo, dogWalking, dayCare, dayNightCare, dropIn })
+       .push({ name, surname, dogsname, age, gender, breed, dogWalking, dayCare, dayNightCare, dropIn })
      
     }
   
-  handleChange = event => {
-    const fieldName = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
+  
+    handleNameChange = (name) => {
+      console.log(name)
+      this.setState({ name })
+    }
+  
+    handleSurnameChange = (surname) => {
+      this.setState({ surname })
+  
+    }
 
-    this.setState({
-      [fieldName]: value,
-    });
-  };
+    handleDogsname= (dogsname) => {
+      this.setState({ dogsname })
+    }
+  
+    handleAge= (age) => {
+      this.setState({ age })
+    }
+  
+    handleGender= (gender) => {
+      this.setState({ gender })
+    }
+  
+    handleBreed= (breed) => {
+      this.setState({ breed })
+    }
+  
+    handleDescriptionChange = (description) => {
+      this.setState({ description })
+      
+    }
 
-
+    handleDogWalking = (dogWalking) => {
+      this.setState({dogWalking})
+  
+    }
+  
+    handleDayCare = (dayCare) => {
+      this.setState({dayCare})
+  
+  }
+  
+  handleDayNightCare = (dayNightCare) => {
+    this.setState({dayNightCare})
+  
+  }
+  
+  handleDropIn = (dropIn) => {
+    this.setState({dropIn})
+  }
 
   render() {
     return (
@@ -51,15 +89,21 @@ class PetOwnerWizard extends Component {
     
         <>
           <PetOwner
-          
+          onDescriptionChange={this.handleDescriptionChange}
+          onBreedChange={this.handleBreed}
+          onGenderChange={this.handleGender}
+          onAgeChange={this.handleAge}
+          onDogsnameChange={this.handleDogsname}
+          onSurnameChange={this.handleSurnameChange}
+          onNameChange={this.handleNameChange}
 
           />
           <PetOwnerFeatures
           onSubmit={this.handleSubmit}
-          onDogWalking={this.handleChange}
-          nDayCare={this.handleChange}
-          onDayNightCare={this.handleChange}
-          onDropIn={this.handleChange}
+          onDogWalking={this.handleDogWalking}
+          onDayCare={this.handleDayCare}
+          onDayNightCare={this.handleDayNightCare}
+          onDropIn={this.handleDropIn}
           />
           
 

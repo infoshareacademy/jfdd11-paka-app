@@ -9,8 +9,8 @@ const initialState = {
   dogsname: '',
   age: '',
   gender: '',
-  breed: ''
-
+  breed: '',
+  description: ''
 };
 
 class PetOwner extends Component {
@@ -46,6 +46,11 @@ class PetOwner extends Component {
     onBreedChange && onBreedChange(event.target.value)
   }
 
+  handleDescriptionChange= (event) => {
+    const { onDescriptionChange } = this.props
+    onDescriptionChange && onDescriptionChange(event.target.value)
+  }
+
   render() {
     return (
       <div className="PetOwnerPage">
@@ -55,7 +60,6 @@ class PetOwner extends Component {
 
             <div className="inputSmallWraper">
               <input
-                value={this.state.name}
                 className="inputSmall"
                 type="text"
                 placeholder=" Name"
@@ -64,7 +68,6 @@ class PetOwner extends Component {
               />
 
               <input
-                value={this.state.surname}
                 className="inputSmall"
                 type="text"
                 placeholder=" Surname"
@@ -74,7 +77,6 @@ class PetOwner extends Component {
 
               Info about dog
               <input
-                value={this.state.dogsname}
                 className="inputSmall"
                 type="text"
                 placeholder=" Dog's name"
@@ -83,7 +85,6 @@ class PetOwner extends Component {
               />
 
               <input
-                value={this.state.age}
                 className="inputSmall"
                 type="number" min="1" max="25"
                 placeholder=" Age" 
@@ -92,7 +93,6 @@ class PetOwner extends Component {
               />
 
               <input
-                value={this.state.gender}
                 className="inputSmall"
                 type="text"
                 placeholder=" Gender"
@@ -101,7 +101,6 @@ class PetOwner extends Component {
               />
 
               <input
-                value={this.state.breed}
                 className="inputSmall"
                 type="text"
                 placeholder=" Breed"
@@ -113,7 +112,7 @@ class PetOwner extends Component {
             <input type="file" alt="Your dog's picture" className="photoInput" />
           </div>
           <p>Short description of your dog:</p>
-          <textarea rows="4" ></textarea>
+          <textarea rows="4" onChange={this.handleDescriptionChange}></textarea>
 
           
         </form>
