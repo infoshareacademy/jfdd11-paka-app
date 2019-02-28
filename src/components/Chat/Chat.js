@@ -10,8 +10,10 @@ import firebase from 'firebase';
 class Chat extends Component {
   state = {
    message: '',
+   
     
   }
+  
 
   handleMessageChange = event => {
     this.setState({
@@ -21,24 +23,26 @@ class Chat extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+   
 
     firebase
     .database()
-    .ref('messasges')
+    .ref('messages')
     .push({
       content: this.state.message,
       authorId: this.props.authContext.user.uid,
-      createdAAt: firebase.database.ServerValue.TIMESTAMP
+      createdAt: firebase.database.ServerValue.TIMESTAMP
     });
   };
  
 
   render() {
+   
     return (
       <div className="Chat">
       <h1>Chat</h1>
       <Auth cover={() => <p>Chat is only for logged in users.</p>}>
-      <form onSubmit={this.state.message}>
+      <form onSubmit={this.handleSubmit}>
       <input value={this.state.message}
       onChange={this.handleMessageChange}/>
       </form>
@@ -49,4 +53,4 @@ class Chat extends Component {
   }
 }
 
-export default Chat
+export default withAuth(Chat);
