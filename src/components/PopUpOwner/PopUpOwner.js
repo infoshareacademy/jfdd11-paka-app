@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase';
 
 import './PopUpOwner.css'
-import { current } from 'locutus/php/array';
+
 
 class PopUpOwner extends Component {
   state = {
