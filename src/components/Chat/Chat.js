@@ -4,6 +4,7 @@ import Auth from '../Auth/Auth';
 import './Chat.css';
 import { withAuth } from '../../context/AuthContext';
 import firebase from 'firebase';
+import moment from 'moment'
 
 class Chat extends Component {
   state = {
@@ -27,6 +28,8 @@ class Chat extends Component {
     firebase
       .database()
       .ref('messages')
+      .orderByChild('createdAt')
+      .limitToLast(20)
       .on('value', this.readMessages);
 
     firebase
@@ -91,7 +94,7 @@ class Chat extends Component {
         <div>
           {messagesArray.map(message => (
             <p key={message.id}>
-              {message.createdAt}
+              {moment(message.createdAt).fromNow()}
               <strong>
                 {(users &&
                   users[message.authorId] &&
