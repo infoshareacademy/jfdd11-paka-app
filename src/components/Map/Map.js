@@ -4,6 +4,7 @@ import './Map.css'
 
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
 
+const markers = [[10, 20], [40, 50], [30, 30]];
 
 class Map extends Component {
 
@@ -12,21 +13,29 @@ class Map extends Component {
       lng: -0.09,
       zoom: 13
     }
+   
 
  
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <LeafletMap center={position} zoom={this.state.zoom}>
+      <LeafletMap center={position} zoom={this.state.zoom} onClick={(pos) => console.log(pos)}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Marker position={position}>
+        {/* <Marker position={position}>
           <Popup>
             A pretty CSS3 popup. <br/> Easily customizable.
           </Popup>
-        </Marker>
+        </Marker> */}
+                {markers.map((marker, index) => (
+          <Marker key={index} position={marker}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        ))}
       </LeafletMap>
     )
   }
