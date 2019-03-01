@@ -42,6 +42,20 @@ class PetSitterFeatures extends Component {
 
   }
 
+  handlePositionXChange = (event) => {
+
+    const { onPositionXChange } = this.props
+    onPositionXChange && onPositionXChange(event.target.value)
+
+  }
+
+  handlePositionYChange = (event) => {
+
+    const { onPositionYChange } = this.props
+    onPositionYChange && onPositionYChange(event.target.value)
+
+  }
+
 
   render() {
     return (
@@ -53,8 +67,10 @@ class PetSitterFeatures extends Component {
           <CustomInput type="switch" id="exampleCustomSwitch3" name="customSwitch" onChange={this.handleHousesittingChange} /><p>Daily or overnight house sitting: perfect for your long working hours.</p>
           <CustomInput type="switch" id="exampleCustomSwitch4" name="customSwitch" onChange={this.handleVisitsChange} /><p>Drop-in visit's: for whenever u need a check-in or a play date</p>
 
-
-
+          <p>What's your coordinates, mate?</p>
+          <input id="positionX" type="text"  placeholder="position X" onChange={this.handlePositionXChange} ></input>
+          <input id="positionY" type="text"  placeholder="position Y" onChange={this.handlePositionYChange} ></input>
+          
 
         </div>
 
