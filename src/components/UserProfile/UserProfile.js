@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-import { Card, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import MyMap from '../MyMap'
 
@@ -37,7 +37,9 @@ class UserProfile extends Component {
   render() {
     console.log(this.state)
     return (
-      <div className="UserProfile">
+      <div style={{display: 'flex', 
+      flexDirection: 'column',
+}} className="UserProfile">
    <div>
    <h1>Check out fellow users</h1>
         <Nav tabs>
@@ -62,7 +64,7 @@ class UserProfile extends Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <h4></h4>
+                <h4> </h4>
               </Col>
             </Row>
             <div>
