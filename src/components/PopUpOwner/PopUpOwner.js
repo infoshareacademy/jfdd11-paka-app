@@ -32,12 +32,15 @@ class PopUpOwner extends Component {
             return;
           }
           this.setState({
-            name: user.name,
-            surname: user.surname,
+            name: user.first_name,
+            surname: user.last_name,
             email: user.email,
-            adress: user.adress,
+            adress: user.city,
             phone: user.phone,
-            photo: user.photo,
+            photo: user.avatar,
+            breed: user.breed,
+            dogsname: user.dogsname,
+            age: user.age,
           })
         })
       }
@@ -48,12 +51,15 @@ class PopUpOwner extends Component {
       <div className="PopUpOwner">
       <h1>Owner Profile</h1>
      
-      <p>photo: <img src={this.state.photo}/></p>
+      <p><img src={this.state.photo}/></p>
       <p>name: {this.state.name}</p>
       <p>surname: {this.state.surname}</p>
       <p>email: {this.state.email}</p>
       <p>adress: {this.state.adress}</p>
       <p>phone: {this.state.phone}</p>
+      <p>dogs name: {this.state.dogsname}</p>
+      <p>breed: {this.state.breed}</p>
+      <p>dogs age: {this.state.age}</p>
     
       </div>
     )

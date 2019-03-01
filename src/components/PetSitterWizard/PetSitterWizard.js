@@ -28,8 +28,8 @@ class PetSitterWizard extends Component {
     console.log('handlesubmit', this.state)
      firebase
      .database()
-     .ref('petsitter')
-     .push({ name, surname, age, adress, description, schedule, daycare, housesitting, visits })
+     .ref('users')
+     .set({ name, surname, age, adress, description, schedule, daycare, housesitting, visits })
    
 
   }
