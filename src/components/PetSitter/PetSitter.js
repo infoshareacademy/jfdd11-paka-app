@@ -1,93 +1,103 @@
 import React, { Component } from 'react'
 
-
 import './PetSitter.css'
+
+import { Input } from 'reactstrap';
 
 
 
 class PetSitter extends Component {
 
-  state= {
-   name: '',
-   surname: '',
-   age: '',
-   adress: '',
-   description: ''
-
+  state = {
+    name: '',
+    surname: '',
+    age: '',
+    adress: '',
+    description: '',
+    file: null
   }
 
-  
-  handleNameChange= (event) => {
+
+  handleNameChange = (event) => {
     const { onNameChange } = this.props
     onNameChange && onNameChange(event.target.value)
   }
 
   handleSurnameChange = (event) => {
-    const { onSurnameChange } = this.props 
+    const { onSurnameChange } = this.props
     onSurnameChange && onSurnameChange(event.target.value)
   }
 
-  handleAgeChange= (event) => {
+  handleAgeChange = (event) => {
     const { onAgeChange } = this.props
     onAgeChange && onAgeChange(event.target.value)
   }
 
-  handleAdressChange= (event) => {
+  handleAdressChange = (event) => {
     const { onAdressChange } = this.props
     onAdressChange && onAdressChange(event.target.value)
   }
 
-  handleDescriptionChange= (event) => {
+  handleDescriptionChange = (event) => {
     const { onDescriptionChange } = this.props
     onDescriptionChange && onDescriptionChange(event.target.value)
   }
 
+  handleFileSelected = (event) => {
+    const { onFileSelected } = this.props
+    onFileSelected && onFileSelected(event.target.files[0])
+    this.setState({file :URL.createObjectURL( event.target.files[0])})
+  }
+
   render() {
+    const { file } = this.state
     return (
       <div className="PetSitter"><p>PetSitter</p>
-        <form>
-          <div className="inputWraper">
-            <div className="inputSmallWraper">
-              <input 
-              className="inputSmall" 
-              type="text" 
-              placeholder="Name" 
-              name="name" 
+
+        <div className="inputWraper">
+          <div className="inputSmallWraper">
+            <input
+              className="inputSmall"
+              type="text"
+              placeholder="Name"
+              name="name"
               onChange={this.handleNameChange}
-              />
+            />
 
-              <input 
-              className="inputSmall" 
-              type="text" 
+            <input
+              className="inputSmall"
+              type="text"
               placeholder="Surname"
-              name="Surname" 
+              name="Surname"
               onChange={this.handleSurnameChange}
-              />
+            />
 
-              <input 
-              className="inputSmall" 
-              type="text" 
+            <input
+              className="inputSmall"
+              type="text"
               placeholder="Age"
-              name="age" 
+              name="age"
               onChange={this.handleAgeChange}
-              />
+            />
 
-              <input 
-              className="inputSmall" 
-              type="text" 
+            <input
+              className="inputSmall"
+              type="text"
               placeholder="Adress"
-              name="adress"   
+              name="adress"
               onChange={this.handleAdressChange}
-              />
-                                          
-            </div>
-            <input type="image" alt="Your Pic" className="photoInput"/>
+            />
+
           </div>
-          <p>Short description of you:</p>
-          <textarea rows= "4" onChange={this.handleDescriptionChange} ></textarea>
-          
-        </form>
+          <div>
+            {file && <img src={file}/>}
+            <Input type="file" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
+          </div>
         </div>
+        <p>Short description of you:</p>
+        <textarea rows="4" onChange={this.handleDescriptionChange} ></textarea>
+
+      </div>
     )
   }
 }
