@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { Button, Fade } from 'reactstrap';
+
 import "./PetSitterWizard.css";
 
 import PetSitterFeatures from "../PetSitterFeatures";
@@ -7,6 +9,8 @@ import PetSitterFeatures from "../PetSitterFeatures";
 import PetSitter from "../PetSitter";
 
 import firebase from "firebase";
+
+import { Link } from 'react-router-dom';
 
 class PetSitterWizard extends Component {
   state = {
@@ -20,9 +24,15 @@ class PetSitterWizard extends Component {
     housesitting: false,
     visits: false,
     positionx: "",
-    positiony: ""
+    positiony: "",
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { fadeIn: false };
+    this.toggle = this.toggle.bind(this);
+}
+  
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -56,7 +66,7 @@ class PetSitterWizard extends Component {
         visits,
         positionx: parseFloat(positionx) || 0,
         positiony: parseFloat(positiony) || 0
-      });
+      }).catch(error => this.setState({ error: error, success: null }))
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
@@ -122,7 +132,16 @@ class PetSitterWizard extends Component {
     this.setState({ positiony });
   };
 
+  toggle() {
+    this.setState({
+        fadeIn: !this.state.fadeIn
+    })
+  }
+
   render() {
+     
+   
+   
     return (
       // <Switch>
       // <Route exact path="/petsitter" render={() => {
@@ -151,10 +170,19 @@ class PetSitterWizard extends Component {
             onPositionXChange={this.handlePositionXChange}
             onPositionYChange={this.handlePositionYChange}
           />
-          <button type="submit">Submit</button>
+          <Button color="warning" type="submit" onClick= {this.toggle} tag={Link} to="/myprofile" >Submit</Button>
+          <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
+                    Thanks, mate!
+                </Fade>
+
+
         </form>
       </>
     );
+
+
+    
+
   }
 }
 

@@ -90,7 +90,7 @@ class PetSitter extends Component {
 
           </div>
           <div>
-            {file && <img src={file}/>}
+            <div className = "photoContainer">{file && <img src={file} alt=""/>}</div>
             <Input type="file" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
           </div>
         </div>
