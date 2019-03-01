@@ -61,11 +61,11 @@ class PetSitterFeatures extends Component {
     return (
       <div className="wrapper">
         <div className="smallwrapper">
-          <h3>What do you want to do?</h3>
-          <CustomInput type="switch" id="exampleCustomSwitch" name="customSwitch" onChange={this.handleScheduleChange} /><p>Dog walking schedule: fit your schedule walks to</p>
-          <CustomInput type="switch" id="exampleCustomSwitch2" name="customSwitch" onChange={this.handleDaycareChange} /><p>Doggy day-care: daytime care in your sitter's dog friendly home.</p>
-          <CustomInput type="switch" id="exampleCustomSwitch3" name="customSwitch" onChange={this.handleHousesittingChange} /><p>Daily or overnight house sitting: perfect for your long working hours.</p>
-          <CustomInput type="switch" id="exampleCustomSwitch4" name="customSwitch" onChange={this.handleVisitsChange} /><p>Drop-in visit's: for whenever u need a check-in or a play date</p>
+          <h3>What do you offer?</h3>
+          <CustomInput type="switch" id="exampleCustomSwitch" name="customSwitch" onChange={this.handleScheduleChange} /><p>Dog walking</p>
+          <CustomInput type="switch" id="exampleCustomSwitch2" name="customSwitch" onChange={this.handleDaycareChange} /><p>Doggy day-care</p>
+          <CustomInput type="switch" id="exampleCustomSwitch3" name="customSwitch" onChange={this.handleHousesittingChange} /><p>Daily or overnight house sitting</p>
+          <CustomInput type="switch" id="exampleCustomSwitch4" name="customSwitch" onChange={this.handleVisitsChange} /><p>Drop-in visits</p>
 
           <p>What's your coordinates, mate?</p>
           <input id="positionX" type="text"  placeholder="position X" onChange={this.handlePositionXChange} ></input>

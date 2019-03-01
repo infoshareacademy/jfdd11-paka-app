@@ -41,14 +41,14 @@ class UserProfile extends Component {
       flexDirection: 'column',
 }} className="UserProfile">
    <div>
-   <h1>Check out fellow users</h1>
+   <p>Hello there!</p>
         <Nav tabs>
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-              Browse dogs
+              Browse users
             </NavLink>
           </NavItem>
           <NavItem>
@@ -56,7 +56,7 @@ class UserProfile extends Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-            See dogs near you
+            See users near you
             </NavLink>
           </NavItem>
         </Nav>
