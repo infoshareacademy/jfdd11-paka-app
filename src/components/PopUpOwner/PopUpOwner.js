@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase';
+import { Link } from 'react-router-dom';
 
 import './PopUpOwner.css'
 
@@ -58,7 +59,10 @@ class PopUpOwner extends Component {
       <p>phone: {this.state.phone}</p>
       <p>age: {this.state.age}</p>
     
+    
+      <button tag={Link} to="/map">Back</button>
       </div>
+      
     )
   }
 }
