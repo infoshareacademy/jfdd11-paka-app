@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import { Link } from 'react-router-dom'
 import { Card, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import MyMap from '../MyMap'
@@ -27,7 +28,9 @@ class UserProfile extends Component {
         .once('value')
         .then(snapshot => snapshot.val())
         .then(users => {
-          this.setState({ users: Object.values(users) })
+          this.setState({ users: Object.entries(users || {}).map(
+            ([id, value]) => ({ id , ...value})
+          ) })
         
         })
       }
@@ -71,15 +74,15 @@ class UserProfile extends Component {
       {this.state.users.map(user => (
       <Card key={user.id}>
         <CardBody>
-          <CardTitle>{user.first_name}</CardTitle>
+          <CardTitle>{user.name}</CardTitle>
           <CardSubtitle>{user.breed}</CardSubtitle>
         </CardBody>
         <div style={{ textAlign: 'center'}}>
-        <img src={user.avatar + '&size=150x150'} alt='user'/>
+        <img src={user.photo + '&size=150x150'} alt='user'/>
         </div>
         <CardBody>
           <CardText>{user.city}</CardText>
-          <CardLink href="#">See Full Profile</CardLink>
+          <CardLink tag={Link} href="#" to={`/pop-up-owner/${user.id}`}>See Full Profile</CardLink>
           <CardLink href="#">Send a Message</CardLink>
         </CardBody>
       </Card>
