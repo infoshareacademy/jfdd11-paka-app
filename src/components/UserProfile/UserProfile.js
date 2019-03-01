@@ -71,14 +71,14 @@ class UserProfile extends Component {
       {this.state.users.map(user => (
       <Card key={user.id}>
         <CardBody>
-          <CardTitle>{user.first_name}</CardTitle>
-          <CardSubtitle>{user.breed}</CardSubtitle>
+          <CardTitle>{user.name}</CardTitle>
+          <CardSubtitle>{user.age}</CardSubtitle>
         </CardBody>
         <div style={{ textAlign: 'center'}}>
-        <img src={user.avatar + '&size=150x150'} alt='user'/>
+        <img src={user.photo + '&size=150x150'} alt='user'/>
         </div>
         <CardBody>
-          <CardText>{user.city}</CardText>
+          <CardText>{user.adress}</CardText>
           <CardLink href="#">See Full Profile</CardLink>
           <CardLink href="#">Send a Message</CardLink>
         </CardBody>

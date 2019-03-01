@@ -42,7 +42,6 @@ class NavigationBar extends Component {
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
           <NavbarBrand
-            href="/"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -56,7 +55,6 @@ class NavigationBar extends Component {
               style={{
                 fontSize: "60",
                 color: "#f36f5a",
-                fontFamily: '"Chango"',
                 fontWeight: "bolder",
                 fontFamily: 'monospace'
               }}
