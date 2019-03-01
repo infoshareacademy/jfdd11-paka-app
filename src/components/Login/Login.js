@@ -55,7 +55,7 @@ class Login extends Component {
             <h1
               style={{
                 color: "#f36f5a",
-                fontFamily: "Chango",
+                fontFamily: 'monospace',
                 fontWeight: "bold",
                 fontSize: "50",
                 lineHeight: "0"
