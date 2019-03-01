@@ -1,95 +1,126 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import './PetSitterWizard.css'
+import "./PetSitterWizard.css";
 
-import PetSitterFeatures from '../PetSitterFeatures';
+import PetSitterFeatures from "../PetSitterFeatures";
 
-import PetSitter from '../PetSitter';
+import PetSitter from "../PetSitter";
 
-import firebase from 'firebase';
-
-
+import firebase from "firebase";
 
 class PetSitterWizard extends Component {
-
   state = {
-   
-    name: '',
-    age: '',
-    adress: '',
-    description: '',
+    name: "",
+    surname: "",
+    age: "",
+    adress: "",
+    description: "",
     schedule: false,
     daycare: false,
     housesitting: false,
-    visits: false
+    visits: false,
+    positionx: "",
+    positiony: ""
+  };
 
-  }
-
-  
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const { name, surname, age, adress, description, schedule, daycare, housesitting, visits, file } = this.state
-    
+  handleSubmit = event => {
+    event.preventDefault();
+    const {
+      name,
+      surname,
+      age,
+      adress,
+      description,
+      schedule,
+      daycare,
+      housesitting,
+      visits,
+      file,
+      positionx,
+      positiony
+    } = this.state;
+    const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref('user')
-      .push({ name, surname, age, adress, description, schedule, daycare, housesitting, visits })
+      .ref("users")
+      .child(userId)
+      .set({
+        name,
+        surname,
+        age,
+        adress,
+        description,
+        schedule,
+        daycare,
+        housesitting,
+        visits,
+        positionx: parseFloat(positionx) || 0,
+        positiony: parseFloat(positiony) || 0
+      });
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
     const storageRef = firebase.storage().ref();
-    const ref = storageRef.child('testowe.jpg');
-    ref.put(file)
+    const ref = storageRef.child(`${userId}.jpg`);
+    ref.put(file).then(data =>
+      data.ref.getDownloadURL().then(url =>
+        firebase
+          .database()
+          .ref("users")
+          .child(userId)
+          .child("photo")
+          .set(url)
+      )
+    );
+  };
 
-  }
+  handleNameChange = name => {
+    this.setState({ name });
+  };
 
-  handleNameChange = (name) => {
-    console.log(name)
-    this.setState({ name })
-  }
+  handleSurnameChange = surname => {
+    this.setState({ surname });
+  };
 
-  handleSurnameChange = (surname) => {
-    this.setState({ surname })
+  handleAgeChange = age => {
+    this.setState({ age });
+  };
 
-  }
+  handleFileSelected = file => {
+    this.setState({ file });
+  };
 
-  handleAgeChange = (age) => {
-    this.setState({ age })
+  handleAdressChange = adress => {
+    this.setState({ adress });
+  };
 
-  }
+  handleDescriptionChange = description => {
+    this.setState({ description });
+  };
 
-  handleFileSelected = (file) => {
-    this.setState({ file })
-  }
+  handleScheduleChange = schedule => {
+    this.setState({ schedule });
+  };
 
-  handleAdressChange = (adress) => {
-    this.setState({ adress })
+  handleDaycareChange = daycare => {
+    this.setState({ daycare });
+  };
 
-  }
+  handleHousesittingChange = housesitting => {
+    this.setState({ housesitting });
+  };
 
-  handleDescriptionChange = (description) => {
-    this.setState({ description })
+  handleVisitsChange = visits => {
+    this.setState({ visits });
+  };
 
-  }
+  handlePositionXChange = positionx => {
+    this.setState({ positionx });
+  };
 
-  handleScheduleChange = (schedule) => {
-    this.setState({ schedule })
-  }
-
-  handleDaycareChange = (daycare) => {
-    this.setState({ daycare })
-  }
-
-  handleHousesittingChange = (housesitting) => {
-    this.setState({ housesitting })
-  }
-
-  handleVisitsChange = (visits) => {
-    this.setState({ visits })
-  }
-
-
+  handlePositionYChange = positiony => {
+    this.setState({ positiony });
+  };
 
   render() {
     return (
@@ -117,12 +148,14 @@ class PetSitterWizard extends Component {
             onDaycareChange={this.handleDaycareChange}
             onHousesittingChange={this.handleHousesittingChange}
             onVisitsChange={this.handleVisitsChange}
+            onPositionXChange={this.handlePositionXChange}
+            onPositionYChange={this.handlePositionYChange}
           />
           <button type="submit">Submit</button>
         </form>
       </>
-    )
+    );
   }
 }
 
-export default PetSitterWizard
+export default PetSitterWizard;

@@ -54,9 +54,9 @@ class Login extends Component {
             <img className="login-logo" src={homezoonew} alt="logo" />
             <h1
               style={{
-                fontFamily: "Chango",
-                fontWeight: "bold",
                 color: "#f36f5a",
+                fontFamily: 'monospace',
+                fontWeight: "bold",
                 fontSize: "50",
                 lineHeight: "0"
               }}
