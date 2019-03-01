@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase'
 import { Card, CardImg, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import Map from '../Map'
+import MyMap from '../MyMap'
 
 import './UserProfile.css'
 
@@ -67,7 +67,7 @@ class UserProfile extends Component {
             </Row>
           </TabPane>
           <TabPane tabId="2">
-          <Map />
+          <MyMap />
             {/* <Row>
               <Col sm="6">
                 <Card body>

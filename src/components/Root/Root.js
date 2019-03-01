@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Login from "../Login";
-import Map from "../Map";
+import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PetOwnerFeatures from '../PetOwnerFeatures';
 import PetOwner from '../PetOwner';
@@ -46,7 +46,7 @@ class Root extends Component {
           >
            {loggedIn && <NavigationBar />}
             <Route exact path="/" component={Login} />
-            <Route exact path="/map" component={Map} />
+            <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
