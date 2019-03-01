@@ -41,20 +41,24 @@ class NavigationBar extends Component {
     return (
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
+          <NavbarBrand
+            href="/"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "baseline"
+            }}
+          >
             {" "}
-            <img
-              style={{ width: "50", height: "50" }}
-              className="login-logo"
-              src={homezoonew}
-              alt="logo"
-            />
+            <img className="Nav-login-logo" src={homezoonew} alt="logo" />
             <span
+              className="Nav-span"
               style={{
                 fontSize: "60",
                 color: "#f36f5a",
                 fontFamily: '"Chango"',
-                fontWeight: "bolder"
+                fontWeight: "bolder",
+                fontFamily: 'monospace'
               }}
             >
               HomeZoo
