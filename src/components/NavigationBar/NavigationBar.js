@@ -41,15 +41,14 @@ class NavigationBar extends Component {
     return (
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
+          <NavbarBrand href="/" style={{lineHeight: '1'}}>
             {" "}
             <img
-              style={{ width: "50", height: "50" }}
-              className="login-logo"
+              className="Nav-login-logo"
               src={homezoonew}
               alt="logo"
             />
-            <span
+            <span className='Nav-span'
               style={{
                 fontSize: "60",
                 color: "#f36f5a",
