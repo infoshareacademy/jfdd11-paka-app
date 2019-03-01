@@ -26,10 +26,10 @@ class PetOwnerWizard extends Component {
     const { name, surname, dogsname, age, gender, breed, description, dogWalking, dayCare, dayNightCare, dropIn } = this.state
 
     console.log('handlesubmit', this.state)
-    // firebase
-    //   .database()
-    //   .ref('petowners')
-    //   .push({ name, surname, dogsname, age, gender, breed, description, dogWalking, dayCare, dayNightCare, dropIn })
+    firebase
+      .database()
+      .ref('petowners')
+      .push({ name, surname, dogsname, age, gender, breed, description, dogWalking, dayCare, dayNightCare, dropIn })
 
   }
 
