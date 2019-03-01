@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import {
   Collapse,
   Navbar,
@@ -6,14 +6,15 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink } from 'reactstrap';
-  import firebase from 'firebase'
-  import { withRouter } from 'react-router-dom'
+  NavLink
+} from "reactstrap";
+import firebase from "firebase";
+import { withRouter } from "react-router-dom";
+import homezoonew from "../images/homezoonew.png";
 
-import './NavigationBar.css'
+import "./NavigationBar.css";
 
 class NavigationBar extends Component {
-
   constructor(props) {
     super(props);
 
@@ -28,19 +29,37 @@ class NavigationBar extends Component {
     });
   }
   logOut = () => {
-    firebase.auth().signOut()
-    .then(() => {
-      this.props.history.push('/')
-    })
-  }
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        this.props.history.push("/");
+      });
+  };
 
   render() {
     return (
-     
       <div className="NavigationBar">
-
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">HomeZoo</NavbarBrand>
+          <NavbarBrand href="/">
+            {" "}
+            <img
+              style={{ width: "50", height: "50" }}
+              className="login-logo"
+              src={homezoonew}
+              alt="logo"
+            />
+            <span
+              style={{
+                fontSize: "60",
+                color: "#f36f5a",
+                fontFamily: '"Chango"',
+                fontWeight: "bolder"
+              }}
+            >
+              HomeZoo
+            </span>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -48,10 +67,15 @@ class NavigationBar extends Component {
                 <NavLink href="/map/">Map</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/petowner/petownerfeatures">Add your dog</NavLink>
+                <NavLink href="/petowner/petownerfeatures">
+                  Add your dog
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/petowner/petownerfeatures"> Become a petsitter</NavLink>
+                <NavLink href="/petowner/petownerfeatures">
+                  {" "}
+                  Become a petsitter
+                </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="">Chat</NavLink>
@@ -59,14 +83,12 @@ class NavigationBar extends Component {
               <NavItem onClick={this.logOut}>
                 <NavLink>Log out</NavLink>
               </NavItem>
-               
             </Nav>
           </Collapse>
         </Navbar>
       </div>
-      
-    )
+    );
   }
 }
 
-export default withRouter(NavigationBar)
+export default withRouter(NavigationBar);
