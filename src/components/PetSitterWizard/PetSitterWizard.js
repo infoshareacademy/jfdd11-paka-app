@@ -8,7 +8,7 @@ import PetSitter from '../PetSitter';
 
 import firebase from 'firebase';
 
-import SignUp from '../SignUp'
+
 
 class PetSitterWizard extends Component {
 
@@ -30,7 +30,7 @@ class PetSitterWizard extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { name, surname, age, adress, description, schedule, daycare, housesitting, visits, file } = this.state
-    const {email} = this.props
+    
     firebase
       .database()
       .ref('user')

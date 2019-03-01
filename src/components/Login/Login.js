@@ -3,7 +3,6 @@ import homezoonew from "../images/homezoonew.png";
 import firebase from "firebase";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Nav, NavItem, NavLink } from "reactstrap";
 import "./Login.css";
 
 class Login extends Component {
@@ -55,7 +54,6 @@ class Login extends Component {
             <img className="login-logo" src={homezoonew} alt="logo" />
             <h1
               style={{
-                color: "#f36f5",
                 fontFamily: "Chango",
                 fontWeight: "bold",
                 color: "#f36f5a",

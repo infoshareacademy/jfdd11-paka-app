@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PetOwnerFeatures from '../PetOwnerFeatures';
 import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
@@ -31,7 +30,6 @@ class Root extends Component {
   }
   render() {
     const loggedIn = this.state.user !== null
-    console.log(this.state.user, this.state.user !== null)
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
@@ -50,9 +48,9 @@ class Root extends Component {
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
-            <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
-            <Route exact path="/petowner" component={PetOwner} />
+            {/* <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} /> */}
             <Route exact path="/myprofile" component={UserProfile} />
+            <Route path="/petowner" component={PetOwnerWizard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
           </div>
