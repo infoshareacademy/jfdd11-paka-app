@@ -38,6 +38,8 @@ class PopUpOwner extends Component {
             adress: user.adress,
             phone: user.phone,
             photo: user.photo,
+            
+            age: user.age,
           })
         })
       }
@@ -48,12 +50,13 @@ class PopUpOwner extends Component {
       <div className="PopUpOwner">
       <h1>Owner Profile</h1>
      
-      <p>photo: {this.state.photo}</p>
+      <p><img src={this.state.photo}/></p>
       <p>name: {this.state.name}</p>
       <p>surname: {this.state.surname}</p>
       <p>email: {this.state.email}</p>
       <p>adress: {this.state.adress}</p>
       <p>phone: {this.state.phone}</p>
+      <p>age: {this.state.age}</p>
     
       </div>
     )
