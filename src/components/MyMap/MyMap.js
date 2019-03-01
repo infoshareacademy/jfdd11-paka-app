@@ -21,7 +21,7 @@ class MyMap extends Component {
       <Map
         center={position}
         zoom={this.state.zoom}
-        style={{ width: 500, height: 400 }}
+        style={{ width: '90vw', height: 400 }}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
