@@ -8,8 +8,8 @@ const markers = [[54.4047, 18.5319], [54.4240, 18.5956], [54.4416, 18.5601]];
 class MyMap extends Component {
 
   state = {
-      lat: 54.35205,
-      lng: 18.64637,
+      lat: 54.4240,
+      lng: 18.5956,
       zoom: 13
     }
    

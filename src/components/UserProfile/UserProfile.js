@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-import { Card, CardImg, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import MyMap from '../MyMap'
 
@@ -65,9 +65,28 @@ class UserProfile extends Component {
                 <h4></h4>
               </Col>
             </Row>
+            <div>
+      {this.state.users.map(user => (
+      <Card key={user.id}>
+        <CardBody>
+          <CardTitle>{user.first_name}</CardTitle>
+          <CardSubtitle>{user.breed}</CardSubtitle>
+        </CardBody>
+        <div style={{ textAlign: 'center'}}>
+        <img src={user.avatar + '&size=150x150'} alt='user'/>
+        </div>
+        <CardBody>
+          <CardText>{user.city}</CardText>
+          <CardLink href="#">See Full Profile</CardLink>
+          <CardLink href="#">Send a Message</CardLink>
+        </CardBody>
+      </Card>
+  
+  ))}
+      </div>
           </TabPane>
           <TabPane tabId="2">
-          <MyMap />
+          <MyMap users ={this.state.users} />
             {/* <Row>
               <Col sm="6">
                 <Card body>
@@ -86,26 +105,6 @@ class UserProfile extends Component {
             </Row> */}
           </TabPane>
         </TabContent>
-      </div>
-
-      <div>
-      {this.state.users.map(user => (
-      <Card key={user.id}>
-        <CardBody>
-          <CardTitle>{user.first_name}</CardTitle>
-          <CardSubtitle>{user.breed}</CardSubtitle>
-        </CardBody>
-        <div style={{ textAlign: 'center'}}>
-        <img src={user.avatar + '&size=150x150'} alt='user'/>
-        </div>
-        <CardBody>
-          <CardText>{user.city}</CardText>
-          <CardLink href="#">See Full Profile</CardLink>
-          <CardLink href="#">Send a Message</CardLink>
-        </CardBody>
-      </Card>
-  
-  ))}
       </div>
       </div>
     )
