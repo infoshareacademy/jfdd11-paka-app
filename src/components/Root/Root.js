@@ -9,6 +9,7 @@ import ProfessionSelection from "../ProfessionSelection";
 import UserProfile from '../UserProfile';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
+import IndividualProfile from '../IndividualProfile'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PopUpOwner from "../PopUpOwner";
@@ -54,6 +55,7 @@ class Root extends Component {
             <Route exact path="/myprofile" component={UserProfile} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
+            <Route path="/individual-profile" component={IndividualProfile} />
           </div>
         </div>
       </Router>

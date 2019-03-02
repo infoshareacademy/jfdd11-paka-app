@@ -22,7 +22,9 @@ import {
   Col
 } from "reactstrap";
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 import MyMap from "../MyMap";
+import IndividualProfile from '../IndividualProfile'
 
 import "./UserProfile.css";
 
@@ -38,7 +40,7 @@ class UserProfile extends Component {
     name: "",
     surname: "",
     age: "",
-    city: ""
+    city: "",
   };
 
   handleChange = event => {
@@ -60,6 +62,8 @@ class UserProfile extends Component {
   };
 
   componentDidMount() {
+    const { userId } = this.props.match.params;
+
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
         firebase
@@ -211,10 +215,6 @@ class UserProfile extends Component {
                       user.age
                     ).toLocaleLowerCase()
                   }))
-                  .filter(isHouseSitting)
-                  .filter(isDayCare)
-                  .filter(isVisiting)
-                  .filter(isWalking)
                   .filter(user =>
                     user.searchData.includes(
                       this.state.searchPhrase.toLocaleLowerCase()
@@ -251,7 +251,7 @@ class UserProfile extends Component {
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
-                        <CardLink href="#">See Full Profile</CardLink>
+                        <CardLink><Link to={`/individual-profile/${user.id}`}> See Full Profile</Link></CardLink>
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>
@@ -259,7 +259,7 @@ class UserProfile extends Component {
               </div>
             </TabPane>
             <TabPane tabId="2">
-              <MyMap />
+              <MyMap users={this.state.users}/>
             </TabPane>
           </TabContent>
         </div>

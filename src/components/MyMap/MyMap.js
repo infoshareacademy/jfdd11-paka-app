@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import USerProfile from '../UserProfile'
 
 import "./MyMap.css";
-
-const markers = [[54.4047, 18.5319], [54.424, 18.5956], [54.4416, 18.5601]];
 
 class MyMap extends Component {
   state = {
@@ -13,12 +12,14 @@ class MyMap extends Component {
   };
 
   render() {
-    console.log(this.state.lat, this.state.users);
+    console.log(this.props)
+    // console.log(this.props.users)
 
-    const position = [this.state.lat, this.state.lng];
+    // const position1 = this.props.users.filter(user => user.positionx)
+    // const position2 = this.props.users.filter(user => user.positiony)
     return (
       <Map
-        center={position}
+        center={[this.state.lat, this.state.lng]}
         zoom={this.state.zoom}
         style={{ width: "90vw", height: 400 }}
       >
@@ -26,13 +27,13 @@ class MyMap extends Component {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker, index) => (
-          <Marker key={index} position={marker}>
+        {this.props.users.map((user) => 
+          <Marker key={user.id} position={[user.positionx, user.positiony]}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+            <img src={user.photo + "&size=20x20"} alt="user" /> {user.name} <br /> {user.adress}
             </Popup>
           </Marker>
-        ))}
+        )}
       </Map>
     );
   }
