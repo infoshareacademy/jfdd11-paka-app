@@ -34,7 +34,11 @@ class UserProfile extends Component {
     daycare: false,
     housesitting: false,
     schedule: false,
-    visits: false
+    visits: false,
+    name: "",
+    surname: "",
+    age: "",
+    city: ""
   };
 
   handleChange = event => {
@@ -172,7 +176,7 @@ class UserProfile extends Component {
                                   Available for walks
                                 </Label>
                               </FormGroup>
-                              <FormGroup check inline>
+                              <FormGroup check>
                                 <Label check>
                                   <Input
                                     type="checkbox"
