@@ -1,27 +1,26 @@
-import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { Component } from "react";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
-import './MyMap.css'
+import "./MyMap.css";
 
-const markers = [[54.4047, 18.5319], [54.4240, 18.5956], [54.4416, 18.5601]];
+const markers = [[54.4047, 18.5319], [54.424, 18.5956], [54.4416, 18.5601]];
 
 class MyMap extends Component {
-
   state = {
-      lat: 54.4240,
-      lng: 18.5956,
-      zoom: 13
-    }
-   
+    lat: 54.424,
+    lng: 18.5956,
+    zoom: 13
+  };
 
   render() {
+    console.log(this.state.lat, this.state.users);
 
     const position = [this.state.lat, this.state.lng];
     return (
       <Map
         center={position}
         zoom={this.state.zoom}
-        style={{ width: '90vw', height: 400 }}
+        style={{ width: "90vw", height: 400 }}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

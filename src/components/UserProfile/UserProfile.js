@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-import { Card, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, Button, CardBody, CardLink,CardSubtitle ,TabContent, TabPane, Nav, NavItem, NavLink, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import MyMap from '../MyMap'
 
@@ -9,7 +9,14 @@ import './UserProfile.css'
 class UserProfile extends Component {
   state = {
     users: [],
-    activeTab: '1'
+    activeTab: '1',
+    searchPhrase: '',
+  };
+
+  handleChange = event => {
+    this.setState({
+      searchPhrase: event.target.value
+    });
   }
 
   toggle = tab => { 
@@ -28,7 +35,6 @@ class UserProfile extends Component {
         .then(snapshot => snapshot.val())
         .then(users => {
           this.setState({ users: Object.values(users) })
-        
         })
       }
     })
@@ -38,7 +44,7 @@ class UserProfile extends Component {
     console.log(this.state)
     return (
       <div style={{display: 'flex', 
-      flexDirection: 'column',
+      flexDirection: 'column'
 }} className="UserProfile">
    <div>
    <p>Hello there!</p>
@@ -62,13 +68,34 @@ class UserProfile extends Component {
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-            <Row>
+               <Row>
+              <Col sm="6">
+                <Card body>
+                  <CardTitle>Advanced search</CardTitle>
+                  <input value={this.state.searchPhrase} onChange={this.handleChange} placeholder='Search by name, surname, city and age'/>
+                </Card>
+              </Col>
+            </Row>
+            {/* <Row>
               <Col sm="12">
                 <h4> </h4>
               </Col>
-            </Row>
+            </Row> */}
             <div>
-      {this.state.users.map(user => (
+
+            {this.state.users
+              .map(user => ({
+                ...user,
+                searchData: (
+                  user.name + user.surname + user.adress + user.age
+                ).toLocaleLowerCase(),
+              }))
+              .filter(user =>
+                user.searchData.includes(
+                  this.state.searchPhrase.toLocaleLowerCase()
+                )
+              )
+      .map(user => (
       <Card key={user.id}>
         <CardBody>
           <CardTitle>{user.name}</CardTitle>
@@ -89,22 +116,6 @@ class UserProfile extends Component {
           </TabPane>
           <TabPane tabId="2">
           <MyMap />
-            {/* <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-            </Row> */}
           </TabPane>
         </TabContent>
       </div>
