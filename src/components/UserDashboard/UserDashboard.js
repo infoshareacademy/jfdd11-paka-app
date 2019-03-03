@@ -25,9 +25,9 @@ import classnames from "classnames";
 import { Link } from "react-router-dom";
 import MyMap from "../MyMap";
 
-import "./UserProfile.css";
+import "./UserDashboard.css";
 
-class UserProfile extends Component {
+class UserDashboard extends Component {
   state = {
     users: [],
     activeTab: "1",
@@ -87,7 +87,8 @@ class UserProfile extends Component {
     return (
       <div
         style={{ display: "flex", flexDirection: "column" }}
-        className="UserProfile"
+        className="r
+      "
       >
         <div>
           <p>Hello there!</p>
@@ -267,4 +268,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+export default UserDashboard;

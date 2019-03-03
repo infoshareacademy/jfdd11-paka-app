@@ -46,7 +46,7 @@ centerMap = (x, y) => {
       <Map
         center={[this.state.lat, this.state.lng]}
         zoom={this.state.zoom}
-        style={{ width: "90vw", height: 400 }}
+        style={{ width: "90vw", height: '90vh' }}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
