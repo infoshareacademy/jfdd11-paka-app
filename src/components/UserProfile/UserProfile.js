@@ -62,10 +62,10 @@ class UserProfile extends Component {
   };
 
   componentDidMount() {
-    const { userId } = this.props.match.params;
-
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
+        const userId = currentUser.uid;
+
         firebase
           .database()
           .ref(`users`)
@@ -219,7 +219,10 @@ class UserProfile extends Component {
                     user.searchData.includes(
                       this.state.searchPhrase.toLocaleLowerCase()
                     )
-                  )
+                  ).filter(isDayCare)
+                  .filter(isHouseSitting)
+                  .filter(isVisiting)
+                  .filter(isWalking)
                   .map(user => (
                     <Card key={user.id}>
                       <CardBody>
@@ -251,7 +254,7 @@ class UserProfile extends Component {
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
-                        <CardLink><Link to={`/individual-profile/${user.id}`}> See Full Profile</Link></CardLink>
+                        <CardLink><Link to={`myprofile/${userId}`}> See Full Profile of {user.name}</Link></CardLink>
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>

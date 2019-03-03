@@ -8,51 +8,45 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
-import firebase from 'firebase'
-
+import firebase from "firebase";
+import UserProfile from "../UserProfile";
 
 import "./IndividualProfile.css";
 
 class IndividualProfile extends Component {
-
   state = {
-    name: '',
-    surname: '',
-    email: '',
-    address: '',
-    age: '',
-    photo: ''
+    name: "",
+    surname: "",
+    email: "",
+    age: ""
+  };
+
+  componentDidMount() {
+
+    firebase.auth().onAuthStateChanged(currentUser => {
+      if (currentUser !== null) {
+        const userId = currentUser.uid;
+       
+        firebase
+          .database()
+          .ref(`users/${userId}`)
+          .once('value')
+          .then(snapshot => snapshot.val())
+          .then(user => {
+         
+            this.setState({
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              age: user.age
+            });
+          });
+      }
+    });
   }
 
-    componentDidMount() {
-      firebase.auth().onAuthStateChanged(currentUser => {
-        if (currentUser !== null) {
-          const userId = currentUser.uid;
-          firebase
-            .database()
-            .ref(`users`)
-            .child(userId)
-            .once("value")
-            .then(snapshot => console.log(snapshot.val()))
-            .then(user => {
-              this.setState({ 
-                name: user.name,
-                surname: user.surname,
-                email: user.email,
-                address: user.adress,
-                age: user.age,
-                photo: user.photo
-              })
-             })
-            }
-          })
-        }
-    
-        
-  
-
   render() {
-    console.log(this.state)
+    console.log(this.state.name);
     return (
       <div className="IndividualProfile">
         {this.state.name}
@@ -65,7 +59,7 @@ class IndividualProfile extends Component {
               alt="Individual profile"
             />
             <CardBody>
-              <CardTitle>{this.state.address}</CardTitle>
+              <CardTitle>{this.state.email}</CardTitle>
               <CardSubtitle>{this.state.age}</CardSubtitle>
               <CardText>
                 Some quick example text to build on the card title and make up

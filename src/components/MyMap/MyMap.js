@@ -10,13 +10,18 @@ class MyMap extends Component {
     lng: 18.5956,
     zoom: 13
   };
+  
+centerMap = (x, y) => {
+  console.log(x, y)
+  this.setState({
+    lat: x,
+    lng: y
+  })
+}
 
   render() {
     console.log(this.props)
-    // console.log(this.props.users)
-
-    // const position1 = this.props.users.filter(user => user.positionx)
-    // const position2 = this.props.users.filter(user => user.positiony)
+  
     return (
       <Map
         center={[this.state.lat, this.state.lng]}
@@ -28,7 +33,7 @@ class MyMap extends Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.props.users.map((user) => 
-          <Marker key={user.id} position={[user.positionx, user.positiony]}>
+          <Marker key={user.id} position={[user.positionx, user.positiony]} onClick={() => this.centerMap(user.positionx, user.positiony)}>
             <Popup>
             <img src={user.photo + "&size=10x20"} alt="user" /> {user.name} <br /> {user.adress}
             </Popup>

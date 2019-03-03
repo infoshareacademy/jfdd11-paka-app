@@ -55,7 +55,7 @@ class Root extends Component {
             <Route exact path="/myprofile" component={UserProfile} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
-            <Route path="/individual-profile" component={IndividualProfile} />
+            <Route path="/myprofile/:userId" component={IndividualProfile} />
           </div>
         </div>
       </Router>
