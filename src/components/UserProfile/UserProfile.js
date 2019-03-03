@@ -262,7 +262,7 @@ class UserProfile extends Component {
               </div>
             </TabPane>
             <TabPane tabId="2">
-              <MyMap users={this.state.users}/>
+              <MyMap />
             </TabPane>
           </TabContent>
         </div>
