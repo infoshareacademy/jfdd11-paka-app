@@ -24,7 +24,6 @@ import {
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 import MyMap from "../MyMap";
-import IndividualProfile from '../IndividualProfile'
 
 import "./UserProfile.css";
 
@@ -64,7 +63,6 @@ class UserProfile extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
-        const userId = currentUser.uid;
 
         firebase
           .database()
@@ -81,9 +79,7 @@ class UserProfile extends Component {
   render() {
     const { users, housesitting, daycare, schedule, visits } = this.state;
     const isDayCare = daycare ? user => user.daycare : user => [...users];
-    const isHouseSitting = housesitting
-      ? user => user.housesitting
-      : user => [...users];
+    const isHouseSitting = housesitting ? user => user.housesitting : user => [...users];
     const isVisiting = visits ? user => user.visits : user => [...users];
     const isWalking = schedule ? user => user.schedule : user => [...users];
     const userId = firebase.auth().currentUser.uid;

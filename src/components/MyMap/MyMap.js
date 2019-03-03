@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import USerProfile from '../UserProfile'
 import firebase from 'firebase'
 
 import "./MyMap.css";

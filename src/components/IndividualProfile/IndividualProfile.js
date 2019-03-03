@@ -9,7 +9,7 @@ import {
   Button
 } from "reactstrap";
 import firebase from "firebase";
-import UserProfile from "../UserProfile";
+
 
 import "./IndividualProfile.css";
 
@@ -33,7 +33,9 @@ class IndividualProfile extends Component {
           .once('value')
           .then(snapshot => snapshot.val())
           .then(user => {
-         
+            if (user === null) {
+              return;
+            }
             this.setState({
               name: user.name,
               surname: user.surname,
