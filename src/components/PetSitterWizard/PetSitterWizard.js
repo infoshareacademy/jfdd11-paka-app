@@ -158,7 +158,7 @@ class PetSitterWizard extends Component {
             onPositionXChange={this.handlePositionXChange}
             onPositionYChange={this.handlePositionYChange}
           />
-      <Button color="secondary" type="submit" size="lg" tag={Link} to="/myprofile">submit </Button>
+       <button type="submit">Submit</button>
           
         </form>
       </>
