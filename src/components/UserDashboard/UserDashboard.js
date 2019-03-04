@@ -257,7 +257,7 @@ class UserDashboard extends Component {
               </div>
             </TabPane>
             <TabPane tabId="2">
-              <MyMap />
+              {users.length > 0 && this.state.activeTab === "2" && <MyMap />}
             </TabPane>
           </TabContent>
         </div>

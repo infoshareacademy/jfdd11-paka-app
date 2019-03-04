@@ -22,12 +22,11 @@ class MyMap extends Component {
           .once("value")
           .then(snapshot => snapshot.val())
           .then(users => {
-            this.setState({ users: Object.values(users) });
+            this.setState({ users: Object.entries(users || {}).map(([id, value]) => ({ id, ...value })) });
           });
       }
     });
   }
-
 
 centerMap = (x, y) => {
   console.log(x, y)
