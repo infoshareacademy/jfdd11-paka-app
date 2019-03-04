@@ -23,13 +23,35 @@ class PetOwnerWizard extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { name, surname, dogsname, age, gender, breed, description, dogWalking, dayCare, dayNightCare, dropIn } = this.state
+    const { 
+      name, 
+      surname, 
+      dogsname, 
+      age, 
+      gender, 
+      breed,
+      description, 
+      dogWalking, 
+      dayCare, 
+      dayNightCare, 
+      dropIn } = this.state
 
     console.log('handlesubmit', this.state)
     firebase
       .database()
       .ref('petowners')
-      .push({ name, surname, dogsname, age, gender, breed, description, dogWalking, dayCare, dayNightCare, dropIn })
+      .push({ 
+        name, 
+        surname, 
+        dogsname, 
+        age, 
+        gender, 
+        breed, 
+        description, 
+        dogWalking, 
+        dayCare, 
+        dayNightCare, 
+        dropIn })
 
   }
 
@@ -105,10 +127,6 @@ class PetOwnerWizard extends Component {
           />
           <button className="submit" type="submit" >Submit</button>
         </form>
-
-
-
-
 
       </div>
     )
