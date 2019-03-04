@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Input } from 'reactstrap';
 import './PetOwner.css'
 
 
@@ -10,7 +10,8 @@ const initialState = {
   age: '',
   gender: '',
   breed: '',
-  description: ''
+  description: '',
+  file: null
 };
 
 class PetOwner extends Component {
@@ -51,7 +52,14 @@ class PetOwner extends Component {
     onDescriptionChange && onDescriptionChange(event.target.value)
   }
 
+  handleFileSelected = (event) => {
+    const { onFileSelected } = this.props
+    onFileSelected && onFileSelected(event.target.files[0])
+    this.setState({file :URL.createObjectURL( event.target.files[0])})
+  }
+
   render() {
+    const { file } = this.state
     return (
       <div className="PetOwnerPage">
 
@@ -109,7 +117,8 @@ class PetOwner extends Component {
             />
 
           </div>
-          <input type="file" alt="Your dog's picture" className="photoInput" />
+          {file && <img alt="avatar" src={file}/>}
+            <Input type="file"  className="photoInput" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
         </div>
         <p>Short description of your dog:</p>
         <textarea rows="4" onChange={this.handleDescriptionChange}></textarea>
