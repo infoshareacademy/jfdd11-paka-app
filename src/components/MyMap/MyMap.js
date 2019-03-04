@@ -54,7 +54,7 @@ centerMap = (x, y) => {
         {this.state.users.map((user) => 
           <Marker key={user.id} position={[user.positionx, user.positiony]} onClick={() => this.centerMap(user.positionx, user.positiony)}>
             <Popup>
-            <img src={user.photo + "&size=10x20"} alt="user" /> {user.name} <br /> {user.adress}
+            <img src={user.photo} style={{width: '100%'}} alt="user" /> {user.name} <br /> {user.adress}
             </Popup>
           </Marker>
         )}
