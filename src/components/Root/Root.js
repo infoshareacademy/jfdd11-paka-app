@@ -6,9 +6,10 @@ import PetOwnerFeatures from '../PetOwnerFeatures';
 import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
-import UserProfile from '../UserProfile';
+import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
+import IndividualProfile from '../IndividualProfile'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PopUpOwner from "../PopUpOwner";
@@ -53,9 +54,10 @@ class Root extends Component {
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/petowner/petownerfeatures" component={PetOwnerFeatures} />
             <Route exact path="/petowner" component={PetOwner} />
-            <Route exact path="/myprofile" component={UserProfile} />
+            <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
+            <Route path="/myprofile/:userId" component={IndividualProfile} />
             <Route path="/chat" component={Chat} />
            
           </div>

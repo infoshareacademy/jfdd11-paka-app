@@ -76,6 +76,9 @@ class PetSitterWizard extends Component {
           .set(url)
       )
     );
+
+    this.props.history.push("/myprofile")
+  
   };
 
   handleNameChange = name => {
