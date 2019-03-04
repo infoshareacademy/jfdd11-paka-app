@@ -8,8 +8,6 @@ import firebase from 'firebase'
 
 class PetOwnerWizard extends Component {
   state = {
-    name: '',
-    surname: '',
     dogsname: '',
     age: null,
     gender: '',
@@ -18,14 +16,14 @@ class PetOwnerWizard extends Component {
     dogWalking: false,
     dayCare: false,
     dayNightCare: false,
-    dropIn: false
+    dropIn: false,
+    positionx: "",
+    positiony: ""
   };
 
   handleSubmit = (event) => {
     event.preventDefault()
     const { 
-      name, 
-      surname, 
       dogsname, 
       age, 
       gender, 
@@ -33,16 +31,19 @@ class PetOwnerWizard extends Component {
       description, 
       dogWalking, 
       dayCare, 
-      dayNightCare, 
-      dropIn } = this.state
+      dayNightCare,
+      positionx,
+      positiony, 
+      dropIn 
+    } = this.state
 
     console.log('handlesubmit', this.state)
+    const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref('petowners')
-      .push({ 
-        name, 
-        surname, 
+      .ref("users")
+      .child(userId)
+      .set({  
         dogsname, 
         age, 
         gender, 
@@ -51,7 +52,10 @@ class PetOwnerWizard extends Component {
         dogWalking, 
         dayCare, 
         dayNightCare, 
-        dropIn })
+        dropIn,
+        positionx: parseFloat(positionx) || 0,
+        positiony: parseFloat(positiony) || 0
+       });
 
   }
 
