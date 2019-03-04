@@ -105,6 +105,14 @@ class PetOwnerWizard extends Component {
     this.setState({ dropIn })
   }
 
+  handlePositionXChange = positionx => {
+    this.setState({ positionx });
+  };
+
+  handlePositionYChange = positiony => {
+    this.setState({ positiony });
+  };
+
   render() {
     return (
       <div className="PetOwnerWizard">
@@ -124,6 +132,8 @@ class PetOwnerWizard extends Component {
             onDayCare={this.handleDayCare}
             onDayNightCare={this.handleDayNightCare}
             onDropIn={this.handleDropIn}
+            onPositionXChange={this.handlePositionXChange}
+            onPositionYChange={this.handlePositionYChange}
           />
           <button className="submit" type="submit" >Submit</button>
         </form>

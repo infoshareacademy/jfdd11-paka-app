@@ -55,11 +55,11 @@ class PetOwner extends Component {
     return (
       <div className="PetOwnerPage">
 
-        Owner's name and surname
+          Info about your dog
           <div className="inputWraper">
-
+          
           <div className="inputSmallWraper">
-            <input
+            {/* <input
               className="inputSmall"
               type="text"
               placeholder=" Name"
@@ -73,9 +73,9 @@ class PetOwner extends Component {
               placeholder=" Surname"
               name="surname"
               onChange={this.handleSurname}
-            />
+            /> */}
 
-            Info about dog
+            
               <input
               className="inputSmall"
               type="text"

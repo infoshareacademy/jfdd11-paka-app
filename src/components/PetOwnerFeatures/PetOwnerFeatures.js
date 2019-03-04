@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { CustomInput } from 'reactstrap';
 import './PetOwnerFeatures.css'
 
 class PetOwnerFeatures extends Component {
@@ -40,6 +40,20 @@ class PetOwnerFeatures extends Component {
 
   }
 
+  handlePositionXChange = (event) => {
+
+    const { onPositionXChange } = this.props
+    onPositionXChange && onPositionXChange(event.target.value)
+
+  }
+
+  handlePositionYChange = (event) => {
+
+    const { onPositionYChange } = this.props
+    onPositionYChange && onPositionYChange(event.target.value)
+
+  }
+
   render() {
     return (
       <div className="PetOwnerFeatures">PetOwnerFeatures
@@ -47,35 +61,41 @@ class PetOwnerFeatures extends Component {
 
             <ul className="checkboxSmallWraper">
           <li>
-            <input
+          <CustomInput
               className="inputCheckbox"
-              type="checkbox"
+              id="exampleCustomSwitch1"
+              type="switch"
               onChange={this.handleDogWalking}
               name="dogWalking"
             />Dog walking schedule: fit your schedule walks to</li>
           <li>
-            <input
+          <CustomInput
               className="inputCheckbox"
-              type="checkbox"
+              id="exampleCustomSwitch2"
+              type="switch"
               onChange={this.handleDayCare}
               name="dayCare"
             />Doggy day-care: daytime care in your sitter's dog friendly home.</li>
           <li>
-            <input
+          <CustomInput
               className="inputCheckbox"
-              type="checkbox"
+              id="exampleCustomSwitch3"
+              type="switch"
               onChange={this.handleDayNightCare}
               name="dayNightCare"
             />Daily or overnight house sitting: perfect for your long working hours.</li>
           <li>
-            <input
+          <CustomInput
               className="inputCheckbox"
-              type="checkbox"
+              id="exampleCustomSwitch4"
+              type="switch"
               onChange={this.handleDropIn}
               name="dropIn"
             />Drop-in visit's: for whenever u need a check-in or a play date</li>
         </ul>
-
+        <p>What's your coordinates, mate?</p>
+          <input id="positionX" type="text"  placeholder="position X" onChange={this.handlePositionXChange} ></input>
+          <input id="positionY" type="text"  placeholder="position Y" onChange={this.handlePositionYChange} ></input>
 
 
       </div>
