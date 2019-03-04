@@ -60,7 +60,7 @@ class PopUpOwner extends Component {
       <p>age: {this.state.age}</p>
     
     
-      <button tag={Link} to="/map">Back</button>
+      <Link to="/map">Back</Link>
       </div>
       
     )
