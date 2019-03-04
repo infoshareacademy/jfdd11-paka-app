@@ -18,7 +18,8 @@ class IndividualProfile extends Component {
     name: "",
     surname: "",
     email: "",
-    age: ""
+    age: "",
+    address: '',
   };
 
   componentDidMount() {
@@ -40,7 +41,9 @@ class IndividualProfile extends Component {
               name: user.name,
               surname: user.surname,
               email: user.email,
-              age: user.age
+              age: user.age,
+              photo: user.photo,
+              address: user.adress
             });
           });
       }
@@ -51,13 +54,13 @@ class IndividualProfile extends Component {
     console.log(this.state.name);
     return (
       <div className="IndividualProfile">
-        {this.state.name}
+        Name: {this.state.name}
         <div>
           <Card>
             <CardImg
               top
               width="100%"
-              src={this.state.photo + "&size=350x250"}
+            src={this.state.photo + "&size=150x150"}
               alt="Individual profile"
             />
             <CardBody>
