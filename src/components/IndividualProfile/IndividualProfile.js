@@ -25,7 +25,7 @@ class IndividualProfile extends Component {
 
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
-        const userId = currentUser.uid;
+        const userId = this.props.match.params.userId
        
         firebase
           .database()

@@ -54,7 +54,6 @@ class UserDashboard extends Component {
     });
   };
   handleCheckboxChange = e => {
-    console.log(e.target.checked, e.target.id, e.target);
     this.setState({
       [e.target.id]: e.target.checked
     });
@@ -70,7 +69,7 @@ class UserDashboard extends Component {
           .once("value")
           .then(snapshot => snapshot.val())
           .then(users => {
-            this.setState({ users: Object.values(users) });
+            this.setState({ users: Object.entries(users || {}).map(([id, value]) => ({ id, ...value })) });
           });
       }
     });
@@ -82,7 +81,6 @@ class UserDashboard extends Component {
     const isHouseSitting = housesitting ? user => user.housesitting : user => [...users];
     const isVisiting = visits ? user => user.visits : user => [...users];
     const isWalking = schedule ? user => user.schedule : user => [...users];
-    const userId = firebase.auth().currentUser.uid;
 
     return (
       <div
@@ -251,7 +249,7 @@ class UserDashboard extends Component {
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
-                        <CardLink><Link to={`myprofile/${userId}`}> See Full Profile of {user.name}</Link></CardLink>
+                        <CardLink><Link to={`/myprofile/${user.id}`}> See Full Profile of {user.name}</Link></CardLink>
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>
