@@ -49,6 +49,7 @@ class PetSitter extends Component {
     this.setState({file :URL.createObjectURL( event.target.files[0])})
   }
 
+
   render() {
     const { file } = this.state
     return (
@@ -83,18 +84,19 @@ class PetSitter extends Component {
             <input
               className="inputSmall"
               type="text"
-              placeholder="Adress"
+              placeholder="Address"
               name="adress"
               onChange={this.handleAdressChange}
             />
 
           </div>
+
           <div>
             {file && <img src={file}/>}
             <Input type="file" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
           </div>
         </div>
-        <p>Short description of you:</p>
+        <p>Additional information:</p>
         <textarea rows="4" onChange={this.handleDescriptionChange} ></textarea>
 
       </div>
