@@ -67,23 +67,7 @@ class PetOwner extends Component {
           <div className="inputWraper">
           
           <div className="inputSmallWraper">
-            {/* <input
-              className="inputSmall"
-              type="text"
-              placeholder=" Name"
-              name="name"
-              onChange={this.handleName}
-            />
-
-            <input
-              className="inputSmall"
-              type="text"
-              placeholder=" Surname"
-              name="surname"
-              onChange={this.handleSurname}
-            /> */}
-
-            
+           
               <input
               className="inputSmall"
               type="text"
