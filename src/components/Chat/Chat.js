@@ -69,7 +69,7 @@ class Chat extends Component {
       .push({
         content: this.state.message,
         authorId: this.props.authContext.user.uid,
-        createdAt: firebase.database.ServerValue.TIMESTAMP,
+        createdAt: firebase.database.ServerValue.TIMESTAMP ,
       });
   };
 
@@ -94,13 +94,15 @@ class Chat extends Component {
         <div>
           {messagesArray.map(message => (
             <p key={message.id}>
-              {moment(message.createdAt).fromNow()}
-              <strong>
+              {moment(message.createdAt ).fromNow()}
+              <p>
+              <strong style={{color:'blue', fontSize:'25px'}}>
                 {(users &&
                   users[message.authorId] &&
                   users[message.authorId].name) ||
                   message.authorId}
               </strong>
+              </p>
               {message.content}
             </p>
           ))}

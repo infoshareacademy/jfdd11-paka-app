@@ -10,13 +10,11 @@ import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-import PopUpOwner from "../PopUpOwner";
-
 import PetSitterWizard from "../PetSitterWizard";
 import Chat from "../Chat";
 
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Root extends Component {
 
@@ -56,7 +54,7 @@ class Root extends Component {
             <Route exact path="/petowner" component={PetOwner} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
-            <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
+            
             <Route path="/myprofile/:userId" component={IndividualProfile} />
             <Route path="/chat" component={Chat} />
            
