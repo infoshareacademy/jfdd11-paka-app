@@ -11,6 +11,7 @@ import PetSitter from "../PetSitter";
 import firebase from "firebase";
 
 import { Link } from 'react-router-dom';
+import { Target } from "react-popper";
 
 class PetSitterWizard extends Component {
   state = {
@@ -83,6 +84,7 @@ class PetSitterWizard extends Component {
       )
     );
   };
+
 
   handleNameChange = name => {
     this.setState({ name });
