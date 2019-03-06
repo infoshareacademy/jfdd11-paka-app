@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import homezoonew from "../images/homezoonew.png";
 import firebase from "firebase";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -10,12 +9,19 @@ class Login extends Component {
     email: "",
     password: "",
     error: null,
-    success: null
+    success: null,
+    activeTab: '1'
   };
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    });
+  };
+
+  toggle = tab => {
+    this.setState({
+      activeTab: tab
     });
   };
 
@@ -47,23 +53,10 @@ class Login extends Component {
             justifyContent: "space-around",
             margin: "0 auto",
             width: "70vw",
-            height: "70vh"
+            height: '45vh'
           }}
         >
-          <div style={{ textAlign: "center" }} className="logo">
-            <img className="login-logo" src={homezoonew} alt="logo" />
-            <h1
-              style={{
-                color: "#f36f5a",
-                fontFamily: 'monospace',
-                fontWeight: "bold",
-                fontSize: "50",
-                lineHeight: "0"
-              }}
-            >
-              HomeZoo
-            </h1>
-          </div>
+  
           <div className="Login-container">
             {this.state.error && (
               <p style={{ color: "red" }}>{this.state.error.message}</p>
@@ -75,28 +68,77 @@ class Login extends Component {
               onSubmit={this.handleSubmit}
               style={{
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "center"
+                flexDirection: "column"
               }}
             >
               <FormGroup>
-                <Label for="exampleEmail" />
+                {/* <Label for="exampleEmail" /> */}
                 <Input
                   onChange={this.handleChange}
                   type="email"
                   name="email"
                   id="exampleEmail"
-                  placeholder="email address"
+      //   <ul>
+      //     <li>Don't let your dog sit home alone!</li>
+      //     <li>Earn extra while enjoying your time with doggos</li>
+      //   </ul>
+
+      //   <div className="buttons">
+      //     <button>I have a dog</button>
+      //     <button>I want to be a pet-sitter</button>
+      //   </div>
+      // </div> 
+                  placeholder="Email Address"
                 />
               </FormGroup>
+      {/* //   <ul>
+      //     <li>Don't let your dog sit home alone!</li>
+      //     <li>Earn extra while enjoying your time with doggos</li>
+      //   </ul>
+
+      //   <div className="buttons">
+      //     <button>I have a dog</button>
+      //     <button>I want to be a pet-sitter</button>
+      //   </div>
+      // </div>  */}
               <FormGroup>
-                <Label for="examplePassword" />
+                {/* <Label for="
+      //   <ul>
+      //     <li>Don't let your dog sit home alone!</li>
+      //     <li>Earn extra while enjoying your time with doggos</li>
+      //   </ul>
+
+      //   <div className="buttons">
+      //     <button>I have a dog</button>
+      //     <button>I want to be a pet-sitter</button>
+      //   </div>
+      // </div> 
+      //   <ul>
+      //     <li>Don't let your dog sit home alone!</li>
+      //     <li>Earn extra while enjoying your time with doggos</li>
+      //   </ul>
+
+      //   <div className="buttons">
+      //     <button>I have a dog</button>
+      //     <button>I want to be a pet-sitter</button>
+      //   </div>
+      // </div> 
+      //   <ul>
+      //     <li>Don't let your dog sit home alone!</li>
+      //     <li>Earn extra while enjoying your time with doggos</li>
+      //   </ul>
+
+      //   <div className="buttons">
+      //     <button>I have a dog</button>
+      //     <button>I want to be a pet-sitter</button>
+      //   </div>
+      // </div> examplePassword" /> */}
                 <Input
                   onChange={this.handleChange}
                   type="password"
                   name="password"
                   id="examplePassword"
-                  placeholder="password"
+                  placeholder="Password"
                 />
               </FormGroup>
               <Button>Log in</Button>
@@ -106,44 +148,9 @@ class Login extends Component {
         <br />
         <br />
         <br />
-        <div
-          className="Sign-up-container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
-          {" "}
-          
-            <p
-              style={{
-                fontSize: 15
-              }}
-            >
-              Don't have account?          
-              <Link to="/sign-up"> {' '}     Sign up</Link>
-            </p>
-        </div>
       </div>
     );
   }
 }
 
 export default Login;
-
-/* <div className="login">
-        <div className="logo">
-          <img src={homezoonew} alt="logo" />
-        </div>
-
-        <ul>
-          <li>Don't let your dog sit home alone!</li>
-          <li>Earn extra while enjoying your time with doggos</li>
-        </ul>
-
-        <div className="buttons">
-          <button>I have a dog</button>
-          <button>I want to be a pet-sitter</button>
-        </div>
-      </div> */

@@ -16,6 +16,7 @@ import PopUpOwner from "../PopUpOwner";
 import PetSitterWizard from "../PetSitterWizard";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
+import Homepage from '../Homepage'
 
 
 class Root extends Component {
@@ -47,17 +48,18 @@ class Root extends Component {
             }}
           >
            {loggedIn && <NavigationBar />}
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
-            <Route path="/petowner" component={PetOwnerWizard} />
+            <Route exact path="/petowner" component={PetOwnerWizard} />
             <Route exact path="/petowner" component={PetOwner} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
-            <Route path="/myprofile/:userId" component={IndividualProfile} />
-            <Route path="/chat" component={Chat} />
+            <Route exact path="/myprofile/:userId" component={IndividualProfile} />
+            <Route exact path="/chat" component={Chat} />
            
           </div>
         </div>
