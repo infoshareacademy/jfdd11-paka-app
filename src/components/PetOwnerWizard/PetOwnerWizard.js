@@ -58,24 +58,8 @@ class PetOwnerWizard extends Component {
         positiony: parseFloat(positiony) || 0
        });
 
-  
-
-  const storageRef = firebase.storage().ref();
-  const ref = storageRef.child(`${userId}.jpg`);
-  ref.put(file).then(data =>
-    data.ref.getDownloadURL().then(url =>
-      firebase
-        .database()
-        .ref("pets")
-        .child(userId)
-        .child("photo")
-        .set(url)
-    )
-  );
-
-  this.props.history.push("/myprofile")
-
-};
+       this.props.history.push("/myprofile")
+  }
 
 
   handleNameChange = (name) => {

@@ -245,7 +245,7 @@ class UserDashboard extends Component {
                         </p>
                       </CardBody>
                       <div style={{ textAlign: "center" }}>
-                        <img src={user.photo + "&size=150x150"} alt="user" />
+                        <img src={user.photo} alt="user" style={{width: '100%'}} />
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>

@@ -56,7 +56,7 @@ class PetOwnerFeatures extends Component {
 
   render() {
     return (
-      <div className="PetOwnerFeatures">PetOwnerFeatures
+      <div className="PetOwnerFeatures">What are you looking for?
 
 
             <ul className="checkboxSmallWraper">
@@ -67,7 +67,7 @@ class PetOwnerFeatures extends Component {
               type="switch"
               onChange={this.handleDogWalking}
               name="dogWalking"
-            />Dog walking schedule: fit your schedule walks to</li>
+            />Dog walking: find dog-walkers to fit your schedule</li>
           <li>
           <CustomInput
               className="inputCheckbox"
@@ -75,7 +75,7 @@ class PetOwnerFeatures extends Component {
               type="switch"
               onChange={this.handleDayCare}
               name="dayCare"
-            />Doggy day-care: daytime care in your sitter's dog friendly home.</li>
+            />Doggy day-care: daytime care in your sitter's dog-friendly home.</li>
           <li>
           <CustomInput
               className="inputCheckbox"
@@ -83,7 +83,7 @@ class PetOwnerFeatures extends Component {
               type="switch"
               onChange={this.handleDayNightCare}
               name="dayNightCare"
-            />Daily or overnight house sitting: perfect for your long working hours.</li>
+            />Daily or overnight house-sitting at your place: perfect for your long working hours.</li>
           <li>
           <CustomInput
               className="inputCheckbox"
@@ -91,7 +91,7 @@ class PetOwnerFeatures extends Component {
               type="switch"
               onChange={this.handleDropIn}
               name="dropIn"
-            />Drop-in visit's: for whenever u need a check-in or a play date</li>
+            />Drop-in visits: for whenever you need a sitter to check in at your place</li>
         </ul>
         <p>What's your coordinates, mate?</p>
           <input id="positionX" type="text"  placeholder="position X" onChange={this.handlePositionXChange} ></input>
