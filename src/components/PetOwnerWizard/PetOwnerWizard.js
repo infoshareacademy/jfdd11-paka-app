@@ -57,7 +57,6 @@ class PetOwnerWizard extends Component {
         positiony: parseFloat(positiony) || 0
        });
 
-       this.props.history.push("/myprofile")
   }
 
 
