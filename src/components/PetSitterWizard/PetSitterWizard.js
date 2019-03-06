@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Fade } from 'reactstrap';
+import { Button, Fade, Alert } from 'reactstrap';
 
 import "./PetSitterWizard.css";
 
@@ -11,7 +11,7 @@ import PetSitter from "../PetSitter";
 import firebase from "firebase";
 import { Form } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Target } from "react-popper";
+
 
 class PetSitterWizard extends Component {
   state = {
@@ -26,7 +26,8 @@ class PetSitterWizard extends Component {
     visits: false,
     positionx: "",
     positiony: "",
-    error: null
+    error: null,
+    
   };
 
   constructor(props) {
@@ -52,6 +53,8 @@ class PetSitterWizard extends Component {
       positiony
     } = this.state;
     const userId = firebase.auth().currentUser.uid;
+   
+   if (this.state !== null) {
     firebase
       .database()
       .ref("users")
@@ -68,7 +71,11 @@ class PetSitterWizard extends Component {
         visits,
         positionx: parseFloat(positionx) || 0,
         positiony: parseFloat(positiony) || 0
-      }).catch(error => this.setState({ error: error, success: null }))
+      }).catch(error => this.setState({ error: error }))
+    } else {
+      this.setState({ error: new Error('Please fill all the inputs!') })
+    }
+      
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
@@ -84,6 +91,8 @@ class PetSitterWizard extends Component {
           .set(url)
       )
     );
+
+  
   };
 
 
@@ -147,16 +156,14 @@ class PetSitterWizard extends Component {
    
    
     return (
-      // <Switch>
-      // <Route exact path="/petsitter" render={() => {
-      //   return <PetSitter onNameChange={this.handleNameChange} />
-      // }} />
-      // <Route exact path="/petsitter/petsitterfeatures" render={() => {
-      //   return <PetSitterFeatures onSubmit={this.handleSubmit} />
-      // }} />
-      // </Switch>
+    
       <>
         <Form onSubmit={this.handleSubmit}>
+        <div className="SignUp">
+        {this.state.error && (
+          <Alert color="danger" style={{ color: 'red' }}>{this.state.error.message}</Alert>
+        )}
+        
           <PetSitter
             onNameChange={this.handleNameChange}
             onSurnameChange={this.handleSurnameChange}
@@ -179,7 +186,7 @@ class PetSitterWizard extends Component {
                     Thanks, mate!
                 </Fade>
 
-
+         </div>
         </Form>
       </>
     );

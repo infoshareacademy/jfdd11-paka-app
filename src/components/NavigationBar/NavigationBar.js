@@ -42,7 +42,6 @@ class NavigationBar extends Component {
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
           <NavbarBrand
-            href="/"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -50,13 +49,12 @@ class NavigationBar extends Component {
             }}
           >
             {" "}
-            <img className="Nav-login-logo" src={homezoonew} alt="logo" />
+            <img className="Nav-login-logo" src={homezoonew} alt="logo" onClick={() => this.props.history.push("/myprofile")} />
             <span
               className="Nav-span"
               style={{
                 fontSize: "60",
                 color: "#f36f5a",
-                fontFamily: '"Chango"',
                 fontWeight: "bolder",
                 fontFamily: 'monospace'
               }}
@@ -70,17 +68,23 @@ class NavigationBar extends Component {
               <NavItem>
                 <NavLink href="/map/">Map</NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="/petowner/petownerfeatures">
                   Add your dog
                 </NavLink>
+<<<<<<< HEAD
               </NavItem>
               <NavItem>
                 <NavLink href="/petsitter">
+=======
+              </NavItem> */}
+              {/* <NavItem>
+                <NavLink href="/petowner/petownerfeatures">
+>>>>>>> bd03875dc6b3112bbf67c72872a8f0c59d3c90da
                   {" "}
                   Become a petsitter
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink href="/chat">Chat</NavLink>
               </NavItem>

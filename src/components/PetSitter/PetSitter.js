@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./PetSitter.css";
 
-import { Input, Label, FormGroup, CardImg, Card } from "reactstrap";
+import { Input, FormGroup, CardImg, Card } from "reactstrap";
 
 class PetSitter extends Component {
   state = {
@@ -44,6 +44,7 @@ class PetSitter extends Component {
     onFileSelected && onFileSelected(event.target.files[0]);
     this.setState({ file: URL.createObjectURL(event.target.files[0]) });
   };
+
 
   render() {
     const { file } = this.state;
