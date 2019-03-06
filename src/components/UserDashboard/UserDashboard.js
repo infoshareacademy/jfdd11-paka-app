@@ -204,10 +204,11 @@ class UserDashboard extends Component {
                   .map(user => ({
                     ...user,
                     searchData: (
-                      user.name +
-                      user.surname +
-                      user.adress +
-                      user.age
+                     (user.name  || "") +
+                      
+                      (user.surname || "") +
+                      (user.adress || "") +
+                      user.age || ""
                     ).toLocaleLowerCase()
                   }))
                   .filter(user =>

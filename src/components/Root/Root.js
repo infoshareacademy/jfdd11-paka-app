@@ -31,7 +31,7 @@ class Root extends Component {
   }
   render() {
     const loggedIn = this.state.user !== null
-    console.log(this.state.user, this.state.user !== null)
+    
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
