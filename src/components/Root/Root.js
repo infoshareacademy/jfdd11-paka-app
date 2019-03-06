@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
 import UserDashboard from '../UserDashboard';
