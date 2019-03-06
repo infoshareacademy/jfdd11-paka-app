@@ -39,7 +39,7 @@ class UserDashboard extends Component {
     name: "",
     surname: "",
     age: "",
-    city: ""
+    city: "",
   };
 
   handleChange = event => {
@@ -62,18 +62,14 @@ class UserDashboard extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
+
         firebase
           .database()
           .ref(`users`)
           .once("value")
           .then(snapshot => snapshot.val())
           .then(users => {
-            this.setState({
-              users: Object.entries(users || {}).map(([id, value]) => ({
-                id,
-                ...value
-              }))
-            });
+            this.setState({ users: Object.entries(users || {}).map(([id, value]) => ({ id, ...value })) });
           });
       }
     });
@@ -82,9 +78,7 @@ class UserDashboard extends Component {
   render() {
     const { users, housesitting, daycare, schedule, visits } = this.state;
     const isDayCare = daycare ? user => user.daycare : user => [...users];
-    const isHouseSitting = housesitting
-      ? user => user.housesitting
-      : user => [...users];
+    const isHouseSitting = housesitting ? user => user.housesitting : user => [...users];
     const isVisiting = visits ? user => user.visits : user => [...users];
     const isWalking = schedule ? user => user.schedule : user => [...users];
 
@@ -207,23 +201,19 @@ class UserDashboard extends Component {
             </Row> */}
               <div>
                 {this.state.users
-                  .map(user => {
-                    console.log(user, user.name,user.surname,user.adress)
-                    return {
-                      ...user,
-                      searchData: (
-                        (user.name || '') +
-                        (user.surname || '') +
-                        (user.adress || '')
-                      ).toLocaleLowerCase()
-                    };
-                  })
+                  .map(user => ({
+                    ...user,
+                    searchData: (
+                      user.name || '' +
+                      user.surname || '' +
+                      user.adress || ''
+                    ).toLocaleLowerCase()
+                  }))
                   .filter(user =>
                     user.searchData.includes(
                       this.state.searchPhrase.toLocaleLowerCase()
                     )
-                  )
-                  .filter(isDayCare)
+                  ).filter(isDayCare)
                   .filter(isHouseSitting)
                   .filter(isVisiting)
                   .filter(isWalking)
@@ -254,20 +244,11 @@ class UserDashboard extends Component {
                         </p>
                       </CardBody>
                       <div style={{ textAlign: "center" }}>
-                        <img
-                          src={user.photo}
-                          alt="user"
-                          style={{ width: "100%" }}
-                        />
+                        <img src={user.photo} alt="user" style={{width: '100%'}} />
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
-                        <CardLink>
-                          <Link to={`/myprofile/${user.id}`}>
-                            {" "}
-                            See Full Profile of {user.name}
-                          </Link>
-                        </CardLink>
+                        <CardLink><Link to={`/myprofile/${user.id}`}> See Full Profile of {user.name}</Link></CardLink>
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>
@@ -283,4 +264,5 @@ class UserDashboard extends Component {
     );
   }
 }
+
 export default UserDashboard;
