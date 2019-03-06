@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input,  } from 'reactstrap';
+import homezoonew from "../images/homezoonew.png";
 
 import firebase from 'firebase';
 
@@ -45,6 +46,34 @@ class SignUp extends Component {
 
   render() {
     return (
+      <div
+      className="login-wrapper"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-around",
+        margin: "0 auto",
+        width: "70vw",
+        height: "70vh"
+      }}
+    >
+      <div style={{ textAlign: "center" }} className="logo">
+        <img className="login-logo" src={homezoonew} alt="logo" />
+        <h1
+          style={{
+            color: "#f36f5a",
+            fontFamily: 'monospace',
+            fontWeight: "bold",
+            fontSize: "50",
+            lineHeight: "0"
+          }}
+        >
+          HomeZoo
+        </h1>
+      </div>
+              
+             
 
       <div className="SignUp">
         {this.state.error && (
@@ -55,6 +84,7 @@ class SignUp extends Component {
         )}
         <Form onSubmit={this.handleSubmit}>
           <FormGroup className="">
+
 
             <Label>Email</Label>
             <Input name="email" placeholder="your email" value={this.state.email} onChange={this.handleChange} />
@@ -71,7 +101,14 @@ class SignUp extends Component {
           <Button>Sign In</Button>
 
         </Form>
+        
+      </div> 
       </div>
+          
+
+      
+
+      
     )
   }
 }
