@@ -52,7 +52,7 @@ class SignUp extends Component {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         margin: "0 auto",
         width: "70vw",
         height: "70vh"
@@ -82,20 +82,25 @@ class SignUp extends Component {
         {this.state.success && (
           <p style={{ color: 'green' }}>{this.state.success}</p>
         )}
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}
+         style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+         }}>
           <FormGroup className="">
 
-
-            <Label>Email</Label>
-            <Input name="email" placeholder="your email" value={this.state.email} onChange={this.handleChange} />
+{/* 
+            <Label>Email</Label> */}
+            <Input name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           </FormGroup >
           <FormGroup className="">
-            <Label>Password</Label>
-            <Input name="password1" type="password" placeholder="Don't forget!" value={this.state.password1} onChange={this.handleChange} />
+            {/* <Label>Password</Label> */}
+            <Input name="password1" type="password" placeholder="Password" value={this.state.password1} onChange={this.handleChange} />
           </FormGroup>
           <FormGroup className="">
-            <Label>Repeat Password</Label>
-            <Input name="password2" type="password" value={this.state.password2} onChange={this.handleChange} />
+            {/* <Label>Repeat Password</Label> */}
+            <Input name="password2" type="password" placeholder="Repeat Password" value={this.state.password2} onChange={this.handleChange} />
           </FormGroup>
 
           <Button>Sign In</Button>
