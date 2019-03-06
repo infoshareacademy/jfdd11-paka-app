@@ -50,7 +50,7 @@ class Root extends Component {
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
-            <Route path="/petowner" component={PetOwnerWizard} />
+            <Route path="/registerpet" component={PetOwnerWizard} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
