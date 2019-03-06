@@ -52,7 +52,6 @@ class Root extends Component {
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/petowner" component={PetOwnerWizard} />
-            <Route exact path="/petowner" component={PetOwner} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
