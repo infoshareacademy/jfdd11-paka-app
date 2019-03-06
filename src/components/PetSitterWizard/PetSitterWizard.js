@@ -9,7 +9,7 @@ import PetSitterFeatures from "../PetSitterFeatures";
 import PetSitter from "../PetSitter";
 
 import firebase from "firebase";
-
+import { Form } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Target } from "react-popper";
 
@@ -26,6 +26,7 @@ class PetSitterWizard extends Component {
     visits: false,
     positionx: "",
     positiony: "",
+    error: null
   };
 
   constructor(props) {
@@ -84,6 +85,7 @@ class PetSitterWizard extends Component {
       )
     );
   };
+
 
 
   handleNameChange = name => {
@@ -154,7 +156,7 @@ class PetSitterWizard extends Component {
       // }} />
       // </Switch>
       <>
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <PetSitter
             onNameChange={this.handleNameChange}
             onSurnameChange={this.handleSurnameChange}
@@ -178,7 +180,7 @@ class PetSitterWizard extends Component {
                 </Fade>
 
 
-        </form>
+        </Form>
       </>
     );
 

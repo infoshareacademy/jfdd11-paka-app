@@ -57,6 +57,7 @@ class Root extends Component {
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
             <Route path="/chat" component={Chat} />
+            
            
           </div>
         </div>

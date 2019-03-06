@@ -76,7 +76,7 @@ class NavigationBar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/petowner/petownerfeatures">
+                <NavLink href="/petsitter">
                   {" "}
                   Become a petsitter
                 </NavLink>
