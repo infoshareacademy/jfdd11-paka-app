@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import firebase from "firebase";
 
-
 import "./IndividualProfile.css";
 
 class IndividualProfile extends Component {
