@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom'
 import "./Login.css";
 
 class Login extends Component {
@@ -87,7 +88,7 @@ class Login extends Component {
       //     <button>I have a dog</button>
       //     <button>I want to be a pet-sitter</button>
       //   </div>
-      // </div> 
+      // </div> git push
                   placeholder="Email Address"
                 />
               </FormGroup>
@@ -153,4 +154,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
