@@ -1,19 +1,35 @@
 import React, { Component } from 'react'
-import { Button} from 'reactstrap';
+
 import { Link } from 'react-router-dom';
+import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+
 
 import './ProfessionSelection.css'
+import IconChat from '../IconChat/IconChat';
 
 class ProfessionSelection extends Component {
   render() {
     return (
+      
       <div className="ProfessionSelection">
+      
       <div>
       <Button color="secondary" size="lg" tag={Link} to="/petowner">Pet</Button></div>
       <p>Describe your own profile, so that other users can easily leave you your pet </p>
       <div><Button color="secondary" size="lg" tag={Link} to="/petsitter">Pet Sitter</Button></div>
       <p>Show and describe your pet so that no one will be surprised by his attitude and appearance</p>
-      
+      <div style={{
+       display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: '',
+     
+
+    }}>
+    <button> 
+      <IconChat />
+  </button>
+    
+    </div>
       </div>
     )
   }

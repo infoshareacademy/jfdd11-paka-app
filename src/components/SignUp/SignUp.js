@@ -86,9 +86,11 @@ class SignUp extends Component {
          style={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center"
+          alignItems: "center",
+          
          }}>
-          <FormGroup className="">
+          <FormGroup className=""
+          >
 
 {/* 
             <Label>Email</Label> */}

@@ -54,7 +54,6 @@ class Root extends Component {
             <Route exact path="/petowner" component={PetOwner} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
-            
             <Route path="/myprofile/:userId" component={IndividualProfile} />
             <Route path="/chat" component={Chat} />
            

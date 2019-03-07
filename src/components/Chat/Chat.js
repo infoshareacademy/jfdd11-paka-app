@@ -5,6 +5,7 @@ import './Chat.css';
 import { withAuth } from '../../context/AuthContext';
 import firebase from 'firebase';
 import moment from 'moment'
+import { width } from 'window-size';
 
 class Chat extends Component {
   state = {
@@ -57,7 +58,7 @@ class Chat extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
+
     // Remember that setState is async
     this.setState(({
       message: ''
@@ -69,7 +70,7 @@ class Chat extends Component {
       .push({
         content: this.state.message,
         authorId: this.props.authContext.user.uid,
-        createdAt: firebase.database.ServerValue.TIMESTAMP ,
+        createdAt: firebase.database.ServerValue.TIMESTAMP,
       });
   };
 
@@ -93,18 +94,22 @@ class Chat extends Component {
 
         <div>
           {messagesArray.map(message => (
-            <p key={message.id}>
-              {moment(message.createdAt ).fromNow()}
+
+            <div key={message.id}>
+
+              <p >
+                <strong style={{ color: 'red', fontSize: '25px' }}>
+                  {(users &&
+                    users[message.authorId] &&
+                    users[message.authorId].name) ||
+                    message.authorId}
+                </strong>
+              </p>
               <p>
-              <strong style={{color:'blue', fontSize:'25px'}}>
-                {(users &&
-                  users[message.authorId] &&
-                  users[message.authorId].name) ||
-                  message.authorId}
-              </strong>
+                {moment(message.createdAt).fromNow()}
               </p>
               {message.content}
-            </p>
+            </div>
           ))}
         </div>
       </div>
