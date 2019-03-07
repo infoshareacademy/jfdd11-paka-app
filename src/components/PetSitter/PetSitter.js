@@ -105,7 +105,7 @@ class PetSitter extends Component {
         </div>
         <p>Short description of you:</p>
         <FormGroup>
-        <Input type="textarea" rows="4" onChange={this.handleDescriptionChange} />
+        <Input type="textarea" rows="4"  onChange={this.handleDescriptionChange} />
         </FormGroup>
       </div>
     );

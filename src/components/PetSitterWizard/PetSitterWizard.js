@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Fade, Alert } from 'reactstrap';
+import { Button, Fade, Alert } from "reactstrap";
 
 import "./PetSitterWizard.css";
 
@@ -9,9 +9,8 @@ import PetSitterFeatures from "../PetSitterFeatures";
 import PetSitter from "../PetSitter";
 
 import firebase from "firebase";
-import { Form } from 'reactstrap';
-import { Link } from 'react-router-dom';
-
+import { Form } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class PetSitterWizard extends Component {
   state = {
@@ -26,16 +25,15 @@ class PetSitterWizard extends Component {
     visits: false,
     positionx: "",
     positiony: "",
-    error: null,
-    
+    error: null
   };
 
   constructor(props) {
     super(props);
     this.state = { fadeIn: false };
     this.toggle = this.toggle.bind(this);
-}
-  
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -53,29 +51,29 @@ class PetSitterWizard extends Component {
       positiony
     } = this.state;
     const userId = firebase.auth().currentUser.uid;
-   
-   if (this.state !== null) {
-    firebase
-      .database()
-      .ref("users")
-      .child(userId)
-      .set({
-        name,
-        surname,
-        age,
-        adress,
-        description,
-        schedule,
-        daycare,
-        housesitting,
-        visits,
-        positionx: parseFloat(positionx) || 0,
-        positiony: parseFloat(positiony) || 0
-      }).catch(error => this.setState({ error: error }))
+
+    if ({name,  surname, age, adress, positionx, positiony} === undefined ) {
+      firebase
+        .database()
+        .ref("users")
+        .child(userId)
+        .set({
+          name,
+          surname,
+          age,
+          adress,
+          description,
+          schedule,
+          daycare,
+          housesitting,
+          visits,
+          positionx: parseFloat(positionx) || 0,
+          positiony: parseFloat(positiony) || 0
+        })
+        .catch(error => this.setState({ error: error }));
     } else {
-      this.setState({ error: new Error('Please fill all the inputs!') })
+      this.setState({ error: new Error("Please fill all the inputs!") });
     }
-      
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
@@ -91,11 +89,7 @@ class PetSitterWizard extends Component {
           .set(url)
       )
     );
-
-  
   };
-
-
 
   handleNameChange = name => {
     this.setState({ name });
@@ -147,23 +141,21 @@ class PetSitterWizard extends Component {
 
   toggle() {
     this.setState({
-        fadeIn: !this.state.fadeIn
-    })
+      fadeIn: !this.state.fadeIn
+    });
   }
 
   render() {
-     
-   
-   
     return (
-    
       <>
         <Form onSubmit={this.handleSubmit}>
         <div className="SignUp">
-        {this.state.error && (
-          <Alert color="danger" style={{ color: 'red' }}>{this.state.error.message}</Alert>
-        )}
-        
+            {this.state.error && (
+              <Alert color="danger" style={{ color: "red" }}>
+                {this.state.error.message}
+              </Alert>
+            )}
+          </div>
           <PetSitter
             onNameChange={this.handleNameChange}
             onSurnameChange={this.handleSurnameChange}
@@ -181,19 +173,16 @@ class PetSitterWizard extends Component {
             onPositionXChange={this.handlePositionXChange}
             onPositionYChange={this.handlePositionYChange}
           />
-          <Button color="warning" type="submit" onClick= {this.toggle} tag={Link} to="/myprofile" >Submit</Button>
+          <Button color="warning" type="submit" link={'/myprofile/:userId'} onClick={this.toggle}>
+            Submit
+          </Button>
           <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
-                    Thanks, mate!
-                </Fade>
-
-         </div>
+            Thanks, mate!
+          </Fade>
+         
         </Form>
       </>
     );
-
-
-    
-
   }
 }
 
