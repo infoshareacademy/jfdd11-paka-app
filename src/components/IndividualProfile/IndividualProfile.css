@@ -6,6 +6,7 @@
 }
 .cardText {
     padding-top: 30px;
+    line-height: 30px;
 }
 .cardText div {
     display: flex;
