@@ -36,7 +36,7 @@ class Login extends Component {
         this.setState({ error: null, success: "Logged-in successfully" })
       )
       .then(data => {
-        this.props.history.push("/myprofile");
+        this.props.history.push("/users");
         this.setState({ error: null, success: "Thank you" });
       })
       .catch(error => this.setState({ error: error, success: null }));

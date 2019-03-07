@@ -49,7 +49,7 @@ class NavigationBar extends Component {
             }}
           >
             {" "}
-            <img className="Nav-login-logo" src={homezoonew} alt="logo" onClick={() => this.props.history.push("/myprofile")} />
+            <img className="Nav-login-logo" src={homezoonew} alt="logo" onClick={() => this.props.history.push("/users")} />
             <span
               className="Nav-span"
               style={{
