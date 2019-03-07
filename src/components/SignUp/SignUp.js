@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Input,  } from 'reactstrap';
+import { withRouter } from 'react-router-dom'
 
 import firebase from 'firebase';
 
@@ -7,6 +8,7 @@ import './SignUp.css'
 
 
 class SignUp extends Component {
+  
   state = {
     email: '',
     password1: '',
@@ -36,9 +38,6 @@ class SignUp extends Component {
     } else {
       this.setState({ error: new Error('Passwords do not match each other'), success: null })
     }
-      
-    
-
   
 }
 
@@ -51,7 +50,7 @@ class SignUp extends Component {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-around",
           margin: "0 auto",
           width: "70vw",
           height: '45vh'
@@ -102,4 +101,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
