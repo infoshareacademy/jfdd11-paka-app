@@ -52,7 +52,7 @@ class PetSitterWizard extends Component {
     } = this.state;
     const userId = firebase.auth().currentUser.uid;
 
-    if ({name,  surname, age, adress, positionx, positiony} === undefined ) {
+    if (event.target.value === 0) {
       firebase
         .database()
         .ref("users")
@@ -77,66 +77,34 @@ class PetSitterWizard extends Component {
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
-    const storageRef = firebase.storage().ref();
-    const ref = storageRef.child(`${userId}.jpg`);
-    ref.put(file).then(data =>
-      data.ref.getDownloadURL().then(url =>
-        firebase
-          .database()
-          .ref("users")
-          .child(userId)
-          .child("photo")
-          .set(url)
-      )
-    );
+    if (file !== undefined) {
+      const storageRef = firebase.storage().ref();
+      const ref = storageRef.child(`${userId}.jpg`);
+      ref
+        .put(file)
+        .then(data =>
+          data.ref.getDownloadURL().then(url =>
+            firebase
+              .database()
+              .ref("users")
+              .child(userId)
+              .child("photo")
+              .set(url)
+          )
+        )
+        .catch(error => this.setState({ error: error }));
+    } else {
+      this.setState({
+        error: new Error("Please upload Your photo!")
+      });
+    }
   };
 
-  handleNameChange = name => {
-    this.setState({ name });
-  };
-
-  handleSurnameChange = surname => {
-    this.setState({ surname });
-  };
-
-  handleAgeChange = age => {
-    this.setState({ age });
-  };
-
-  handleFileSelected = file => {
-    this.setState({ file });
-  };
-
-  handleAdressChange = adress => {
-    this.setState({ adress });
-  };
-
-  handleDescriptionChange = description => {
-    this.setState({ description });
-  };
-
-  handleScheduleChange = schedule => {
-    this.setState({ schedule });
-  };
-
-  handleDaycareChange = daycare => {
-    this.setState({ daycare });
-  };
-
-  handleHousesittingChange = housesitting => {
-    this.setState({ housesitting });
-  };
-
-  handleVisitsChange = visits => {
-    this.setState({ visits });
-  };
-
-  handlePositionXChange = positionx => {
-    this.setState({ positionx });
-  };
-
-  handlePositionYChange = positiony => {
-    this.setState({ positiony });
+  handleChange = event => {
+    console.log(event)
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   toggle() {
@@ -149,7 +117,7 @@ class PetSitterWizard extends Component {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-        <div className="SignUp">
+          <div className="SignUp">
             {this.state.error && (
               <Alert color="danger" style={{ color: "red" }}>
                 {this.state.error.message}
@@ -157,29 +125,23 @@ class PetSitterWizard extends Component {
             )}
           </div>
           <PetSitter
-            onNameChange={this.handleNameChange}
-            onSurnameChange={this.handleSurnameChange}
-            onAgeChange={this.handleAgeChange}
-            onAdressChange={this.handleAdressChange}
-            onDescriptionChange={this.handleDescriptionChange}
+            onChange={this.handleChange}
             onFileSelected={this.handleFileSelected}
           />
           <PetSitterFeatures
-            onSubmit={this.handleSubmit}
-            onScheduleChange={this.handleScheduleChange}
-            onDaycareChange={this.handleDaycareChange}
-            onHousesittingChange={this.handleHousesittingChange}
-            onVisitsChange={this.handleVisitsChange}
-            onPositionXChange={this.handlePositionXChange}
-            onPositionYChange={this.handlePositionYChange}
+            onChange={this.handleChange}
           />
-          <Button color="warning" type="submit" link={'/myprofile/:userId'} onClick={this.toggle}>
+          <Button
+            color="warning"
+            type="submit"
+            link={"/myprofile/:userId"}
+            onClick={this.toggle}
+          >
             Submit
           </Button>
           <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
             Thanks, mate!
           </Fade>
-         
         </Form>
       </>
     );

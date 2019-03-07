@@ -14,29 +14,9 @@ class PetSitter extends Component {
     file: null
   };
 
-  handleNameChange = event => {
-    const { onNameChange } = this.props;
-    onNameChange && onNameChange(event.target.value);
-  };
-
-  handleSurnameChange = event => {
-    const { onSurnameChange } = this.props;
-    onSurnameChange && onSurnameChange(event.target.value);
-  };
-
-  handleAgeChange = event => {
-    const { onAgeChange } = this.props;
-    onAgeChange && onAgeChange(event.target.value);
-  };
-
-  handleAdressChange = event => {
-    const { onAdressChange } = this.props;
-    onAdressChange && onAdressChange(event.target.value);
-  };
-
-  handleDescriptionChange = event => {
-    const { onDescriptionChange } = this.props;
-    onDescriptionChange && onDescriptionChange(event.target.value);
+  handleChange = event => {
+    const { onChange } = this.props;
+    onChange && onChange(event.target.value);
   };
 
   handleFileSelected = event => {
@@ -44,7 +24,6 @@ class PetSitter extends Component {
     onFileSelected && onFileSelected(event.target.files[0]);
     this.setState({ file: URL.createObjectURL(event.target.files[0]) });
   };
-
 
   render() {
     const { file } = this.state;
@@ -54,12 +33,12 @@ class PetSitter extends Component {
 
         <div className="inputWraper">
           <div className="inputSmallWraper">
-
             <FormGroup>
               <Input
                 id="name"
                 placeholder="Name"
-                onChange={this.handleNameChange}
+                onChange={this.handleChange}
+                value={this.state.name}
               />
             </FormGroup>
 
@@ -69,7 +48,8 @@ class PetSitter extends Component {
                 type="text"
                 placeholder="Surname"
                 name="Surname"
-                onChange={this.handleSurnameChange}
+                onChange={this.handleChange}
+                value={this.state.surname}
               />
             </FormGroup>
 
@@ -79,7 +59,8 @@ class PetSitter extends Component {
                 type="text"
                 placeholder="Age"
                 name="age"
-                onChange={this.handleAgeChange}
+                onChange={this.handleChange}
+                value={this.state.age}
               />
             </FormGroup>
 
@@ -89,23 +70,29 @@ class PetSitter extends Component {
                 type="text"
                 placeholder="Adress"
                 name="adress"
-                onChange={this.handleAdressChange}
+                onChange={this.handleChange}
+                value={this.state.adress}
               />
             </FormGroup>
           </div>
-            <Card>
+          <Card>
             <CardImg src={file} alt="" />
             <Input
               type="file"
               name="file"
               id="exampleFile"
               onChange={this.handleFileSelected}
-            /></Card>
-          
+            />
+          </Card>
         </div>
         <p>Short description of you:</p>
         <FormGroup>
-        <Input type="textarea" rows="4"  onChange={this.handleDescriptionChange} />
+          <Input
+            type="textarea"
+            rows="4"
+            onChange={this.handleChange}
+            value={this.state.description}
+          />
         </FormGroup>
       </div>
     );
