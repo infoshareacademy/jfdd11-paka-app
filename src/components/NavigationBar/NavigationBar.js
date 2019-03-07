@@ -73,12 +73,11 @@ class NavigationBar extends Component {
                   Add your dog
                 </NavLink>
               </NavItem> */}
-              {/* <NavItem>
-                <NavLink href="/petowner/petownerfeatures">
-                  {" "}
-                  Become a petsitter
+              <NavItem>
+                <NavLink href="/myprofile">
+                  My profile
                 </NavLink>
-              </NavItem> */}
+              </NavItem>
               <NavItem>
                 <NavLink href="/chat">Chat</NavLink>
               </NavItem>

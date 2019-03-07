@@ -39,8 +39,7 @@ class UserDashboard extends Component {
     name: "",
     surname: "",
     age: "",
-    city: "",
-    email: ""
+    city: ""
   };
 
   handleChange = event => {
@@ -125,7 +124,7 @@ class UserDashboard extends Component {
                         id="exampleSearch"
                         value={this.state.searchPhrase}
                         onChange={this.handleChange}
-                        placeholder="Search by name, surname, city and age"
+                        placeholder="Search by name, surname or city"
                       />
                     </FormGroup>
                     <div>
@@ -206,8 +205,7 @@ class UserDashboard extends Component {
                     searchData: (
                       user.name || '' +
                       user.surname || '' +
-                      user.adress || '' +
-                      user.email || ''
+                      user.adress || ''
                     ).toLocaleLowerCase()
                   }))
                   .filter(user =>

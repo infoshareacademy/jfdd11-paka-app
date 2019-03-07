@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 import { withRouter } from 'react-router-dom'
 import "./Login.css";
 
@@ -36,8 +35,8 @@ class Login extends Component {
         this.setState({ error: null, success: "Logged-in successfully" })
       )
       .then(data => {
-        this.props.history.push("/users");
         this.setState({ error: null, success: "Thank you" });
+        this.props.history.push("/users");
       })
       .catch(error => this.setState({ error: error, success: null }));
   };
