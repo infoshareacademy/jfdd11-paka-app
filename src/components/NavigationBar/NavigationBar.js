@@ -68,13 +68,8 @@ class NavigationBar extends Component {
               <NavItem>
                 <NavLink href="/map/">Map</NavLink>
               </NavItem>
-              {/* <NavItem>
-                <NavLink href="/petowner/petownerfeatures">
-                  Add your dog
-                </NavLink>
-              </NavItem> */}
               <NavItem>
-                <NavLink href="/myprofile">
+                <NavLink href="/my-profile">
                   My profile
                 </NavLink>
               </NavItem>

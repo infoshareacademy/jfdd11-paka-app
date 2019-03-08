@@ -17,6 +17,7 @@ import PetSitterWizard from "../PetSitterWizard";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from '../Homepage'
+import MyProfile from "../MyProfile/MyProfile";
 
 
 class Root extends Component {
@@ -60,6 +61,7 @@ class Root extends Component {
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
             <Route exact path="/users/:userId" component={IndividualProfile} />
             <Route exact path="/chat" component={Chat} />
+            <Route path="/my-profile" component={MyProfile} />
            
           </div>
         </div>

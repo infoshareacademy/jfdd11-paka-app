@@ -53,7 +53,7 @@ centerMap = (x, y) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.state.users.map((user) => 
-          <Marker key={user.id} position={[user.positionx, user.positiony]} onClick={() => this.centerMap(user.positionx, user.positiony)}>
+          <Marker key={user.id} position={[parseInt(user.positionx) || '', parseInt(user.positiony) || '']} onClick={() => this.centerMap(user.positionx, user.positiony)}>
             <Popup>
             <img src={user.photo} style={{width: '100%'}} alt="user" /> {user.name} <br /> {user.adress}
             </Popup>
