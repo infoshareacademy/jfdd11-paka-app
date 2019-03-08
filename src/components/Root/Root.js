@@ -10,12 +10,13 @@ import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PopUpOwner from "../PopUpOwner";
 
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList"
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
+import Homepage from '../Homepage'
+import MyProfile from "../MyProfile/MyProfile";
 
 
 class Root extends Component {
@@ -47,23 +48,25 @@ class Root extends Component {
             }}
           >
            {loggedIn && <NavigationBar />}
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/mypets" component={PetsList} />
-            <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
-            <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
-            <Route path="/myprofile/:userId" component={IndividualProfile} />
-            <Route path="/chat" component={Chat} />
+            <Route exact path="/users/:userId" component={IndividualProfile} />
+            <Route exact path="/chat" component={Chat} />
+            <Route path="/my-profile" component={MyProfile} />
+            <Route exact path="/users" component={UserDashboard} />
            
           </div>
         </div>
       </Router>
-    );
+    )
   }
 }
+
 
 export default Root;

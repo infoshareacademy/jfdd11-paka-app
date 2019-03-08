@@ -39,7 +39,7 @@ class UserDashboard extends Component {
     name: "",
     surname: "",
     age: "",
-    city: "",
+    city: ""
   };
 
   handleChange = event => {
@@ -89,7 +89,6 @@ class UserDashboard extends Component {
       "
       >
         <div>
-          <p>Hello there!</p>
           <Nav tabs>
             <NavItem>
               <NavLink
@@ -125,7 +124,7 @@ class UserDashboard extends Component {
                         id="exampleSearch"
                         value={this.state.searchPhrase}
                         onChange={this.handleChange}
-                        placeholder="Search by name, surname, city and age"
+                        placeholder="Search by name, surname or city"
                       />
                     </FormGroup>
                     <div>
@@ -248,7 +247,7 @@ class UserDashboard extends Component {
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
-                        <CardLink><Link to={`/myprofile/${user.id}`}> See Full Profile of {user.name}</Link></CardLink>
+                        <CardLink tag={Link} to={`/users/${user.id}`}> See Full Profile of {user.name}</CardLink>
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>

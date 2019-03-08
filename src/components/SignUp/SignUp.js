@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input,  } from 'reactstrap';
+import { withRouter } from 'react-router-dom'
 
 import firebase from 'firebase';
 
@@ -7,6 +8,7 @@ import './SignUp.css'
 
 
 class SignUp extends Component {
+  
   state = {
     email: '',
     password1: '',
@@ -36,16 +38,26 @@ class SignUp extends Component {
     } else {
       this.setState({ error: new Error('Passwords do not match each other'), success: null })
     }
-      
-    
-
   
 }
 
 
   render() {
     return (
-
+      <div
+      className="login-wrapper"
+      style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-around",
+          margin: "0 auto",
+          width: "70vw",
+          height: '45vh'
+        }}
+    >
+              
+            
       <div className="SignUp">
         {this.state.error && (
           <p style={{ color: 'red' }}>{this.state.error.message}</p>
@@ -53,27 +65,40 @@ class SignUp extends Component {
         {this.state.success && (
           <p style={{ color: 'green' }}>{this.state.success}</p>
         )}
-        <Form onSubmit={this.handleSubmit}>
-          <FormGroup className="">
+        <Form onSubmit={this.handleSubmit}
+         style={{
+          display: "flex",
+          flexDirection: "column"
+          
+         }}>
+          <FormGroup className=""
+          >
 
-            <Label>Email</Label>
-            <Input name="email" placeholder="your email" value={this.state.email} onChange={this.handleChange} />
+
+            <Input name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           </FormGroup >
           <FormGroup className="">
-            <Label>Password</Label>
-            <Input name="password1" type="password" placeholder="Don't forget!" value={this.state.password1} onChange={this.handleChange} />
+         
+            <Input name="password1" type="password" placeholder="Password" value={this.state.password1} onChange={this.handleChange} />
           </FormGroup>
           <FormGroup className="">
-            <Label>Repeat Password</Label>
-            <Input name="password2" type="password" value={this.state.password2} onChange={this.handleChange} />
+      
+            <Input name="password2" type="password" placeholder="Repeat Password" value={this.state.password2} onChange={this.handleChange} />
           </FormGroup>
 
           <Button>Sign In</Button>
 
         </Form>
+        
+      </div> 
       </div>
+          
+
+      
+
+      
     )
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
