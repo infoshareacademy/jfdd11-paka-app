@@ -5,7 +5,6 @@ import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactst
 
 
 import './ProfessionSelection.css'
-import IconChat from '../IconChat/IconChat';
 
 class ProfessionSelection extends Component {
   render() {
@@ -25,9 +24,7 @@ class ProfessionSelection extends Component {
      
 
     }}>
-    <button> 
-      <IconChat />
-  </button>
+     
     
     </div>
       </div>

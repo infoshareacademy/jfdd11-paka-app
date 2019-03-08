@@ -15,6 +15,7 @@ import Chat from "../Chat";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import IconChat from "../IconChat/IconChat";
 
 class Root extends Component {
 
@@ -56,7 +57,7 @@ class Root extends Component {
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/myprofile/:userId" component={IndividualProfile} />
             <Route path="/chat" component={Chat} />
-           
+            <IconChat />
           </div>
         </div>
       </Router>

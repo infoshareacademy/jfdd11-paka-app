@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import WindowChat from '../WindowChat';
+
 import paw from '../images/paw.png';
 import Chat from '../Chat';
-
+import { Button } from 'reactstrap'
+ 
 import './IconChat.css'
+import { withAuth } from '../../context/AuthContext';
 
 
 class IconChat extends Component {
@@ -25,6 +27,9 @@ class IconChat extends Component {
 
 
   render() {
+    if (this.props.authContext.user === null) {
+      return null
+    }
     return (
       <>
         <div className="IconChat-wrapper">
@@ -41,8 +46,8 @@ class IconChat extends Component {
 
         </div>
 
-        <div onClick={this.handleMenuToggle} className="IconChat-menu">
-       ...
+        <div onClick={this.handleMenuToggle}    className="IconChat-menu">
+       <Button>Chat</Button>
           
         </div>
       </>
@@ -51,4 +56,4 @@ class IconChat extends Component {
   }
 }
 
-export default IconChat
+export default withAuth(IconChat)
