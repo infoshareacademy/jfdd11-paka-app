@@ -32,18 +32,19 @@ class PetOwnerWizard extends Component {
       dogWalking, 
       dayCare, 
       dayNightCare,
+      dropIn,
       positionx,
       positiony, 
-      dropIn 
+      file 
     } = this.state
 
     console.log('handlesubmit', this.state)
     const userId = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref("users")
-      .child(userId)
-      .set({  
+      .ref("pets")
+      .push({  
+        ownerId: userId,
         dogsname, 
         age, 
         gender, 
@@ -57,7 +58,20 @@ class PetOwnerWizard extends Component {
         positiony: parseFloat(positiony) || 0
        });
 
-  }
+      const storageRef = firebase.storage().ref();
+      const ref = storageRef.child(`${userId}.jpg`);
+      ref.put(file).then(data =>
+        data.ref.getDownloadURL().then(url =>
+          firebase
+            .database()
+            .ref("pets")
+            .child(userId)
+            .child("photo")
+            .set(url)
+      )
+    );
+
+  };
 
 
   handleNameChange = (name) => {
@@ -76,6 +90,10 @@ class PetOwnerWizard extends Component {
   handleAge = (age) => {
     this.setState({ age })
   }
+
+  handleFileSelected = file => {
+    this.setState({ file });
+  };
 
   handleGender = (gender) => {
     this.setState({ gender })
@@ -129,7 +147,7 @@ class PetOwnerWizard extends Component {
             onDogsnameChange={this.handleDogsname}
             onSurnameChange={this.handleSurnameChange}
             onNameChange={this.handleNameChange}
-
+            onFileSelected={this.handleFileSelected}
           />
           <PetOwnerFeatures
             onDogWalking={this.handleDogWalking}

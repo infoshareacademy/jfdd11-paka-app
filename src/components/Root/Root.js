@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
 import UserDashboard from '../UserDashboard';
@@ -14,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import PopUpOwner from "../PopUpOwner";
 
 import PetSitterWizard from "../PetSitterWizard";
+import PetsList from "../PetsList"
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 
@@ -51,8 +51,8 @@ class Root extends Component {
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
-            <Route path="/petowner" component={PetOwnerWizard} />
-            <Route exact path="/petowner" component={PetOwner} />
+            <Route path="/registerpet" component={PetOwnerWizard} />
+            <Route path="/mypets" component={PetsList} />
             <Route exact path="/myprofile" component={UserDashboard} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route path="/pop-up-owner/:userId" component={PopUpOwner} />
