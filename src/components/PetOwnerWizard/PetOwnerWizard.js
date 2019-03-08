@@ -43,8 +43,8 @@ class PetOwnerWizard extends Component {
     firebase
       .database()
       .ref("pets")
-      .child(userId)
-      .set({  
+      .push({  
+        ownerId: userId,
         dogsname, 
         age, 
         gender, 
