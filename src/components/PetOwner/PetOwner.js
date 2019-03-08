@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input } from 'reactstrap';
+import { Input, Card, CardImg } from 'reactstrap';
 import './PetOwner.css'
 
 
@@ -101,8 +101,11 @@ class PetOwner extends Component {
             />
 
           </div>
-          {file && <img alt="avatar" src={file}/>}
+          
+          <Card>
+           <CardImg src={file} alt="" />
             <Input type="file"  className="photoInput" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
+            </Card>
         </div>
         <p>Short description of your dog:</p>
         <textarea rows="4" onChange={this.handleDescriptionChange}></textarea>
