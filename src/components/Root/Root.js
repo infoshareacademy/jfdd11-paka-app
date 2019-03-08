@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PetOwner from '../PetOwner';
 import SignUp from '../SignUp';
 import ProfessionSelection from "../ProfessionSelection";
 import UserDashboard from '../UserDashboard';
@@ -13,6 +12,7 @@ import IndividualProfile from '../IndividualProfile'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import PetSitterWizard from "../PetSitterWizard";
+import PetsList from "../PetsList"
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from '../Homepage'
@@ -53,19 +53,20 @@ class Root extends Component {
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/profession-selection" component={ProfessionSelection} />
-            <Route exact path="/petowner" component={PetOwnerWizard} />
-            <Route exact path="/petowner" component={PetOwner} />
-            <Route exact path="/users" component={UserDashboard} />
+            <Route path="/registerpet" component={PetOwnerWizard} />
+            <Route path="/mypets" component={PetsList} />
             <Route path="/petsitter" component={PetSitterWizard} />
             <Route exact path="/users/:userId" component={IndividualProfile} />
             <Route exact path="/chat" component={Chat} />
             <Route path="/my-profile" component={MyProfile} />
+            <Route exact path="/users" component={UserDashboard} />
            
           </div>
         </div>
       </Router>
-    );
+    )
   }
 }
+
 
 export default Root;
