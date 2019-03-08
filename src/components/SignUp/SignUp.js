@@ -14,7 +14,7 @@ class SignUp extends Component {
     success: null
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });

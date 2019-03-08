@@ -25,14 +25,9 @@ class PetSitterWizard extends Component {
     visits: false,
     positionx: "",
     positiony: "",
-    error: null
+    error: null,
+    file: null
   };
-
-  constructor(props) {
-    super(props);
-    this.state = { fadeIn: false };
-    this.toggle = this.toggle.bind(this);
-  }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -48,11 +43,19 @@ class PetSitterWizard extends Component {
       visits,
       file,
       positionx,
-      positiony
+      positiony,
     } = this.state;
+
+    const isValid = ([
+      name,
+      surname,
+      age,
+      adress
+    ].filter(field => field.length === 0).length) === 0
+
     const userId = firebase.auth().currentUser.uid;
 
-    if (event.target.value === 0) {
+    if (isValid) {
       firebase
         .database()
         .ref("users")
@@ -67,8 +70,8 @@ class PetSitterWizard extends Component {
           daycare,
           housesitting,
           visits,
-          positionx: parseFloat(positionx) || 0,
-          positiony: parseFloat(positiony) || 0
+          positionx: isNaN(parseFloat(positionx)) ? 0 : parseFloat(positionx),
+          positiony: isNaN(parseFloat(positiony)) ? 0 : parseFloat(positiony)
         })
         .catch(error => this.setState({ error: error }));
     } else {
@@ -77,7 +80,8 @@ class PetSitterWizard extends Component {
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
-    if (file !== undefined) {
+    console.log(file)
+    if (file !== null) {
       const storageRef = firebase.storage().ref();
       const ref = storageRef.child(`${userId}.jpg`);
       ref
@@ -95,23 +99,16 @@ class PetSitterWizard extends Component {
         .catch(error => this.setState({ error: error }));
     } else {
       this.setState({
-        error: new Error("Please upload Your photo!")
+        error: new Error("Please fill all the inputs & upload Your photo!")
       });
     }
   };
 
-  handleChange = event => {
-    console.log(event)
+  handleChange = ({ name, value }) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
   };
-
-  toggle() {
-    this.setState({
-      fadeIn: !this.state.fadeIn
-    });
-  }
 
   render() {
     return (
@@ -134,14 +131,10 @@ class PetSitterWizard extends Component {
           <Button
             color="warning"
             type="submit"
-            link={"/myprofile/:userId"}
-            onClick={this.toggle}
+            link={"/myprofile"}
           >
             Submit
           </Button>
-          <Fade in={this.state.fadeIn} tag="h5" className="mt-3">
-            Thanks, mate!
-          </Fade>
         </Form>
       </>
     );
