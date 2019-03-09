@@ -7,6 +7,7 @@ import firebase from "firebase";
 import moment from "moment";
 import { width } from "window-size";
 import { Link } from 'react-router-dom';
+import dogie  from "./../images/dogie.jpg"
 
 
 class Chat extends Component {
