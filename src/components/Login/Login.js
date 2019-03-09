@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
+import homezoonew from "../images/homezoonew.png";
 import "./Login.css";
 
 class Login extends Component {
@@ -10,7 +11,7 @@ class Login extends Component {
     password: "",
     error: null,
     success: null,
-    activeTab: '1'
+    activeTab: "1"
   };
 
   handleChange = event => {
@@ -43,111 +44,70 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div
-          className="login-wrapper"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around",
-            margin: "0 auto",
-            width: "70vw",
-            height: '45vh'
-          }}
-        >
-  
-          <div className="Login-container">
-            {this.state.error && (
-              <p style={{ color: "red" }}>{this.state.error.message}</p>
-            )}
-            {this.state.success && (
-              <p style={{ color: "green" }}>{this.state.success}</p>
-            )}
-            <Form
-              onSubmit={this.handleSubmit}
+      <div
+        className="login-wrapper"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-around",
+          margin: "0 auto",
+          width: "70vw",
+          height: '45vh'
+        }}
+      >
+      <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
+        <div className="Login">
+          {this.state.error && (
+            <p style={{ color: "red" }}>{this.state.error.message}</p>
+          )}
+          {this.state.success && (
+            <p style={{ color: "green" }}>{this.state.success}</p>
+          )}
+          <Form
+            onSubmit={this.handleSubmit}
+            style={{
+              display: "flex",
+              flexDirection: "column"
+            }}
+          >
+          
+            <FormGroup className="">
+              <Input
+                onChange={this.handleChange}
+                type="email"
+                name="email"
+                id="exampleEmail"
+                placeholder="Email Address"
+              />
+            </FormGroup>
+            <FormGroup className="">
+              <Input
+                onChange={this.handleChange}
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="Password"
+              />
+            </FormGroup>
+            <Button>Log in</Button>
+          </Form>
+        </div>
+        </div> 
+        {/* <div className="logo">
+            <img className="login-logo" src={homezoonew} alt="logo" />
+            <h1
               style={{
-                display: "flex",
-                flexDirection: "column"
+                color: "#f36f5a",
+                fontFamily: 'monospace',
+                fontWeight: "bold",
+                fontSize: "50",
+                lineHeight: "0"
               }}
             >
-              <FormGroup>
-                {/* <Label for="exampleEmail" /> */}
-                <Input
-                  onChange={this.handleChange}
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
-      //   <ul>
-      //     <li>Don't let your dog sit home alone!</li>
-      //     <li>Earn extra while enjoying your time with doggos</li>
-      //   </ul>
-
-      //   <div className="buttons">
-      //     <button>I have a dog</button>
-      //     <button>I want to be a pet-sitter</button>
-      //   </div>
-      // </div> git push
-                  placeholder="Email Address"
-                />
-              </FormGroup>
-      {/* //   <ul>
-      //     <li>Don't let your dog sit home alone!</li>
-      //     <li>Earn extra while enjoying your time with doggos</li>
-      //   </ul>
-
-      //   <div className="buttons">
-      //     <button>I have a dog</button>
-      //     <button>I want to be a pet-sitter</button>
-      //   </div>
-      // </div>  */}
-              <FormGroup>
-                {/* <Label for="
-      //   <ul>
-      //     <li>Don't let your dog sit home alone!</li>
-      //     <li>Earn extra while enjoying your time with doggos</li>
-      //   </ul>
-
-      //   <div className="buttons">
-      //     <button>I have a dog</button>
-      //     <button>I want to be a pet-sitter</button>
-      //   </div>
-      // </div> 
-      //   <ul>
-      //     <li>Don't let your dog sit home alone!</li>
-      //     <li>Earn extra while enjoying your time with doggos</li>
-      //   </ul>
-
-      //   <div className="buttons">
-      //     <button>I have a dog</button>
-      //     <button>I want to be a pet-sitter</button>
-      //   </div>
-      // </div> 
-      //   <ul>
-      //     <li>Don't let your dog sit home alone!</li>
-      //     <li>Earn extra while enjoying your time with doggos</li>
-      //   </ul>
-
-      //   <div className="buttons">
-      //     <button>I have a dog</button>
-      //     <button>I want to be a pet-sitter</button>
-      //   </div>
-      // </div> examplePassword" /> */}
-                <Input
-                  onChange={this.handleChange}
-                  type="password"
-                  name="password"
-                  id="examplePassword"
-                  placeholder="Password"
-                />
-              </FormGroup>
-              <Button>Log in</Button>
-            </Form>
-          </div>
-        </div>
-        <br />
-        <br />
-        <br />
+              HomeZoo
+            </h1>
+          </div> */}
       </div>
     );
   }
