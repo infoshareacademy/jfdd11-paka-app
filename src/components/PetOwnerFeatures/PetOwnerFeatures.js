@@ -1,41 +1,103 @@
 import React, { Component } from 'react'
-
+import { CustomInput } from 'reactstrap';
 import './PetOwnerFeatures.css'
 
 class PetOwnerFeatures extends Component {
-  state ={
-    dogWalking : false,
-    dayCare : false,
-    dayNightCare : false,
-    dropIn : false
+  state = {
+    dogWalking: false,
+    dayCare: false,
+    dayNightCare: false,
+    dropIn: false
   }
 
 
-  handleChange = event => {
-    const fieldName = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
 
-    this.setState({
-      [fieldName]: value,
-    });
-  };
+  handleDogWalking = (event) => {
 
+    const { onDogWalking } = this.props
+    onDogWalking && onDogWalking(event.target.checked)
+
+  }
+
+  handleDayCare = (event) => {
+
+    const { onDayCare } = this.props
+    onDayCare && onDayCare(event.target.checked)
+
+  }
+
+  handleDayNightCare = (event) => {
+
+    const { onDayNightCare } = this.props
+    onDayNightCare && onDayNightCare(event.target.checked)
+
+  }
+
+  handleDropIn = (event) => {
+
+    const { onDropIn } = this.props
+    onDropIn && onDropIn(event.target.checked)
+
+  }
+
+  handlePositionXChange = (event) => {
+
+    const { onPositionXChange } = this.props
+    onPositionXChange && onPositionXChange(event.target.value)
+
+  }
+
+  handlePositionYChange = (event) => {
+
+    const { onPositionYChange } = this.props
+    onPositionYChange && onPositionYChange(event.target.value)
+
+  }
 
   render() {
     return (
-      <div className="PetOwnerFeatures">PetOwnerFeatures
-        <form>
-          
+      <div className="PetOwnerFeatures">What are you looking for?
+
+
             <ul className="checkboxSmallWraper">
-              <li><input className="inputCheckbox" type="checkbox" value= {this.state.dogWalking} onChange={this.handleChange} name="dog-walking"/>Dog walking schedule: fit your schedule walks to</li>
-              <li><input className="inputCheckbox" type="checkbox" value= {this.state.dogWalking} onChange={this.handleChange} name="day-care"/>Doggy day-care: daytime care in your sitter's dog friendly home.</li>
-              <li><input className="inputCheckbox" type="checkbox" value= {this.state.dogWalking} onChange={this.handleChange} name="day-night-care"/>Daily or overnight house sitting: perfect for your long working hours.</li>
-              <li><input className="inputCheckbox" type="checkbox" value= {this.state.dogWalking} onChange={this.handleChange} name="drop-in"/>Drop-in visit's: for whenever u need a check-in or a play date</li>
-            </ul>
-        </form>
+          <li>
+          <CustomInput
+              className="inputCheckbox"
+              id="exampleCustomSwitch1"
+              type="switch"
+              onChange={this.handleDogWalking}
+              name="dogWalking"
+            />Dog walking: find dog-walkers to fit your schedule</li>
+          <li>
+          <CustomInput
+              className="inputCheckbox"
+              id="exampleCustomSwitch2"
+              type="switch"
+              onChange={this.handleDayCare}
+              name="dayCare"
+            />Doggy day-care: daytime care in your sitter's dog-friendly home.</li>
+          <li>
+          <CustomInput
+              className="inputCheckbox"
+              id="exampleCustomSwitch3"
+              type="switch"
+              onChange={this.handleDayNightCare}
+              name="dayNightCare"
+            />Daily or overnight house-sitting at your place: perfect for your long working hours.</li>
+          <li>
+          <CustomInput
+              className="inputCheckbox"
+              id="exampleCustomSwitch4"
+              type="switch"
+              onChange={this.handleDropIn}
+              name="dropIn"
+            />Drop-in visits: for whenever you need a sitter to check in at your place</li>
+        </ul>
+        <p>What's your coordinates, mate?</p>
+          <input id="positionX" type="text"  placeholder="position X" onChange={this.handlePositionXChange} ></input>
+          <input id="positionY" type="text"  placeholder="position Y" onChange={this.handlePositionYChange} ></input>
+
+
       </div>
     )
   }
