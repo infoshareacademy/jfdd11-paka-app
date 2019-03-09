@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import firebase from "firebase";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faUser,
+  faHome,
+  faCouch,
+  faWalking,
+  faDog,
+  faBeer,
+  faSignInAlt
+} from "@fortawesome/free-solid-svg-icons";
+
 import {
   Card,
   Form,
@@ -94,8 +105,8 @@ class UserDashboard extends Component {
                 onClick={() => {
                   this.toggle("1");
                 }}
-              >
-                Browse users
+              > 
+                Browse users  
               </NavLink>
             </NavItem>
             <NavItem>
@@ -105,7 +116,7 @@ class UserDashboard extends Component {
                   this.toggle("2");
                 }}
               >
-                See users near you
+                See users near you 
               </NavLink>
             </NavItem>
           </Nav>
@@ -113,7 +124,7 @@ class UserDashboard extends Component {
             <TabPane tabId="1">
                   <Card body style={{textAlign: 'center'}}>
                     <FormGroup>
-                      <Input
+                      <Input style={{ width: '60vw' }}
                         type="search"
                         name="search"
                         id="exampleSearch"
@@ -141,7 +152,7 @@ class UserDashboard extends Component {
                                     id="daycare"
                                     checked={daycare}
                                     onChange={this.handleCheckboxChange}
-                                  />{" "}
+                                  /> <FontAwesomeIcon icon={faCouch} />{" "}
                                   Day Care at petsitter's home
                                 </Label>
                               </FormGroup>
@@ -152,8 +163,8 @@ class UserDashboard extends Component {
                                     id="housesitting"
                                     checked={housesitting}
                                     onChange={this.handleCheckboxChange}
-                                  />{" "}
-                                  House sitting at your place
+                                  /> <FontAwesomeIcon icon={faHome} />{" "}
+                                  House-sitting at your place
                                 </Label>
                               </FormGroup>
                             </Form>
@@ -165,7 +176,7 @@ class UserDashboard extends Component {
                                     id="schedule"
                                     checked={schedule}
                                     onChange={this.handleCheckboxChange}
-                                  />{" "}
+                                  /><FontAwesomeIcon icon={faWalking} />{' '}
                                   Available for walks
                                 </Label>
                               </FormGroup>
@@ -176,7 +187,7 @@ class UserDashboard extends Component {
                                     id="visits"
                                     checked={visits}
                                     onChange={this.handleCheckboxChange}
-                                  />{" "}
+                                  />{" "} <FontAwesomeIcon icon={faDog} /> {' '}
                                   Available to drop in
                                 </Label>
                               </FormGroup>
@@ -216,35 +227,29 @@ class UserDashboard extends Component {
                     <Card key={user.id}>
                       <CardBody>
                         <CardTitle>{user.name}{' '}{user.surname}</CardTitle>
-                        <CardSubtitle>{user.age}</CardSubtitle>
-                        <p>
-                          housesitting:{" "}
-                          {user.housesitting ? (
-                            <span>yes</span>
-                          ) : (
-                            <span>no</span>
-                          )}
-                        </p>
-                        <p>
-                          Day care:{" "}
-                          {user.daycare ? <span>yes</span> : <span>no</span>}
-                        </p>
-                        <p>
-                          Available for walk:{" "}
-                          {user.schedule ? <span>yes</span> : <span>no</span>}
-                        </p>
-                        <p>
-                          Available to drop in:{" "}
-                          {user.visits ? <span>yes</span> : <span>no</span>}
-                        </p>
-                      </CardBody>
-                      <div style={{ textAlign: "center" }}>
-                        <img src={user.photo} alt="user" style={{width: '50%'}} />
+                        <div style={{ textAlign: "center", paddingBottom: '20px' }}>
+                        <img src={user.photo} alt="user" style={{width: '100%'}} />
                       </div>
-                      <CardBody>
-                        <CardText>{user.adress}</CardText>
+                        <CardSubtitle>{user.adress}{', '}{user.age}</CardSubtitle>
+                        <div className='iconsContainer' style={{ display: 'flex' }}>
+                        <div>
+                          {user.housesitting ? (
+                            <FontAwesomeIcon icon={faHome} />
+                          ) : (
+                            false
+                          )}
+                          </div>
+                        <div>
+                          {user.daycare ? <FontAwesomeIcon icon={faCouch} /> : false}
+                        </div>
+                        <div>
+                          {user.schedule ? <FontAwesomeIcon icon={faWalking} />: false}
+                        </div>
+                        <div>
+                          {user.visits ? <FontAwesomeIcon icon={faDog} /> : false}
+                        </div>
+                        </div>
                         <CardLink tag={Link} to={`/users/${user.id}`}> See Full Profile of {user.name}</CardLink>
-                        <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>
                     </div>
