@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import SignUp from '../SignUp'
 import Login from '../Login'
 import homezoonew from "../images/homezoonew.png";
+import {withAuth} from '../../context/AuthContext';
+import {Redirect} from 'react-router-dom';
 
 import './Homepage.css'
 
@@ -76,9 +78,10 @@ class Homepage extends Component {
           </TabPane>
         </TabContent>
       </div>
+      {this.props.authContext.user && <Redirect to="/users" />}
       </div>
     )
   }
 }
 
-export default Homepage
+export default withAuth(Homepage)

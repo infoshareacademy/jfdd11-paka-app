@@ -17,9 +17,7 @@ import {
   NavItem,
   NavLink,
   CardTitle,
-  CardText,
-  Row,
-  Col
+  CardText
 } from "reactstrap";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
@@ -84,11 +82,11 @@ class UserDashboard extends Component {
 
     return (
       <div
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}
         className="r
       "
       >
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
           <Nav tabs>
             <NavItem>
               <NavLink
@@ -113,10 +111,7 @@ class UserDashboard extends Component {
           </Nav>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
-              <Row>
-                <Col sm="6">
-                  <Card body>
-                    {/* <CardTitle>Search</CardTitle> */}
+                  <Card body style={{textAlign: 'center'}}>
                     <FormGroup>
                       <Input
                         type="search"
@@ -191,8 +186,8 @@ class UserDashboard extends Component {
                       </UncontrolledCollapse>
                     </div>
                   </Card>
-                </Col>
-              </Row>
+                {/* </Col> */}
+              {/* </Row> */}
               {/* <Row>
               <Col sm="12">
                 <h4> </h4>
@@ -203,9 +198,9 @@ class UserDashboard extends Component {
                   .map(user => ({
                     ...user,
                     searchData: (
-                      user.name || '' +
-                      user.surname || '' +
-                      user.adress || ''
+                      (user.name || '') +
+                      (user.surname || '') +
+                      (user.adress || '')
                     ).toLocaleLowerCase()
                   }))
                   .filter(user =>
@@ -217,9 +212,10 @@ class UserDashboard extends Component {
                   .filter(isVisiting)
                   .filter(isWalking)
                   .map(user => (
+                    <div>
                     <Card key={user.id}>
                       <CardBody>
-                        <CardTitle>{user.name}</CardTitle>
+                        <CardTitle>{user.name}{' '}{user.surname}</CardTitle>
                         <CardSubtitle>{user.age}</CardSubtitle>
                         <p>
                           housesitting:{" "}
@@ -243,7 +239,7 @@ class UserDashboard extends Component {
                         </p>
                       </CardBody>
                       <div style={{ textAlign: "center" }}>
-                        <img src={user.photo} alt="user" style={{width: '100%'}} />
+                        <img src={user.photo} alt="user" style={{width: '50%'}} />
                       </div>
                       <CardBody>
                         <CardText>{user.adress}</CardText>
@@ -251,6 +247,7 @@ class UserDashboard extends Component {
                         <CardLink href="#">Send a Message</CardLink>
                       </CardBody>
                     </Card>
+                    </div>
                   ))}
               </div>
             </TabPane>

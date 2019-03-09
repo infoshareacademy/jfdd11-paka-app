@@ -40,8 +40,7 @@ centerMap = (x, y) => {
     if (this.state.users === null) {
       return <p>Loading...</p>;
 }
-  // userLat = parseInt(positionx) || ''
-  // userLng = parseInt(positiony)
+  
     return (
       <Map
         center={[this.state.lat, this.state.lng]}
