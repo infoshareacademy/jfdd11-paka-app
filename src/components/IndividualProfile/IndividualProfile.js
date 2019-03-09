@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import {
   Card,
-  CardImg,
-  CardText,
-  CardBody
+  CardImg
 } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

@@ -6,9 +6,7 @@ import {
   faHome,
   faCouch,
   faWalking,
-  faDog,
-  faBeer,
-  faSignInAlt
+  faDog
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -223,8 +221,7 @@ class UserDashboard extends Component {
                   .filter(isVisiting)
                   .filter(isWalking)
                   .map(user => (
-                    <div>
-                    <Card key={Date.now()}>
+                    <Card key={user.id+Date.now()}>
                       <CardBody>
                         <CardTitle>{user.name}{' '}{user.surname}</CardTitle>
                         <div style={{ textAlign: "center", paddingBottom: '20px' }}>
@@ -252,7 +249,7 @@ class UserDashboard extends Component {
                         <CardLink tag={Link} to={`/users/${user.id}`}> See Full Profile of {user.name}</CardLink>
                       </CardBody>
                     </Card>
-                    </div>
+                
                   ))}
               </div>
             </TabPane>

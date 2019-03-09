@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import {
   Card,
-  CardImg,
-  CardText,
-  CardBody
+  CardImg
 } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -32,7 +30,6 @@ class MyProfile extends Component {
       if (currentUser !== null) {
         const userId = currentUser.uid;
         const email = currentUser.email;
-        console.log(userId)
         firebase
           .database()
           .ref(`users/${userId}`)
@@ -56,7 +53,6 @@ class MyProfile extends Component {
   }
 
   render() {
-    console.log(this.state.name)
     return (
 
       <div className="MyProfile">
@@ -66,8 +62,7 @@ class MyProfile extends Component {
         <div>
           <Card>
             <CardImg
-              top
-              width="100%"
+              top-width="100%"
             src={this.state.photo + "&size=150x150"}
               alt="My profile"
             />
