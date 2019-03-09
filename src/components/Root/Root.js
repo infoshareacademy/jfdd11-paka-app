@@ -9,13 +9,13 @@ import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import PetSitterWizard from "../PetSitterWizard";
-import PetsList from "../PetsList"
+import PetsList from "../PetsList";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
-import Homepage from '../Homepage'
+import Homepage from "../Homepage";
 import MyProfile from "../MyProfile/MyProfile";
 
 
@@ -23,34 +23,31 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
 
 class Root extends Component {
-
   state = {
     user: null
-  }
+  };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
         user
-      })
-    })
+      });
+    });
   }
   render() {
-    const loggedIn = this.state.user !== null
+    const loggedIn = this.state.user !== null;
     return (
       <Router>
         <div style={{ display: "flex", width: "100%" }}>
-
           <div
             style={{
               flexGrow: 1,
               minHeight: "100vh",
               padding: 20,
-              boxSizing: 'border-box'
-
+              boxSizing: "border-box"
             }}
           >
-           {loggedIn && <NavigationBar />}
+            {loggedIn && <NavigationBar />}
             <Route exact path="/" component={Homepage} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
@@ -64,13 +61,11 @@ class Root extends Component {
             <Route exact path="/users/:userId" component={IndividualProfile} />
             <Route path="/my-profile" component={MyProfile} />
             <Route exact path="/users" component={UserDashboard} />
-           
           </div>
         </div>
       </Router>
-    )
+    );
   }
 }
-
 
 export default Root;

@@ -5,6 +5,9 @@ import SignUp from '../SignUp'
 import Login from '../Login'
 import homezoonew from "../images/homezoonew.png";
 
+import {withAuth} from '../../context/AuthContext';
+import {Redirect} from 'react-router-dom';
+
 import './Homepage.css'
 
 class Homepage extends Component {
@@ -20,24 +23,7 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div className="Homepage">
-      <div style={{ textAlign: "center", paddingTop: '90px'}} className="logo">
-            <img className="login-logo" src={homezoonew} alt="logo" />
-            <h1
-              style={{
-                color: "#f36f5a",
-                fontFamily: 'monospace',
-                fontWeight: "bold",
-                fontSize: "50",
-                lineHeight: "0"
-              }}
-            >
-              HomeZoo
-            </h1>
-          </div>
-          <br></br>
-          <br></br>
-          <br></br>
+      <div className="Homepage" style={{ display: 'flex'}}>
          <div>
         <Nav tabs style={{ justifyContent: 'center'}}>
           <NavItem>
@@ -56,29 +42,43 @@ class Homepage extends Component {
               Sign up
             </NavLink>
           </NavItem>
+          <div className="logo" style={{ paddingLeft: '20'}}>
+            <img className="login-logo" src={homezoonew} alt="logo" />
+            <h4
+              style={{
+                color: "#f36f5a",
+                fontFamily: 'monospace',
+                fontWeight: "bold",
+                fontSize: "50",
+                lineHeight: "0",
+                paddingBottom: '10' 
+              }}
+            >
+              HomeZoo
+            </h4>
+          </div>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <Row>
-              <Col sm="12">
+              <Col>
                <Login />
               </Col>
             </Row>
           </TabPane>
           <TabPane tabId="2">
             <Row>
-              <Col sm="6">
+              <Col>
                 <SignUp />
-              </Col>
-              <Col sm="6">
               </Col>
             </Row>
           </TabPane>
         </TabContent>
       </div>
+      {this.props.authContext.user && <Redirect to="/users" />}
       </div>
     )
   }
 }
 
-export default Homepage
+export default withAuth(Homepage)
