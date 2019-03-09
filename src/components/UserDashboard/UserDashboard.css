@@ -1,0 +1,11 @@
+.card-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card-title {
+    font-weight: bold;
+}
+.iconsContainer div {
+padding-left: 10px;
+}
