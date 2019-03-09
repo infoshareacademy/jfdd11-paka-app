@@ -51,7 +51,8 @@ class Root extends Component {
             <Route
               exact
               path="/profession-selection"
-              component={ProfessionSelection}/>
+              component={ProfessionSelection}
+            />
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/mypets" component={PetsList} />
             <Route path="/petsitter" component={PetSitterWizard} />
