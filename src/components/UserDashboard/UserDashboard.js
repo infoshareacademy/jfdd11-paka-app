@@ -25,8 +25,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  CardTitle,
-  CardText
+  CardTitle
 } from "reactstrap";
 import classnames from "classnames";
 import { Link } from "react-router-dom";

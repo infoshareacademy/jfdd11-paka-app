@@ -23,20 +23,7 @@ class Homepage extends Component {
   render() {
     return (
       <div className="Homepage">
-      <div style={{ textAlign: "center", paddingTop: '90px'}} className="logo">
-            <img className="login-logo" src={homezoonew} alt="logo" />
-            <h1
-              style={{
-                color: "#f36f5a",
-                fontFamily: 'monospace',
-                fontWeight: "bold",
-                fontSize: "50",
-                lineHeight: "0"
-              }}
-            >
-              HomeZoo
-            </h1>
-          </div>
+  
           <br></br>
           <br></br>
           <br></br>
