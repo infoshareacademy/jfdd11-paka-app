@@ -5,6 +5,15 @@ import {
   CardText,
   CardBody
 } from "reactstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCheck,
+  faHome,
+  faCouch,
+  faWalking,
+  faDog,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 
 import "./IndividualProfile.css";
@@ -66,22 +75,20 @@ class IndividualProfile extends Component {
               top
               width="100%"
             src={this.state.photo + "&size=150x150"}
-              alt="Individual profile"
+              alt="My profile"
             />
-            <CardBody>
-              <CardText className={'cardText'}>
+            </Card>
+            <div className='IndividualProfileText' style={{ display: 'flex', flexDirection: 'column', alignContent: 'space-between', width: '80vw', margin: '0 auto'}}>
              <div><p>Age: </p> <span>{this.state.age}</span></div>
               <div><p>Address:</p> <span>{this.state.address}</span></div>
-              
-              <h5 style={{ fontWeight: 'bold', paddingTop: '20' }}> Available for: </h5>
-              <div className='cardTextRow'><p>Day care at pet-sitter's place: {' '}</p> <span> {this.state.dayCareAtPetsitters ? <span>{' '} Yes</span> : <span>{' '} No</span>}</span></div>
-              <div><p>House-sitting at dog-owner's place: {' '}</p> <span>{this.state.houseSittingAtYourPlace ? <span>{' '} Yes</span> : <span>{' '} No</span>}</span></div>
-              <div><p>Available to drop in: </p> {this.state.availableToDropIn ? <span>{' '} Yes</span> : <span>{' '} No</span>}</div>
-              <div><p>Walks during the day: </p> {this.state.availableForWalks ? <span>}{' '} Yes</span> : <span>{' '} No</span>}</div>
+              <h5 style={{ fontWeight: 'bold', paddingTop: '20', paddingBottom: '10' }}> Available for: </h5>
+              <div className='cardTextRow'><p><FontAwesomeIcon icon={faCouch} /> {' '} {' '}Day-care at pet-sitter's place: </p> <span> {this.state.dayCareAtPetsitters ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />}</span></div>
+              <div><p>  <FontAwesomeIcon icon={faHome} /> {' '}House-sitting at dog-owner place:</p> <span>{this.state.houseSittingAtYourPlace ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />}</span></div>
+              <div><p> <FontAwesomeIcon icon={faDog} /> {' '} Available to drop in: </p> {this.state.availableToDropIn ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />}</div>
+              <div><p><FontAwesomeIcon icon={faWalking} />{' '} Walks during the day: </p> {this.state.availableForWalks ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />}</div>
               <div><p> Additional information: </p>  {this.state.description}</div>
-              </CardText>
-            </CardBody>
-          </Card>
+              
+            </div>
         </div>
       </div>
     );

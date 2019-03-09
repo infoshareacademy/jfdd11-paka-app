@@ -224,7 +224,7 @@ class UserDashboard extends Component {
                   .filter(isWalking)
                   .map(user => (
                     <div>
-                    <Card key={user.id}>
+                    <Card key={Date.now()}>
                       <CardBody>
                         <CardTitle>{user.name}{' '}{user.surname}</CardTitle>
                         <div style={{ textAlign: "center", paddingBottom: '20px' }}>

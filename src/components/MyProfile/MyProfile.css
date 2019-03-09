@@ -12,3 +12,11 @@
       display: flex;
       justify-content: space-between;
   }
+  .MyProfileText div {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .svg-inline--fa {
+    margin-right: 10px;
+}
