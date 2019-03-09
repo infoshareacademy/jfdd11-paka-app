@@ -164,11 +164,11 @@ class UserDashboard extends Component {
                                     checked={housesitting}
                                     onChange={this.handleCheckboxChange}
                                   /> <FontAwesomeIcon icon={faHome} />{" "}
-                                  House-sitting at your place
+                                  House-sitting at dog-owner's place
                                 </Label>
                               </FormGroup>
                             </Form>
-                            <Form>
+                            <Form style={{ display: 'flex', flexDirection: 'row' }}>
                               <FormGroup check inline>
                                 <Label check>
                                   <Input
@@ -177,7 +177,7 @@ class UserDashboard extends Component {
                                     checked={schedule}
                                     onChange={this.handleCheckboxChange}
                                   /><FontAwesomeIcon icon={faWalking} />{' '}
-                                  Available for walks
+                                  Walks
                                 </Label>
                               </FormGroup>
                               <FormGroup check>
@@ -188,7 +188,7 @@ class UserDashboard extends Component {
                                     checked={visits}
                                     onChange={this.handleCheckboxChange}
                                   />{" "} <FontAwesomeIcon icon={faDog} /> {' '}
-                                  Available to drop in
+                                  Drop-in visits
                                 </Label>
                               </FormGroup>
                             </Form>

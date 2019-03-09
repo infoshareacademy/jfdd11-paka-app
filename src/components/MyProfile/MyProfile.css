@@ -1,3 +1,14 @@
-.MyProfile {
-  
-}
+.MyProfile p {
+    font-weight: bold;
+  }
+  .MyProfile span {
+      font-weight: normal;
+  }
+  .cardText {
+      padding-top: 30px;
+      line-height: 30px;
+  }
+  .cardText div {
+      display: flex;
+      justify-content: space-between;
+  }

@@ -74,8 +74,8 @@ class IndividualProfile extends Component {
               <div><p>Address:</p> <span>{this.state.address}</span></div>
               
               <h5 style={{ fontWeight: 'bold', paddingTop: '20' }}> Available for: </h5>
-              <div className='cardTextRow'><p>Day care at pet-sitter's dog-friendly place: </p> <span> {this.state.dayCareAtPetsitters ? ' Yes' : ' No'} </span></div>
-              <div><p>House-sitting at the dog-owner place:</p> <span>{this.state.houseSittingAtYourPlace ? <span>{' '} Yes</span> : <span>{' '}No</span>}</span></div>
+              <div className='cardTextRow'><p>Day care at pet-sitter's place: {' '}</p> <span> {this.state.dayCareAtPetsitters ? <span>{' '} Yes</span> : <span>{' '} No</span>}</span></div>
+              <div><p>House-sitting at dog-owner's place: {' '}</p> <span>{this.state.houseSittingAtYourPlace ? <span>{' '} Yes</span> : <span>{' '} No</span>}</span></div>
               <div><p>Available to drop in: </p> {this.state.availableToDropIn ? <span>{' '} Yes</span> : <span>{' '} No</span>}</div>
               <div><p>Walks during the day: </p> {this.state.availableForWalks ? <span>}{' '} Yes</span> : <span>{' '} No</span>}</div>
               <div><p> Additional information: </p>  {this.state.description}</div>
