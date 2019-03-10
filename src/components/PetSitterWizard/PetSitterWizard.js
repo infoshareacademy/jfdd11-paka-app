@@ -8,6 +8,10 @@ import PetSitter from "../PetSitter";
 
 import firebase from "firebase";
 
+import { Button } from 'reactstrap'
+
+import { Link  } from 'react-router-dom';
+
 class PetSitterWizard extends Component {
   state = {
     name: "",
@@ -153,7 +157,8 @@ class PetSitterWizard extends Component {
             onPositionXChange={this.handlePositionXChange}
             onPositionYChange={this.handlePositionYChange}
           />
-          <button type="submit">Submit</button>
+       <button type="submit">Submit</button>
+          
         </form>
       </>
     );
