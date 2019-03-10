@@ -103,10 +103,10 @@ class UserDashboard extends Component {
           alignContent: "center",
           alignItems: "center"
         }}
-        className="r
+        className="UserDashboard
       "
       >
-        <div
+        <div className='UserDashboard'
           style={{
             display: "flex",
             flexDirection: "column",
