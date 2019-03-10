@@ -31,7 +31,7 @@ class SignUp extends Component {
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password1)
         .then(data => {
-          this.props.history.push("/profession-selection")
+          this.props.history.push("/petsitter")
           this.setState({ error: null, success: "Thank you" })
         })
         .catch(error => this.setState({ error: error, success: null }))

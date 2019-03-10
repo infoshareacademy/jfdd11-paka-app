@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import SignUp from "../SignUp";
-import ProfessionSelection from "../ProfessionSelection";
-import UserDashboard from "../UserDashboard";
-import NavigationBar from "../NavigationBar";
-import firebase from "firebase";
-import IndividualProfile from "../IndividualProfile";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignUp from '../SignUp';
+
+import UserDashboard from '../UserDashboard';
+import NavigationBar from '../NavigationBar'
+import firebase from 'firebase'
+import IndividualProfile from '../IndividualProfile'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,6 +17,10 @@ import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
 import MyProfile from "../MyProfile/MyProfile";
+
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import IconChat from "../IconChat/IconChat";
 
 class Root extends Component {
   state = {
@@ -48,16 +52,13 @@ class Root extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
-            <Route
-              exact
-              path="/profession-selection"
-              component={ProfessionSelection}
-            />
+           
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/mypets" component={PetsList} />
             <Route path="/petsitter" component={PetSitterWizard} />
+            <Route path="/chat" component={Chat} />
+            <IconChat />
             <Route exact path="/users/:userId" component={IndividualProfile} />
-            <Route exact path="/chat" component={Chat} />
             <Route path="/my-profile" component={MyProfile} />
             <Route exact path="/users" component={UserDashboard} />
           </div>
