@@ -23,14 +23,14 @@ class IndividualProfile extends Component {
     dayCareAtPetsitters: "",
     houseSittingAtYourPlace: "",
     availableToDropIn: "",
-    availableForWalks: ""
+    availableForWalks: "",
+    pets: []
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
         const userId = this.props.match.params.userId;
-
         firebase
           .database()
           .ref(`users/${userId}`)
@@ -53,11 +53,29 @@ class IndividualProfile extends Component {
               availableForWalks: user.visits
             });
           });
+
+          firebase
+          .database()
+          .ref(`pets`)
+          .once("value")
+          .then(snapshot => snapshot.val())
+          .then(pets => {
+            if (pets === null) {
+              return;
+            }
+            this.setState({
+             pets: pets
+            });
+          });
+
       }
     });
   }
 
   render() {
+    const userId = this.props.match.params.userId;
+
+    console.log(this.state.pets)
     return (
       <div className="IndividualProfile">
         <br />
@@ -150,6 +168,11 @@ class IndividualProfile extends Component {
               ) : (
                 <FontAwesomeIcon icon={faTimes} />
               )}
+            </div>
+            <div>
+              <p>User's dogs: </p>
+              {/* {this.state.pets.find(pet => pet.ownerId === userId)
+              .map(pet => <li key={pet.ownerId}>{pet.dogsname}</li>)} */}
             </div>
             <div>
               <p> Additional information: </p> {this.state.description}
