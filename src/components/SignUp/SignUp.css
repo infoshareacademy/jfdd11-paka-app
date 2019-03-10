@@ -5,3 +5,7 @@
 .yourName {
     background: red;
 }
+.login-wrapper input {
+    background: transparent;
+    border-bottom: 2px solid grey;
+}

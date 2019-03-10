@@ -56,7 +56,13 @@ class Login extends Component {
           height: '45vh'
         }}
       >
-      <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
+      <div style={{ display: 'flex', 
+      flexDirection: 'row', 
+      width: '100%', 
+      justifyContent: 'space-around',
+      position: 'absolute',
+      top: '22px'
+      }}>
         <div className="Login">
           {this.state.error && (
             <p style={{ color: "red" }}>{this.state.error.message}</p>
@@ -72,7 +78,7 @@ class Login extends Component {
             }}
           >
           
-            <FormGroup className="">
+            <FormGroup className="Login-login">
               <Input
                 onChange={this.handleChange}
                 type="email"
@@ -81,7 +87,7 @@ class Login extends Component {
                 placeholder="Email Address"
               />
             </FormGroup>
-            <FormGroup className="">
+            <FormGroup className="Login-login">
               <Input
                 onChange={this.handleChange}
                 type="password"
