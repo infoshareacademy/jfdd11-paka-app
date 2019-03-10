@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { withRouter } from "react-router-dom";
-import homezoonew from "../images/homezoonew.png";
 import "./Login.css";
 
 class Login extends Component {
@@ -53,16 +52,11 @@ class Login extends Component {
           justifyContent: "space-around",
           margin: "0 auto",
           width: "70vw",
-          height: '45vh'
+          height: '45vh',
+          position: 'absolute',
+      top: '-45px'
         }}
       >
-      <div style={{ display: 'flex', 
-      flexDirection: 'row', 
-      width: '100%', 
-      justifyContent: 'space-around',
-      position: 'absolute',
-      top: '22px'
-      }}>
         <div className="Login">
           {this.state.error && (
             <p style={{ color: "red" }}>{this.state.error.message}</p>
@@ -72,10 +66,6 @@ class Login extends Component {
           )}
           <Form
             onSubmit={this.handleSubmit}
-            style={{
-              display: "flex",
-              flexDirection: "column"
-            }}
           >
           
             <FormGroup className="Login-login">
@@ -97,10 +87,15 @@ class Login extends Component {
               />
             </FormGroup>
             <Button>Log in</Button>
+            {/* {this.state.error && (
+              <p className="singn-fail">
+                Log-in failed. The given email address or password are invalid.</p>
+            )}
+            {this.state.success && <Redirect to="/users" />} */}
           </Form>
         </div>
         </div> 
-      </div>
+  
     );
   }
 }
