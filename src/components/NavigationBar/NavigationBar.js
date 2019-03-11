@@ -36,7 +36,7 @@ class NavigationBar extends Component {
         this.props.history.push("/");
       });
   };
-
+  
   render() {
     return (
       <div className="NavigationBar">
@@ -95,5 +95,6 @@ class NavigationBar extends Component {
     );
   }
 }
+ 
 
 export default withRouter(NavigationBar);

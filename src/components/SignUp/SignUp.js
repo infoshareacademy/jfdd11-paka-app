@@ -2,30 +2,29 @@ import React, { Component } from 'react'
 import { Button, Form, FormGroup, Input,  } from 'reactstrap';
 import { withRouter } from 'react-router-dom'
 
-import firebase from 'firebase';
+import firebase from "firebase";
 
-import './SignUp.css'
-
+import "./SignUp.css";
 
 class SignUp extends Component {
   
   state = {
-    email: '',
-    password1: '',
-    password2: '',
+    email: "",
+    password1: "",
+    password2: "",
     error: null,
-    success: null,
-  }
+    success: null
+  };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-   
+
     if (this.state.password1 === this.state.password2) {
       firebase
         .auth()
@@ -34,9 +33,12 @@ class SignUp extends Component {
           this.props.history.push("/petsitter")
           this.setState({ error: null, success: "Thank you" })
         })
-        .catch(error => this.setState({ error: error, success: null }))
+        .catch(error => this.setState({ error: error, success: null }));
     } else {
-      this.setState({ error: new Error('Passwords do not match each other'), success: null })
+      this.setState({
+        error: new Error("Passwords do not match each other"),
+        success: null
+      });
     }
   
 }
@@ -62,10 +64,10 @@ class SignUp extends Component {
             
       <div className="SignUp">
         {this.state.error && (
-          <p style={{ color: 'red' }}>{this.state.error.message}</p>
+          <p style={{ color: "red" }}>{this.state.error.message}</p>
         )}
         {this.state.success && (
-          <p style={{ color: 'green' }}>{this.state.success}</p>
+          <p style={{ color: "green" }}>{this.state.success}</p>
         )}
         <Form onSubmit={this.handleSubmit}
          style={{
@@ -89,7 +91,6 @@ class SignUp extends Component {
           </FormGroup>
 
           <Button>Sign In</Button>
-
         </Form>
         
       </div> 

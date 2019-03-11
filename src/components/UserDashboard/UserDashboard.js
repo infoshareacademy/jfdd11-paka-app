@@ -171,7 +171,7 @@ class UserDashboard extends Component {
                                 checked={daycare}
                                 onChange={this.handleCheckboxChange}
                               />{" "}
-                              <FontAwesomeIcon icon={faCouch} /> Day Care at
+                              <FontAwesomeIcon icon={faCouch} /> Day-care at
                               petsitter's home
                             </Label>
                           </FormGroup>
