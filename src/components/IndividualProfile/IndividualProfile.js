@@ -25,9 +25,34 @@ class IndividualProfile extends Component {
     houseSittingAtYourPlace: "",
     availableToDropIn: "",
     availableForWalks: "",
-    pets: []
+    pets: [],
+    isEditing: false
   };
 
+  handleEditing = event => {
+    this.setState({
+      ...this.state,
+      isEditing: true
+    })
+  }
+  handleEditChange = (event) => {
+    const userId = this.props.match.params.userId;
+    const value = event.target.value
+    if (event.keyCode === 13) {
+        firebase
+          .database()
+          .ref(`users/${userId}`)
+          .child('age')
+          .set(value);
+
+          this.setState({
+            ...this.state,
+            [event.target.name]: value,
+            isEditing: false
+          })
+    }
+
+  }
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
@@ -42,6 +67,7 @@ class IndividualProfile extends Component {
               return;
             }
             this.setState({
+              ...this.state,
               name: user.name,
               surname: user.surname,
               age: user.age,
@@ -74,9 +100,16 @@ class IndividualProfile extends Component {
   }
 
   render() {
+    let editStyle = {}
+    let viewStyle = {}
+    if (this.state.isEditing) {
+      viewStyle.display = 'none'
+    } else {
+      editStyle.display = 'none'
+    }
+
     const userId = this.props.match.params.userId;
     const { pets } = this.state
-    console.log(this.state.pets)
     return (
       <div className="IndividualProfile">
         <br />
@@ -106,10 +139,12 @@ class IndividualProfile extends Component {
             }}
           >
             <div>
-              <p>Age: </p> <span>{this.state.age}</span>
+              <p>Age: </p> <span name='age' style={viewStyle}>{this.state.age} </span> 
+              <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.age}></input>
             </div>
             <div>
-              <p>Address:</p> <span>{this.state.address}</span>
+              <p>Address:</p> <span name='address' style={viewStyle}>{this.state.address}</span>
+              <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.address}></input>
             </div>
             <h5
               style={{
@@ -185,9 +220,11 @@ class IndividualProfile extends Component {
              
             </div>
             <div>
-              <p> Additional information: </p> {this.state.description}
+              <p name='description' style={viewStyle}>{this.state.description} > Additional information: </p> {this.state.description}
+              <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.description}></input>
             </div>
-            <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
+            <Button onClick={() => this.handleEditing()}>Edit My Profile</Button>
+            {/* <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button> */}
           </div>
           
         </div>
