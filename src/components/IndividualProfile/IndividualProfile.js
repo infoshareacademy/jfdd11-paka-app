@@ -64,7 +64,7 @@ class IndividualProfile extends Component {
               return;
             }
             this.setState({
-             pets: pets
+             pets: Object.entries(pets || {}).filter(([,{ ownerId}]) => ownerId === userId).map(([id, value]) => ({ id, ...value }))
             });
           });
 
@@ -74,7 +74,7 @@ class IndividualProfile extends Component {
 
   render() {
     const userId = this.props.match.params.userId;
-
+    const { pets } = this.state
     console.log(this.state.pets)
     return (
       <div className="IndividualProfile">
@@ -171,8 +171,17 @@ class IndividualProfile extends Component {
             </div>
             <div>
               <p>User's dogs: </p>
-              {/* {this.state.pets.find(pet => pet.ownerId === userId)
-              .map(pet => <li key={pet.ownerId}>{pet.dogsname}</li>)} */}
+              
+              {pets.map(pet => (
+              <ul key={pet.ownerId}>
+              <li>{pet.dogsname}</li>
+              <li>{pet.age}</li>
+              <li>{pet.breed}</li>
+              <li>{pet.gender}</li>
+              
+              </ul>
+              ))}
+             
             </div>
             <div>
               <p> Additional information: </p> {this.state.description}
