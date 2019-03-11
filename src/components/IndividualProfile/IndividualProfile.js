@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardImg } from "reactstrap";
+import { Card, CardImg, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -10,6 +10,7 @@ import {
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
+import  { Redirect } from 'react-router-dom'
 
 import "./IndividualProfile.css";
 
@@ -170,7 +171,7 @@ class IndividualProfile extends Component {
               )}
             </div>
             <div>
-              <p>User's dogs: </p>
+              <p>Pets: </p>
               
               {pets.map(pet => (
               <ul key={pet.ownerId}>
@@ -186,7 +187,9 @@ class IndividualProfile extends Component {
             <div>
               <p> Additional information: </p> {this.state.description}
             </div>
+            <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
           </div>
+          
         </div>
       </div>
     );
