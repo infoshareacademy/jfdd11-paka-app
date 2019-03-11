@@ -104,7 +104,7 @@ class PetOwner extends Component {
           
           <Card>
            <CardImg src={file} alt="" />
-            <Input type="file"  className="photoInput" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
+            <Input type="file"  name="file" id="exampleFile" onChange={this.handleFileSelected }/>
             </Card>
         </div>
         <p>Short description of your dog:</p>

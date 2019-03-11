@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./PetOwnerWizard.css";
 import PetOwner from "../PetOwner";
-
+import { Button } from "reactstrap";
 import firebase from "firebase";
 
 class PetOwnerWizard extends Component {
@@ -105,9 +105,9 @@ class PetOwnerWizard extends Component {
             onFileSelected={this.handleFileSelected}
           />
           
-          <button className="submit" type="submit">
+          <Button type="submit">
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );
