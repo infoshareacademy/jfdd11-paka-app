@@ -6,7 +6,8 @@ import { withAuth } from "../../context/AuthContext";
 import firebase from "firebase";
 import { Link } from 'react-router-dom'
 import moment from "moment";
-import { width } from "window-size";
+
+
 
 
 
@@ -95,12 +96,14 @@ class Chat extends Component {
           </form>
         </Auth>
 
-        <div class='chat' >
+        <div className='chat' >
           {messagesArray.map(message => (
             <div style={{}} key={message.id}>
-              <div onClick={() => {
-                this.props.history.push("myprofile/user.id")
-              } } >
+              <div 
+              // onClick={() => {
+              //   this.props.history.push("myprofile/user.id")
+              // } }
+               >
                 <strong
                   style={{
                     color: "red",
@@ -121,12 +124,13 @@ class Chat extends Component {
                 </Link>
                   
                 </strong>
+                 <p style={{ fontSize: "8px" }}>
+                {moment(message.createdAt).fromNow()}
+              </p>
               
               </div >
 
-              <p style={{ fontSize: "8px" }}>
-                {moment(message.createdAt).fromNow()}
-              </p>
+             
               {message.content}
             </div>
           ))}

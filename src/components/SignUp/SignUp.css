@@ -5,3 +5,9 @@
 .yourName {
     background: red;
 }
+
+.signup input{
+    border: none;
+    border-bottom: 1px solid grey;
+    background: transparent;
+    }

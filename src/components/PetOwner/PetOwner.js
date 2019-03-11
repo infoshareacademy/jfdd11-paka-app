@@ -1,58 +1,117 @@
 import React, { Component } from 'react'
-
+import { Input, Card, CardImg } from 'reactstrap';
 import './PetOwner.css'
-import PetOwnerFeatures from '../PetOwnerFeatures/PetOwnerFeatures';
+
+
+const initialState = {
+  name: '',
+  surname: '',
+  dogsname: '',
+  age: '',
+  gender: '',
+  breed: '',
+  description: '',
+  file: null
+};
 
 class PetOwner extends Component {
+  state = initialState;
 
-  state = {
-    name: '',
-    surname: '',
-    dogsname: '',
-    age: '',
-    sex: '',
-    breed: ''
-
+  handleName = (event) => {
+    const { onNameChange } = this.props
+    onNameChange && onNameChange(event.target.value)
   }
 
-  handleChange = event => {
-    const fieldName = event.target.name;
-    const value =
-      event.target.type === 'checkbox'
-        ? event.target.checked
-        : event.target.value;
+  handleSurname = (event) => {
+    const { onSurnameChange } = this.props
+    onSurnameChange && onSurnameChange(event.target.value)
+  }
 
-    this.setState({
-      [fieldName]: value,
-    });
-  };
+  handleDogsname = (event) => {
+    const { onDogsnameChange } = this.props
+    onDogsnameChange && onDogsnameChange(event.target.value)
+  }
 
+  handleAge = (event) => {
+    const { onAgeChange } = this.props
+    onAgeChange && onAgeChange(event.target.value)
+  }
 
+  handleGender = (event) => {
+    const { onGenderChange } = this.props
+    onGenderChange && onGenderChange(event.target.value)
+  }
+
+  handleBreed = (event) => {
+    const { onBreedChange } = this.props
+    onBreedChange && onBreedChange(event.target.value)
+  }
+
+  handleDescriptionChange = (event) => {
+    const { onDescriptionChange } = this.props
+    onDescriptionChange && onDescriptionChange(event.target.value)
+  }
+
+  handleFileSelected = (event) => {
+    const { onFileSelected } = this.props
+    onFileSelected && onFileSelected(event.target.files[0])
+    this.setState({file :URL.createObjectURL( event.target.files[0])})
+  }
 
   render() {
+    const { file } = this.state
     return (
-      <div className="PetOwnerPage"><p>PetOwnerPagee</p>
-        <form>
+      <div className="PetOwnerPage">
+
+          Info about your dog
           <div className="inputWraper">
           
-            <div className="inputSmallWraper">Owner's name and surname
-              <input value={this.state.name} className="inputSmall"   type="text"   placeholder="Name"    name="name"    onChange={this.handleChange}/>
-              <input value={this.state.surname} className="inputSmall"type="text"   placeholder="Surname" name="surname" onChange={this.handleChange}/>
-              Info about dog
-              <input value={this.state.dogsname}  className="inputSmall"   type="text"   placeholder="Dog's name"    name="dogsname"    onChange={this.handleChange}/>
-              <input value={this.state.age}   className="inputSmall"  type="number" min="1" max="25" placeholder="Age"     name="age"     onChange={this.handleChange}/>
-              <input value={this.state.sex}   className="inputSmall"  type="text"   placeholder="Sex"     name="sex"     onChange={this.handleChange}/>
-              <input value={this.state.breed} className="inputSmall"  type="text"   placeholder="Breed"   name="breed"   onChange={this.handleChange}/>
-              
-            </div>
-            <input type="file" alt="Your dog's picture" className="photoInput"/>
-          </div>
-          <p>Short description of your dog:</p>
-          <textarea rows= "4" ></textarea>
-          <PetOwnerFeatures/>
+          <div className="inputSmallWraper">
+           
+              <input
+              className="inputSmall"
+              type="text"
+              placeholder=" Dog's name"
+              name="dogsname"
+              onChange={this.handleDogsname}
+            />
 
-          <button className="submit">Submit</button>
-        </form>
+            <input
+              className="inputSmall"
+              type="number" min="1" max="25"
+              placeholder=" Age"
+              name="age"
+              onChange={this.handleAge}
+            />
+
+            <input
+              className="inputSmall"
+              type="text"
+              placeholder=" Gender"
+              name="gender"
+              onChange={this.handleGender}
+            />
+
+            <input
+              className="inputSmall"
+              type="text"
+              placeholder=" Breed"
+              name="breed"
+              onChange={this.handleBreed}
+            />
+
+          </div>
+          
+          <Card>
+           <CardImg src={file} alt="" />
+            <Input type="file"  className="photoInput" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
+            </Card>
+        </div>
+        <p>Short description of your dog:</p>
+        <textarea rows="4" onChange={this.handleDescriptionChange}></textarea>
+
+
+
       </div>
     )
   }

@@ -1,59 +1,55 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import './PetSitter.css'
+import "./PetSitter.css";
 
-import { Input } from 'reactstrap';
-
-
+import { Input } from "reactstrap";
 
 class PetSitter extends Component {
-
   state = {
-    name: '',
-    surname: '',
-    age: '',
-    adress: '',
-    description: '',
+    name: "",
+    surname: "",
+    age: "",
+    adress: "",
+    description: "",
     file: null
-  }
+  };
 
+  handleNameChange = event => {
+    const { onNameChange } = this.props;
+    onNameChange && onNameChange(event.target.value);
+  };
 
-  handleNameChange = (event) => {
-    const { onNameChange } = this.props
-    onNameChange && onNameChange(event.target.value)
-  }
+  handleSurnameChange = event => {
+    const { onSurnameChange } = this.props;
+    onSurnameChange && onSurnameChange(event.target.value);
+  };
 
-  handleSurnameChange = (event) => {
-    const { onSurnameChange } = this.props
-    onSurnameChange && onSurnameChange(event.target.value)
-  }
+  handleAgeChange = event => {
+    const { onAgeChange } = this.props;
+    onAgeChange && onAgeChange(event.target.value);
+  };
 
-  handleAgeChange = (event) => {
-    const { onAgeChange } = this.props
-    onAgeChange && onAgeChange(event.target.value)
-  }
+  handleAdressChange = event => {
+    const { onAdressChange } = this.props;
+    onAdressChange && onAdressChange(event.target.value);
+  };
 
-  handleAdressChange = (event) => {
-    const { onAdressChange } = this.props
-    onAdressChange && onAdressChange(event.target.value)
-  }
+  handleDescriptionChange = event => {
+    const { onDescriptionChange } = this.props;
+    onDescriptionChange && onDescriptionChange(event.target.value);
+  };
 
-  handleDescriptionChange = (event) => {
-    const { onDescriptionChange } = this.props
-    onDescriptionChange && onDescriptionChange(event.target.value)
-  }
-
-  handleFileSelected = (event) => {
-    const { onFileSelected } = this.props
-    onFileSelected && onFileSelected(event.target.files[0])
-    this.setState({file :URL.createObjectURL( event.target.files[0])})
-  }
-
+  handleFileSelected = event => {
+    const { onFileSelected } = this.props;
+    onFileSelected && onFileSelected(event.target.files[0]);
+    this.setState({ file: URL.createObjectURL(event.target.files[0]) });
+  };
 
   render() {
-    const { file } = this.state
+    const { file } = this.state;
     return (
-      <div className="PetSitter"><p>PetSitter</p>
+      <div className="PetSitter">
+        <p>PetSitter</p>
 
         <div className="inputWraper">
           <div className="inputSmallWraper">
@@ -88,20 +84,23 @@ class PetSitter extends Component {
               name="adress"
               onChange={this.handleAdressChange}
             />
-
           </div>
 
           <div>
-            {file && <img src={file}/>}
-            <Input type="file" name="file" id="exampleFile" onChange={this.handleFileSelected }/>
+            {file && <img alt="avatar" src={file} />}
+            <Input
+              type="file"
+              name="file"
+              id="exampleFile"
+              onChange={this.handleFileSelected}
+            />
           </div>
         </div>
         <p>Additional information:</p>
-        <textarea rows="4" onChange={this.handleDescriptionChange} ></textarea>
-
+        <textarea rows="4" onChange={this.handleDescriptionChange} />
       </div>
-    )
+    );
   }
 }
 
-export default PetSitter
+export default PetSitter;

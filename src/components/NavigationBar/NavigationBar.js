@@ -49,7 +49,7 @@ class NavigationBar extends Component {
             }}
           >
             {" "}
-            <img className="Nav-login-logo" src={homezoonew} alt="logo" onClick={() => this.props.history.push("/myprofile")} />
+            <img className="Nav-login-logo" src={homezoonew} alt="logo" onClick={() => this.props.history.push("/users")} />
             <span
               className="Nav-span"
               style={{
@@ -66,18 +66,21 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink href="/mypets">User's pets</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/registerpet">Register-Pet</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="/map/">Map</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/petowner/petownerfeatures">
-                  Add your dog
+                <NavLink href="/my-profile">
+                  My profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/petowner/petownerfeatures">
-                  {" "}
-                  Become a petsitter
-                </NavLink>
+                <NavLink href="/users/">Users</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/chat">Chat</NavLink>

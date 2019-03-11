@@ -9,28 +9,24 @@ import {
   faDog,
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import "./MyProfile.css";
 import firebase from "firebase";
 
-import "./IndividualProfile.css";
-
-class IndividualProfile extends Component {
+class MyProfile extends Component {
   state = {
     name: "",
     surname: "",
-    age: "",
+    email: "",
     address: "",
-    description: "",
-    dayCareAtPetsitters: "",
-    houseSittingAtYourPlace: "",
-    availableToDropIn: "",
-    availableForWalks: "",
-    pets: []
+    phone: "",
+    photo: ""
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
-        const userId = this.props.match.params.userId;
+        const userId = currentUser.uid;
+        const email = currentUser.email;
         firebase
           .database()
           .ref(`users/${userId}`)
@@ -43,41 +39,19 @@ class IndividualProfile extends Component {
             this.setState({
               name: user.name,
               surname: user.surname,
-              age: user.age,
-              photo: user.photo,
+              email: email,
               address: user.adress,
-              description: user.description,
-              dayCareAtPetsitters: user.daycare,
-              houseSittingAtYourPlace: user.housesitting,
-              availableToDropIn: user.visits,
-              availableForWalks: user.visits
+              phone: user.phone,
+              photo: user.photo
             });
           });
-
-          firebase
-          .database()
-          .ref(`pets`)
-          .once("value")
-          .then(snapshot => snapshot.val())
-          .then(pets => {
-            if (pets === null) {
-              return;
-            }
-            this.setState({
-             pets: pets
-            });
-          });
-
       }
     });
   }
 
   render() {
-    const userId = this.props.match.params.userId;
-
-    console.log(this.state.pets)
     return (
-      <div className="IndividualProfile">
+      <div className="MyProfile">
         <br />
         <h1 style={{ textAlign: "center" }}>
           {this.state.name}
@@ -88,14 +62,13 @@ class IndividualProfile extends Component {
         <div>
           <Card>
             <CardImg
-              top
-              width="100%"
+              top-width="100%"
               src={this.state.photo + "&size=150x150"}
               alt="My profile"
             />
           </Card>
           <div
-            className="IndividualProfileText"
+            className="MyProfileText"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -110,13 +83,7 @@ class IndividualProfile extends Component {
             <div>
               <p>Address:</p> <span>{this.state.address}</span>
             </div>
-            <h5
-              style={{
-                fontWeight: "bold",
-                paddingTop: "20",
-                paddingBottom: "10"
-              }}
-            >
+            <h5 style={{ fontWeight: "bold", paddingTop: "20" }}>
               {" "}
               Available for:{" "}
             </h5>
@@ -136,8 +103,7 @@ class IndividualProfile extends Component {
             </div>
             <div>
               <p>
-                {" "}
-                <FontAwesomeIcon icon={faHome} /> House-sitting at dog-owner
+                <FontAwesomeIcon icon={faHome} /> House-sitting at the dog-owner
                 place:
               </p>{" "}
               <span>
@@ -150,7 +116,6 @@ class IndividualProfile extends Component {
             </div>
             <div>
               <p>
-                {" "}
                 <FontAwesomeIcon icon={faDog} /> Available to drop in:{" "}
               </p>{" "}
               {this.state.availableToDropIn ? (
@@ -170,11 +135,6 @@ class IndividualProfile extends Component {
               )}
             </div>
             <div>
-              <p>User's dogs: </p>
-              {/* {this.state.pets.find(pet => pet.ownerId === userId)
-              .map(pet => <li key={pet.ownerId}>{pet.dogsname}</li>)} */}
-            </div>
-            <div>
               <p> Additional information: </p> {this.state.description}
             </div>
           </div>
@@ -184,4 +144,4 @@ class IndividualProfile extends Component {
   }
 }
 
-export default IndividualProfile;
+export default MyProfile;

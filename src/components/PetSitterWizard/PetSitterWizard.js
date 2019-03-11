@@ -77,7 +77,6 @@ class PetSitterWizard extends Component {
       )
     );
 
-    this.props.history.push("/myprofile")
   
   };
 

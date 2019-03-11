@@ -9,7 +9,9 @@
     width: 100%;
     background-color: white;
     position: relative;
-    z-index: 9000;
+     z-index: 9000;
+     
+   
     
 }
 
@@ -21,21 +23,21 @@
     bottom:0;
    right: 0;
    z-index: 9001;
+ 
 }
 
 .IconChat-side-menu {
     position: fixed;
     bottom: 0;
     height: 50vh;
+    border: 2px solid red;
     
     width: 80vw;
     background-color: #f8f9fa!important;
     
 }
 
-.IconChat-side-menu.animation-enabled {
-    /* transition: transform 1s cubic-bezier(0, 0, 0, 10); */
-}
+
 
 .IconChat-side-menu.hide {
     transform: translate3d(-120%, 0, 0);

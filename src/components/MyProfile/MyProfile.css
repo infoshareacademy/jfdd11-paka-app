@@ -1,18 +1,22 @@
-.IndividualProfileText p {
+.MyProfile p {
     font-weight: bold;
   }
-  .IndividualProfileText span {
+  .MyProfile span {
       font-weight: normal;
   }
   .cardText {
       padding-top: 30px;
       line-height: 30px;
   }
-  .IndividualProfileText div {
+  .cardText div {
       display: flex;
       justify-content: space-between;
   }
-  .svg-inline--fa {
-      margin-right: 10px;
+  .MyProfileText div {
+      display: flex;
+      justify-content: space-between;
   }
-  
+
+  .svg-inline--fa {
+    margin-right: 10px;
+}
