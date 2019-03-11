@@ -1,9 +1,9 @@
-.Chat {
-display: block;
-justify-content: center;
-text-align: center;
+ 
+   
 
-background-image: url(../images/dogie.jpg);
+.Chat {
+
+background-image: url(../images/puppy.png);
  background-size: cover;
  height: 100vh;
 }  
@@ -14,7 +14,7 @@ background-image: url(../images/dogie.jpg);
 
  .form input {
     display: flex;
-    justify-content: center;
+    
 
     
 }
