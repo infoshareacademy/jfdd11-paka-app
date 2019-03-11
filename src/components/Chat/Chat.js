@@ -4,6 +4,7 @@ import Auth from "../Auth/Auth";
 import "./Chat.css";
 import { withAuth } from "../../context/AuthContext";
 import firebase from "firebase";
+import { Link } from 'react-router-dom'
 import moment from "moment";
 import { width } from "window-size";
 
@@ -104,10 +105,12 @@ class Chat extends Component {
                   style={{
                     color: "red",
                     fontSize: "25px",
-                    marginRight: "10px"
+                    marginRight: "10px",
+                    width: "60vw"
                   }}
                 >
-                  {(users &&
+                <Link to={`/users/${message.authorId}`}>
+                {(users &&
                     users[message.authorId] &&
                     users[message.authorId].name) ||
                     message.authorId}{" "}
@@ -115,6 +118,8 @@ class Chat extends Component {
                     users[message.authorId] &&
                     users[message.authorId].surname) ||
                     message.authorId}
+                </Link>
+                  
                 </strong>
               
               </div >
