@@ -80,6 +80,9 @@ class NavigationBar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
+                <NavLink href="/users/">Users</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="/chat">Chat</NavLink>
               </NavItem>
               <NavItem onClick={this.logOut}>

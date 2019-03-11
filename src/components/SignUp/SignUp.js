@@ -53,7 +53,9 @@ class SignUp extends Component {
           justifyContent: "space-around",
           margin: "0 auto",
           width: "70vw",
-          height: '45vh'
+          height: '45vh',
+          position: 'absolute',
+      top: '-45px'
         }}
     >
               
@@ -71,17 +73,17 @@ class SignUp extends Component {
           flexDirection: "column"
           
          }}>
-          <FormGroup className=""
+          <FormGroup className="signup"
           >
 
 
             <Input name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           </FormGroup >
-          <FormGroup className="">
+          <FormGroup className="signup">
          
             <Input name="password1" type="password" placeholder="Password" value={this.state.password1} onChange={this.handleChange} />
           </FormGroup>
-          <FormGroup className="">
+          <FormGroup className="signup">
       
             <Input name="password2" type="password" placeholder="Repeat Password" value={this.state.password2} onChange={this.handleChange} />
           </FormGroup>

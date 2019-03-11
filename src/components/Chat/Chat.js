@@ -95,7 +95,7 @@ class Chat extends Component {
           </form>
         </Auth>
 
-        <div class='chat' >
+        <div className='chat' >
           {messagesArray.map(message => (
             <div style={{}} key={message.id}>
               <div onClick={() => {
