@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-
-import { Button, Fade, Alert } from "reactstrap";
-
+import { Redirect } from "react-router-dom";
+import { Button, Alert } from "reactstrap";
 import "./PetSitterWizard.css";
-
 import PetSitterFeatures from "../PetSitterFeatures";
-
 import PetSitter from "../PetSitter";
-
 import firebase from "firebase";
 import { Form } from "reactstrap";
-import { Link } from "react-router-dom";
-
-import { Button } from 'reactstrap'
-
-import { Link  } from 'react-router-dom';
 
 class PetSitterWizard extends Component {
   state = {
@@ -23,6 +14,7 @@ class PetSitterWizard extends Component {
     age: "",
     adress: "",
     description: "",
+    phone: "",
     schedule: false,
     daycare: false,
     housesitting: false,
@@ -30,6 +22,7 @@ class PetSitterWizard extends Component {
     positionx: "",
     positiony: "",
     error: null,
+    success: null,
     file: null
   };
 
@@ -40,6 +33,7 @@ class PetSitterWizard extends Component {
       surname,
       age,
       adress,
+      phone,
       description,
       schedule,
       daycare,
@@ -47,15 +41,12 @@ class PetSitterWizard extends Component {
       visits,
       file,
       positionx,
-      positiony,
+      positiony
     } = this.state;
 
-    const isValid = ([
-      name,
-      surname,
-      age,
-      adress
-    ].filter(field => field.length === 0).length) === 0
+    const isValid =
+      [name, surname, age, adress, phone].filter(field => field.length === 0)
+        .length === 0;
 
     const userId = firebase.auth().currentUser.uid;
 
@@ -70,6 +61,7 @@ class PetSitterWizard extends Component {
           age,
           adress,
           description,
+          phone: isNaN(parseFloat(phone)) ? 0 : parseFloat(phone),
           schedule,
           daycare,
           housesitting,
@@ -77,14 +69,14 @@ class PetSitterWizard extends Component {
           positionx: isNaN(parseFloat(positionx)) ? 0 : parseFloat(positionx),
           positiony: isNaN(parseFloat(positiony)) ? 0 : parseFloat(positiony)
         })
-        .catch(error => this.setState({ error: error }));
+        .catch(error => this.setState({ error: error, success: "Thank You" }));
     } else {
       this.setState({ error: new Error("Please fill all the inputs!") });
     }
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
-    console.log(file)
+    console.log(file);
     if (file !== null) {
       const storageRef = firebase.storage().ref();
       const ref = storageRef.child(`${userId}.jpg`);
@@ -100,10 +92,10 @@ class PetSitterWizard extends Component {
               .set(url)
           )
         )
-        .catch(error => this.setState({ error: error }));
+        .catch(error => this.setState({ error: error })).then(data => { this.setState({success: "Thank You"})})
     } else {
       this.setState({
-        error: new Error("Please fill all the inputs & upload Your photo!")
+        error: new Error("Please upload Your photo!")
       });
     }
   };
@@ -114,11 +106,18 @@ class PetSitterWizard extends Component {
     });
   };
 
+  handleFile = file => {
+    this.setState({
+      file: file
+    });
+  };
+
   render() {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-          <div className="SignUp">
+        {this.state.success && <Redirect to="/users" />}
+          <div className="Error">
             {this.state.error && (
               <Alert color="danger" style={{ color: "red" }}>
                 {this.state.error.message}
@@ -127,16 +126,10 @@ class PetSitterWizard extends Component {
           </div>
           <PetSitter
             onChange={this.handleChange}
-            onFileSelected={this.handleFileSelected}
+            onFileSelected={this.handleFile}
           />
-          <PetSitterFeatures
-            onChange={this.handleChange}
-          />
-          <Button
-            color="warning"
-            type="submit"
-            link={"/myprofile"}
-          >
+          <PetSitterFeatures onChange={this.handleChange} />
+          <Button color="warning" type="submit">
             Submit
           </Button>
         </Form>

@@ -10,21 +10,26 @@ class PetSitter extends Component {
     surname: "",
     age: "",
     adress: "",
+    phone: "",
     description: "",
     file: null
   };
 
   handleChange = event => {
     const { onChange } = this.props;
-    const { name, value } = event.target
-    this.setState({
-      [name]: value
-    }, () => {
-      onChange && onChange({
-        name,
-        value: this.state[name]
-      });
-    })
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        onChange &&
+          onChange({
+            name,
+            value: this.state[name]
+          });
+      }
+    );
   };
 
   handleFileSelected = event => {
@@ -70,6 +75,17 @@ class PetSitter extends Component {
                 name="age"
                 onChange={this.handleChange}
                 value={this.state.age}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Input
+                className="inputSmall"
+                type="text"
+                placeholder="Phone Number"
+                name="phone"
+                onChange={this.handleChange}
+                value={this.state.phone}
               />
             </FormGroup>
 
