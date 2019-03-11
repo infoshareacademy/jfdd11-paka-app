@@ -3,25 +3,18 @@ import Login from "../Login";
 import MyMap from "../MyMap";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignUp from '../SignUp';
-
 import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
-import MyProfile from "../MyProfile/MyProfile";
-
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
-import PetSitter from "../PetSitter";
 
 class Root extends Component {
   state = {
