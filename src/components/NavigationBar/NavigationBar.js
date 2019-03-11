@@ -9,7 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 import firebase from "firebase";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink as RNavLink} from "react-router-dom";
 import homezoonew from "../images/homezoonew.png";
 
 import "./NavigationBar.css";
@@ -29,15 +29,24 @@ class NavigationBar extends Component {
     });
   }
   logOut = () => {
+    console.log('logging out')
     firebase
       .auth()
       .signOut()
       .then(() => {
-        this.props.history.push("/");
+        setTimeout(() => {
+          this.props.history.push("/");
+        }, 0)
+        
       });
   };
-  
+
   render() {
+    const currentUser = firebase.auth().currentUser 
+    if (currentUser === null) {
+      return null
+    }
+    const userId = currentUser.uid;
     return (
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
@@ -66,21 +75,21 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/mypets">User's pets</NavLink>
+                <NavLink to="/mypets" tag={RNavLink}>User's pets</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/registerpet">Register-Pet</NavLink>
+                <NavLink to="/registerpet" tag={RNavLink}>Register-Pet</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/map/">Map</NavLink>
+                <NavLink to="/map/" tag={RNavLink}>Map</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/my-profile">
+                <NavLink to={`/users/${userId}`} tag={RNavLink}>
                   My profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/users/">Users</NavLink>
+                <NavLink to="/users/" tag={RNavLink}>Users</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/chat">Chat</NavLink>
