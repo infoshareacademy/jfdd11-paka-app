@@ -1,0 +1,12 @@
+.card-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #f78d4c; */
+}
+.card-title {
+    font-weight: bold;
+}
+.iconsContainer div {
+padding-left: 10px;
+}

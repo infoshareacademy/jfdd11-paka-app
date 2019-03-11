@@ -12,6 +12,10 @@ import firebase from "firebase";
 import { Form } from "reactstrap";
 import { Link } from "react-router-dom";
 
+import { Button } from 'reactstrap'
+
+import { Link  } from 'react-router-dom';
+
 class PetSitterWizard extends Component {
   state = {
     name: "",
