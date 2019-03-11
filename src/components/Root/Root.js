@@ -16,12 +16,12 @@ import PetsList from "../PetsList";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
-import MyProfile from "../MyProfile/MyProfile";
+
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
-import PetSitter from "../PetSitter";
+
 
 class Root extends Component {
   state = {
