@@ -3,7 +3,6 @@ import firebase from "firebase";
 import {
   Card,
   CardBody,
-  
   CardTitle,
 } from "reactstrap";
 
@@ -16,10 +15,6 @@ state = {
   age: "",
   breed: "",
   gender: "",
-  dayCare: false,
-  dayNightCare: false,
-  dogWalking: false,
-  dropIn: false,
   description: '',
   file: null
 };
@@ -48,7 +43,6 @@ componentDidMount() {
       className="PetsList">
       <div>
         
-            {}
             <div >
               {this.state.pets
                 .map(pet => (
