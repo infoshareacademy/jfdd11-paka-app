@@ -72,7 +72,7 @@ class PetOwnerWizard extends Component {
           .database()
           .ref("pets")
           .child(petId)
-          .child("photo")
+          .child("oto")
           .set(url)
       )
     );
