@@ -98,7 +98,7 @@ componentDidMount() {
               <h4> </h4>
             </Col>
           </Row> */}
-            <div>
+            <div >
               {this.state.pets
                 .map(pet => (
                   <Card key={pet.id}>

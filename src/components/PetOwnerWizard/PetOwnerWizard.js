@@ -65,14 +65,14 @@ class PetOwnerWizard extends Component {
       });
 
     const storageRef = firebase.storage().ref();
-    const ref = storageRef.child(`${userId}.jpg`);
+    const ref = storageRef.child(`${petId}.jpg`);
     ref.put(file).then(data =>
       data.ref.getDownloadURL().then(url =>
         firebase
           .database()
           .ref("pets")
           .child(petId)
-          .child("oto")
+          .child("photo")
           .set(url)
       )
     );
