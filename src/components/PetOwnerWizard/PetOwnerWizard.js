@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import './PetOwnerWizard.css'
-import PetOwner from '../PetOwner';
-import PetOwnerFeatures from '../PetOwnerFeatures';
+import "./PetOwnerWizard.css";
+import PetOwner from "../PetOwner";
+import PetOwnerFeatures from "../PetOwnerFeatures";
 
-import firebase from 'firebase'
+import firebase from "firebase";
 
 class PetOwnerWizard extends Component {
   state = {
-    dogsname: '',
+    dogsname: "",
     age: null,
-    gender: '',
-    breed: '',
-    description: '',
+    gender: "",
+    breed: "",
+    description: "",
     dogWalking: false,
     dayCare: false,
     dayNightCare: false,
@@ -21,111 +21,110 @@ class PetOwnerWizard extends Component {
     positiony: ""
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const { 
-      dogsname, 
-      age, 
-      gender, 
+  handleSubmit = event => {
+    event.preventDefault();
+    const {
+      dogsname,
+      age,
+      gender,
       breed,
-      description, 
-      dogWalking, 
-      dayCare, 
+      description,
+      dogWalking,
+      dayCare,
       dayNightCare,
       dropIn,
       positionx,
-      positiony, 
-      file 
-    } = this.state
+      positiony,
+      file
+    } = this.state;
 
-    console.log('handlesubmit', this.state)
+    console.log("handlesubmit", this.state);
     const userId = firebase.auth().currentUser.uid;
+    const petId = firebase
+      .database()
+      .ref("pets")
+      .push().key;
+
     firebase
       .database()
       .ref("pets")
-      .push({  
+      .child(petId)
+      .set({
         ownerId: userId,
-        dogsname, 
-        age, 
-        gender, 
-        breed, 
-        description, 
-        dogWalking, 
-        dayCare, 
-        dayNightCare, 
+        dogsname,
+        age,
+        gender,
+        breed,
+        description,
+        dogWalking,
+        dayCare,
+        dayNightCare,
         dropIn,
         positionx: parseFloat(positionx) || 0,
         positiony: parseFloat(positiony) || 0
-       });
+      });
 
-      const storageRef = firebase.storage().ref();
-      const ref = storageRef.child(`${userId}.jpg`);
-      ref.put(file).then(data =>
-        data.ref.getDownloadURL().then(url =>
-          firebase
-            .database()
-            .ref("pets")
-            .child(userId)
-            .child("photo")
-            .set(url)
+    const storageRef = firebase.storage().ref();
+    const ref = storageRef.child(`${userId}.jpg`);
+    ref.put(file).then(data =>
+      data.ref.getDownloadURL().then(url =>
+        firebase
+          .database()
+          .ref("pets")
+          .child(petId)
+          .child("photo")
+          .set(url)
       )
     );
-
   };
 
+  handleNameChange = name => {
+    this.setState({ name });
+  };
 
-  handleNameChange = (name) => {
-    this.setState({ name })
-  }
+  handleSurnameChange = surname => {
+    this.setState({ surname });
+  };
 
-  handleSurnameChange = (surname) => {
-    this.setState({ surname })
+  handleDogsname = dogsname => {
+    this.setState({ dogsname });
+  };
 
-  }
-
-  handleDogsname = (dogsname) => {
-    this.setState({ dogsname })
-  }
-
-  handleAge = (age) => {
-    this.setState({ age })
-  }
+  handleAge = age => {
+    this.setState({ age });
+  };
 
   handleFileSelected = file => {
     this.setState({ file });
   };
 
-  handleGender = (gender) => {
-    this.setState({ gender })
-  }
+  handleGender = gender => {
+    this.setState({ gender });
+  };
 
-  handleBreed = (breed) => {
-    this.setState({ breed })
-  }
+  handleBreed = breed => {
+    this.setState({ breed });
+  };
 
-  handleDescriptionChange = (description) => {
-    this.setState({ description })
+  handleDescriptionChange = description => {
+    this.setState({ description });
+  };
 
-  }
+  handleDogWalking = dogWalking => {
+    this.setState({ dogWalking });
+  };
 
-  handleDogWalking = (dogWalking) => {
-    this.setState({ dogWalking })
+  handleDayCare = dayCare => {
+    this.setState({ dayCare });
+  };
 
-  }
+  handleDayNightCare = dayNightCare => {
+    this.setState({ dayNightCare });
+  };
 
-  handleDayCare = (dayCare) => {
-    this.setState({ dayCare })
-
-  }
-
-  handleDayNightCare = (dayNightCare) => {
-    this.setState({ dayNightCare })
-
-  }
-
-  handleDropIn = (dropIn) => {
-    this.setState({ dropIn })
-  }
+  handleDropIn = dropIn => {
+    this.setState({ dropIn });
+  };
 
   handlePositionXChange = positionx => {
     this.setState({ positionx });
@@ -157,12 +156,13 @@ class PetOwnerWizard extends Component {
             onPositionXChange={this.handlePositionXChange}
             onPositionYChange={this.handlePositionYChange}
           />
-          <button className="submit" type="submit" >Submit</button>
+          <button className="submit" type="submit">
+            Submit
+          </button>
         </form>
-
       </div>
-    )
+    );
   }
 }
 
-export default PetOwnerWizard
+export default PetOwnerWizard;
