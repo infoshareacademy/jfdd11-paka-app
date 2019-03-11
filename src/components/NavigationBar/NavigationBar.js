@@ -41,7 +41,6 @@ class NavigationBar extends Component {
       });
   };
 
-
   render() {
     const currentUser = firebase.auth().currentUser 
     if (currentUser === null) {
@@ -92,6 +91,9 @@ class NavigationBar extends Component {
               <NavItem>
                 <NavLink to="/users/" tag={RNavLink}>Users</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="/chat">Chat</NavLink>
+              </NavItem>
               <NavItem onClick={this.logOut}>
                 <NavLink>Log out</NavLink>
               </NavItem>
@@ -102,5 +104,6 @@ class NavigationBar extends Component {
     );
   }
 }
+ 
 
 export default withRouter(NavigationBar);

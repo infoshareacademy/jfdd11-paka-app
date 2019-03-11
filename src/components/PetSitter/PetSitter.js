@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./PetSitter.css";
 
-import { Input } from "reactstrap";
+import { Input, FormGroup, CardImg, Card } from "reactstrap";
 
 class PetSitter extends Component {
   state = {
@@ -10,33 +10,26 @@ class PetSitter extends Component {
     surname: "",
     age: "",
     adress: "",
+    phone: "",
     description: "",
     file: null
   };
 
-  handleNameChange = event => {
-    const { onNameChange } = this.props;
-    onNameChange && onNameChange(event.target.value);
-  };
-
-  handleSurnameChange = event => {
-    const { onSurnameChange } = this.props;
-    onSurnameChange && onSurnameChange(event.target.value);
-  };
-
-  handleAgeChange = event => {
-    const { onAgeChange } = this.props;
-    onAgeChange && onAgeChange(event.target.value);
-  };
-
-  handleAdressChange = event => {
-    const { onAdressChange } = this.props;
-    onAdressChange && onAdressChange(event.target.value);
-  };
-
-  handleDescriptionChange = event => {
-    const { onDescriptionChange } = this.props;
-    onDescriptionChange && onDescriptionChange(event.target.value);
+  handleChange = event => {
+    const { onChange } = this.props;
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        onChange &&
+          onChange({
+            name,
+            value: this.state[name]
+          });
+      }
+    );
   };
 
   handleFileSelected = event => {
@@ -49,55 +42,84 @@ class PetSitter extends Component {
     const { file } = this.state;
     return (
       <div className="PetSitter">
-        <p>PetSitter</p>
+        <h1>PetSitter</h1>
 
         <div className="inputWraper">
           <div className="inputSmallWraper">
-            <input
-              className="inputSmall"
-              type="text"
-              placeholder="Name"
-              name="name"
-              onChange={this.handleNameChange}
-            />
+            <FormGroup>
+              <Input
+                id="name"
+                placeholder="Name"
+                name="name"
+                onChange={this.handleChange}
+                value={this.state.name}
+              />
+            </FormGroup>
 
-            <input
-              className="inputSmall"
-              type="text"
-              placeholder="Surname"
-              name="Surname"
-              onChange={this.handleSurnameChange}
-            />
+            <FormGroup>
+              <Input
+                className="inputSmall"
+                type="text"
+                placeholder="Surname"
+                name="surname"
+                onChange={this.handleChange}
+                value={this.state.surname}
+              />
+            </FormGroup>
 
-            <input
-              className="inputSmall"
-              type="text"
-              placeholder="Age"
-              name="age"
-              onChange={this.handleAgeChange}
-            />
+            <FormGroup>
+              <Input
+                className="inputSmall"
+                type="text"
+                placeholder="Age"
+                name="age"
+                onChange={this.handleChange}
+                value={this.state.age}
+              />
+            </FormGroup>
 
-            <input
-              className="inputSmall"
-              type="text"
-              placeholder="Address"
-              name="adress"
-              onChange={this.handleAdressChange}
-            />
+            <FormGroup>
+              <Input
+                className="inputSmall"
+                type="text"
+                placeholder="Phone Number"
+                name="phone"
+                onChange={this.handleChange}
+                value={this.state.phone}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Input
+                className="inputSmall"
+                type="text"
+                placeholder="Adress"
+                name="adress"
+                onChange={this.handleChange}
+                value={this.state.adress}
+              />
+            </FormGroup>
           </div>
-
-          <div>
-            {file && <img alt="avatar" src={file} />}
+          <Card>
+            <CardImg src={file} alt="" />
             <Input
               type="file"
               name="file"
               id="exampleFile"
               onChange={this.handleFileSelected}
             />
-          </div>
+          </Card>
         </div>
-        <p>Additional information:</p>
-        <textarea rows="4" onChange={this.handleDescriptionChange} />
+        <p>Short description of you:</p>
+        <FormGroup>
+          <Input
+            type="textarea"
+            rows="4"
+            name="description"
+            onChange={this.handleChange}
+            value={this.state.description}
+          />
+        </FormGroup>
       </div>
     );
   }
