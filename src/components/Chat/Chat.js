@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import { Input } from 'reactstrap'
 import Auth from "../Auth/Auth";
 import "./Chat.css";
 import { withAuth } from "../../context/AuthContext";
 import firebase from "firebase";
 import moment from "moment";
 import { width } from "window-size";
-import { Link } from 'react-router-dom';
+
 
 
 class Chat extends Component {
@@ -87,7 +87,7 @@ class Chat extends Component {
         <h1>Chat</h1>
         <Auth cover={() => <p>Chat is only for logged in users.</p>}>
           <form onSubmit={this.handleSubmit}>
-            <input className='input'
+            <Input className='input'
               value={this.state.message}
               onChange={this.handleMessageChange}
             />
