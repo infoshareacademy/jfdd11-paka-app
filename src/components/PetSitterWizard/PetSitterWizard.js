@@ -68,8 +68,8 @@ class PetSitterWizard extends Component {
           visits,
           positionx: isNaN(parseFloat(positionx)) ? 0 : parseFloat(positionx),
           positiony: isNaN(parseFloat(positiony)) ? 0 : parseFloat(positiony)
-        })
-        .catch(error => this.setState({ error: error, success: "Thank You" }));
+        }).then(data => { this.setState({success: "Thank You"})})
+        .catch(error => this.setState({ error: error }));
     } else {
       this.setState({ error: new Error("Please fill all the inputs!") });
     }
@@ -92,7 +92,7 @@ class PetSitterWizard extends Component {
               .set(url)
           )
         )
-        .catch(error => this.setState({ error: error })).then(data => { this.setState({success: "Thank You"})})
+        .catch(error => this.setState({ error: error }))
     } else {
       this.setState({
         error: new Error("Please upload Your photo!")
