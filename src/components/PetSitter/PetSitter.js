@@ -5,41 +5,8 @@ import "./PetSitter.css";
 import { Input, FormGroup, CardImg, Card } from "reactstrap";
 
 class PetSitter extends Component {
-  state = {
-    name: "",
-    surname: "",
-    age: "",
-    adress: "",
-    phone: "",
-    description: "",
-    file: null
-  };
-
-  handleChange = event => {
-    const { onChange } = this.props;
-    const { name, value } = event.target;
-    this.setState(
-      {
-        [name]: value
-      },
-      () => {
-        onChange &&
-          onChange({
-            name,
-            value: this.state[name]
-          });
-      }
-    );
-  };
-
-  handleFileSelected = event => {
-    const { onFileSelected } = this.props;
-    onFileSelected && onFileSelected(event.target.files[0]);
-    this.setState({ file: URL.createObjectURL(event.target.files[0]) });
-  };
-
   render() {
-    const { file } = this.state;
+    const { file, tmpFile, name, surname, age, adress, phone, description, onChange, onFileSelected } = this.props;
     return (
       <div className="PetSitter">
         <h1>PetSitter</h1>
@@ -51,62 +18,62 @@ class PetSitter extends Component {
                 id="name"
                 placeholder="Name"
                 name="name"
-                onChange={this.handleChange}
-                value={this.state.name}
+                onChange={onChange}
+                value={name}
               />
             </FormGroup>
 
             <FormGroup>
               <Input
-                className="inputSmall"
+                
                 type="text"
                 placeholder="Surname"
                 name="surname"
-                onChange={this.handleChange}
-                value={this.state.surname}
+                onChange={onChange}
+                value={surname}
               />
             </FormGroup>
 
             <FormGroup>
               <Input
-                className="inputSmall"
+                
                 type="text"
                 placeholder="Age"
                 name="age"
-                onChange={this.handleChange}
-                value={this.state.age}
+                onChange={onChange}
+                value={age}
               />
             </FormGroup>
 
             <FormGroup>
               <Input
-                className="inputSmall"
+               
                 type="text"
                 placeholder="Phone Number"
                 name="phone"
-                onChange={this.handleChange}
-                value={this.state.phone}
+                onChange={onChange}
+                value={phone}
               />
             </FormGroup>
 
             <FormGroup>
               <Input
-                className="inputSmall"
+                
                 type="text"
                 placeholder="Adress"
                 name="adress"
-                onChange={this.handleChange}
-                value={this.state.adress}
+                onChange={onChange}
+                value={adress}
               />
             </FormGroup>
           </div>
           <Card>
-            <CardImg src={file} alt="" />
+            <CardImg src={tmpFile || file} alt="" />
             <Input
               type="file"
               name="file"
               id="exampleFile"
-              onChange={this.handleFileSelected}
+              onChange={onFileSelected}
             />
           </Card>
         </div>
@@ -116,8 +83,8 @@ class PetSitter extends Component {
             type="textarea"
             rows="4"
             name="description"
-            onChange={this.handleChange}
-            value={this.state.description}
+            onChange={onChange}
+            value={description}
           />
         </FormGroup>
       </div>

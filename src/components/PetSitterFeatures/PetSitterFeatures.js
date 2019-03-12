@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 
-import { CustomInput } from "reactstrap";
+import { CustomInput, Input, Col, Row } from "reactstrap";
 
 import "./PetSitterFeatures.css";
 
 class PetSitterFeatures extends Component {
-  state = {
-    schedule: false,
-    daycare: false,
-    housesitting: false,
-    visits: false
-  };
-
-  handleChange = event => {
-    const { onChange } = this.props;
-    onChange && onChange(event.target.checked);
-  };
-
   render() {
+    const {
+      schedule,
+      daycare,
+      housesitting,
+      visits,
+      positionx,
+      positiony,
+      onChange,
+      onPosChange
+    } = this.props;
     return (
       <div className="wrapper">
         <div className="smallwrapper">
@@ -26,28 +24,32 @@ class PetSitterFeatures extends Component {
             type="switch"
             id="exampleCustomSwitch"
             name="customSwitch"
-            onChange={this.handleChange}
+            onChange={onChange}
+            value={schedule}
           />
           <p>Dog walking</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch2"
             name="customSwitch"
-            onChange={this.handleChange}
+            onChange={onChange}
+            value={daycare}
           />
           <p>Doggy day-care: daytime care in your dog-friendly home.</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch3"
             name="customSwitch"
-            onChange={this.handleChange}
+            onChange={onChange}
+            value={housesitting}
           />
           <p>Daily or overnight house-sitting at the dog owner's place.</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch4"
             name="customSwitch"
-            onChange={this.handleChange}
+            onChange={onChange}
+            value={visits}
           />
           <p>
             Drop-in visits: for whenever the doggo needs a sitter to check in at
@@ -55,18 +57,24 @@ class PetSitterFeatures extends Component {
           </p>
 
           <p>What's your coordinates, mate?</p>
-          <input
+          <Row form>
+          <Col md={2}>
+          <Input
             id="positionX"
-            type="text"
+            name="positionx"
             placeholder="position X"
-            onChange={this.handleChange}
+            onPosChange={onPosChange}
+            value={positionx}
           />
-          <input
+          <Input
             id="positionY"
-            type="text"
+            name="positiony"
             placeholder="position Y"
-            onChange={this.handleChange}
+            onPosChange={onPosChange}
+            value={positiony}
           />
+          </Col>
+          </Row>
         </div>
       </div>
     );
