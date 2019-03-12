@@ -101,6 +101,8 @@ class IndividualProfile extends Component {
   }
 
   render() {
+    const currentUser = firebase.auth().currentUser
+    const currentUserId = currentUser && currentUser.uid
     let editStyle = {}
     let viewStyle = {}
     if (this.state.isEditing) {
@@ -108,8 +110,8 @@ class IndividualProfile extends Component {
     } else {
       editStyle.display = 'none'
     }
-
     const userId = this.props.match.params.userId;
+
     const { pets } = this.state
     return (
       <div className="IndividualProfile">
@@ -224,7 +226,9 @@ class IndividualProfile extends Component {
               <p name='description' style={viewStyle}>{this.state.description} > Additional information: </p> {this.state.description}
               <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.description}></input>
             </div>
-            <Button onClick={() => this.handleEditing()}>Edit My Profile</Button>
+            
+            {(userId === currentUserId) && <Button onClick={() => this.handleEditing()}>Edit My Profile</Button>}
+            
             {/* <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button> */}
           </div>
           
