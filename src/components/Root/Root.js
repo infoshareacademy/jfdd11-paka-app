@@ -21,6 +21,7 @@ import MyProfile from "../MyProfile/MyProfile";
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
+import FormMap from "../FormMap/FormMap";
 
 class Root extends Component {
   state = {
@@ -61,6 +62,7 @@ class Root extends Component {
             <Route exact path="/users/:userId" component={IndividualProfile} />
             <Route path="/my-profile" component={MyProfile} />
             <Route exact path="/users" component={UserDashboard} />
+            <Route exact path="/formmap" component={FormMap} />
           </div>
         </div>
       </Router>
