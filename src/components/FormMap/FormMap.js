@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import firebase from "firebase";
+import { Map, TileLayer, Marker } from "react-leaflet";
+
 
 
 import "./FormMap.css";
