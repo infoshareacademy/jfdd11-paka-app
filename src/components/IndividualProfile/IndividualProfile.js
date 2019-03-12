@@ -10,7 +10,7 @@ import {
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
-import  { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 import "./IndividualProfile.css";
 
@@ -33,27 +33,26 @@ class IndividualProfile extends Component {
     this.setState({
       ...this.state,
       isEditing: true
-    })
-  }
-  handleEditChange = (event) => {
+    });
+  };
+  handleEditChange = event => {
     const userId = this.props.match.params.userId;
-    const value = event.target.value
-    const eventName = event.target.name
+    const value = event.target.value;
+    const eventName = event.target.name;
     if (event.keyCode === 13) {
-        firebase
-          .database()
-          .ref(`users/${userId}`)
-          .child(eventName)
-          .set(value);
+      firebase
+        .database()
+        .ref(`users/${userId}`)
+        .child(eventName)
+        .set(value);
 
-          this.setState({
-            ...this.state,
-            [event.target.name]: value,
-            isEditing: false
-          })
+      this.setState({
+        ...this.state,
+        [event.target.name]: value,
+        isEditing: false
+      });
     }
-
-  }
+  };
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
@@ -82,7 +81,7 @@ class IndividualProfile extends Component {
             });
           });
 
-          firebase
+        firebase
           .database()
           .ref(`pets`)
           .once("value")
@@ -92,27 +91,43 @@ class IndividualProfile extends Component {
               return;
             }
             this.setState({
-             pets: Object.entries(pets || {}).filter(([,{ ownerId}]) => ownerId === userId).map(([id, value]) => ({ id, ...value }))
+              pets: Object.entries(pets || {})
+                .filter(([, { ownerId }]) => ownerId === userId)
+                .map(([id, value]) => ({ id, ...value }))
             });
           });
-
       }
     });
   }
 
+  deletePet = petId => {
+    console.log(petId);
+    console.log(this.state);
+    firebase
+      .database()
+      .ref(`pets`)
+      .child(petId)
+      .remove()
+      .then(() => {
+        this.setState({
+          pets: this.state.pets.filter(pet => petId !== pet.id)
+        });
+      });
+  };
+
   render() {
-    const currentUser = firebase.auth().currentUser
-    const currentUserId = currentUser && currentUser.uid
-    let editStyle = {}
-    let viewStyle = {}
+    const currentUser = firebase.auth().currentUser;
+    const currentUserId = currentUser && currentUser.uid;
+    let editStyle = {};
+    let viewStyle = {};
     if (this.state.isEditing) {
-      viewStyle.display = 'none'
+      viewStyle.display = "none";
     } else {
-      editStyle.display = 'none'
+      editStyle.display = "none";
     }
     const userId = this.props.match.params.userId;
 
-    const { pets } = this.state
+    const { pets } = this.state;
     return (
       <div className="IndividualProfile">
         <br />
@@ -142,12 +157,29 @@ class IndividualProfile extends Component {
             }}
           >
             <div>
-              <p>Age: </p> <span onDoubleClick={this.handleEditing} style={viewStyle}>{this.state.age}  </span> 
-              <input type='text' name='age' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.age}></input>
+              <p>Age: </p>{" "}
+              <span onDoubleClick={this.handleEditing} style={viewStyle}>
+                {this.state.age}{" "}
+              </span>
+              <input
+                type="text"
+                name="age"
+                onKeyDown={this.handleEditChange}
+                style={editStyle}
+                defaultValue={this.state.age}
+              />
             </div>
             <div>
-              <p>Address:</p> <span name='address' style={viewStyle}>{this.state.address}</span>
-              <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.address}></input>
+              <p>Address:</p>{" "}
+              <span name="address" style={viewStyle}>
+                {this.state.address}
+              </span>
+              <input
+                type="text"
+                onKeyDown={this.handleEditChange}
+                style={editStyle}
+                defaultValue={this.state.address}
+              />
             </div>
             <h5
               style={{
@@ -210,28 +242,45 @@ class IndividualProfile extends Component {
             </div>
             <div>
               <p>Pets: </p>
-              
+
               {pets.map(pet => (
-              <ul key={pet.ownerId}>
-              <li>{pet.dogsname}</li>
-              <li>{pet.age}</li>
-              <li>{pet.breed}</li>
-              <li>{pet.gender}</li>
-              
-              </ul>
+                <ul key={pet.ownerId}>
+                  <li>{pet.dogsname}</li>
+                  <li>{pet.age}</li>
+                  <li>{pet.breed}</li>
+                  <li>{pet.gender}</li>
+                  <li>
+                    <img src={pet.photo} />
+                  </li>
+                  <li>
+                    <Button onClick={() => this.deletePet(pet.id)}>
+                      Delete
+                    </Button>
+                  </li>
+                </ul>
               ))}
-             
             </div>
             <div>
-              <p name='description' style={viewStyle}>{this.state.description} > Additional information: </p> {this.state.description}
-              <input type='text' onKeyDown={this.handleEditChange} style={editStyle} defaultValue={this.state.description}></input>
+              <p name="description" style={viewStyle}>
+                {this.state.description} > Additional information:{" "}
+              </p>{" "}
+              {this.state.description}
+              <input
+                type="text"
+                onKeyDown={this.handleEditChange}
+                style={editStyle}
+                defaultValue={this.state.description}
+              />
             </div>
-            
-            {(userId === currentUserId) && <Button onClick={() => this.handleEditing()}>Edit My Profile</Button>}
-            
+
+            {userId === currentUserId && (
+              <Button onClick={() => this.handleEditing()}>
+                Edit My Profile
+              </Button>
+            )}
+
             {/* <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button> */}
           </div>
-          
         </div>
       </div>
     );

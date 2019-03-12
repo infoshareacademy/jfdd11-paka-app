@@ -244,11 +244,11 @@ class UserDashboard extends Component {
                   .filter(isVisiting)
                   .filter(isWalking)
                   .map(user => (
-                    <Card key={user.id + Date.now()}>
-                      <CardBody>
-                        <CardTitle>
+                    <div key={user.id + Date.now()} style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
+                      
+                        <h5>
                           {user.name} {user.surname}
-                        </CardTitle>
+                        </h5>
                         <div
                           style={{ textAlign: "center", paddingBottom: "20px" }}
                         >
@@ -258,11 +258,11 @@ class UserDashboard extends Component {
                             style={{ width: "100%" }}
                           />
                         </div>
-                        <CardSubtitle>
+                        <div>
                           {user.adress}
                           {", "}
                           {user.age}
-                        </CardSubtitle>
+                        </div>
                         <div
                           className="iconsContainer"
                           style={{ display: "flex" }}
@@ -296,12 +296,13 @@ class UserDashboard extends Component {
                             )}
                           </div>
                         </div>
-                        <CardLink tag={Link} to={`/users/${user.id}`}>
+            
+                        <Link to={`/users/${user.id}`}>
                           {" "}
                           See Full Profile of {user.name}
-                        </CardLink>
-                      </CardBody>
-                    </Card>
+                        </Link>
+                       
+                    </div>
                   ))}
               </div>
             </TabPane>
