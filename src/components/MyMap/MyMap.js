@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import firebase from "firebase";
+import { Link } from 'react-router-dom'
 
 import "./MyMap.css";
 
@@ -63,8 +64,10 @@ class MyMap extends Component {
             }
           >
             <Popup>
+            <Link to={`/users/${user.id}`}>
+            
               <img src={user.photo} style={{ width: "100%" }} alt="user" />{" "}
-              {user.name} <br /> {user.adress}
+              {user.name} <br /> {user.adress}</Link>
             </Popup>
           </Marker>
         ))}
