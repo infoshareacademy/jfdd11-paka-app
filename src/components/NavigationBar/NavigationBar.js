@@ -75,7 +75,7 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/mypets" tag={RNavLink}>User's pets</NavLink>
+                <NavLink href="/pets">User's pets</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to="/registerpet" tag={RNavLink}>Register-Pet</NavLink>
