@@ -10,6 +10,8 @@
     background-color: white;
     position: relative;
      z-index: 9000;
+    
+     
      
    
     
@@ -21,20 +23,26 @@
     margin-right: 10px;
     position: fixed;
     bottom:0;
-   right: 0;
-   z-index: 9001;
- 
+    right: 0;
+    z-index: 9001; 
+    border-radius: 10px 10px 0 0;
+   
 }
 
 .IconChat-side-menu {
     position: fixed;
     bottom: 0;
     height: 50vh;
-    border: 2px solid red;
+    border: 1px solid #e2b42c;
     
-    width: 80vw;
-    background-color: #f8f9fa!important;
-    
+    width: 98vw;
+    background-color:white; 
+    background-image: url(../images/puppy.png);
+    background-size: 50vh, cover;
+    background-repeat: no-repeat;
+    border-radius: 10px 10px 0 0;
+   
+
 }
 
 
@@ -48,4 +56,5 @@
     transform: translate3d(0, 0, 0);
     overflow: scroll;
     left: 0;
+    border: 1px solid #e2b42c;
 }
