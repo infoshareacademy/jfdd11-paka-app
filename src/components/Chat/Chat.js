@@ -124,14 +124,14 @@ class Chat extends Component {
                 </Link>
                   
                 </strong>
-                 <p style={{ fontSize: "10px" }}>
-                {moment(message.createdAt).fromNow()}
-              </p>
+                <p style={{ fontSize: "10px" }}>
+                  {moment(message.createdAt).fromNow()}
+                </p>
               
               </div >
 
              
-              {message.content}
+              <p style={{ background: "yellow" }}>{message.content}</p>
             </div>
           ))}
         </div>
