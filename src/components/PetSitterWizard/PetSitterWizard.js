@@ -80,12 +80,12 @@ class PetSitterWizard extends Component {
 
     // More info about uploading files:
     // https://firebase.google.com/docs/storage/web/upload-files
-    console.log(file);
-    if (file !== null) {
+    console.log(tmpFile);
+    if (tmpFile) {
       const storageRef = firebase.storage().ref();
       const ref = storageRef.child(`${userId}.jpg`);
       ref
-        .put(file)
+        .put(tmpFile)
         .then(data =>
           data.ref.getDownloadURL().then(url =>
             firebase
@@ -115,6 +115,13 @@ class PetSitterWizard extends Component {
       [name]: checked
     });
   };
+
+  updatePosition = (position) => {
+    this.setState({
+      positionx: position.lat,
+      positiony: position.lng,
+    })
+  }
 
   handleFile = event => {
     const file = event.target.files[0]
@@ -189,6 +196,7 @@ class PetSitterWizard extends Component {
           />
           <PetSitterFeatures
           {...this.state}
+           onPositionChange={this.updatePosition}
            onChange={this.handleChange}
            onPosChange={this.handlePosChange}
            />

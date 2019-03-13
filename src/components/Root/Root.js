@@ -22,6 +22,7 @@ import Homepage from "../Homepage";
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
+import FormMap from "../FormMap/FormMap";
 
 
 class Root extends Component {
@@ -57,12 +58,17 @@ class Root extends Component {
            
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
+<<<<<<< HEAD
             <Route path="/my-pets" component={MyPets} />
+=======
+           
+>>>>>>> a4eb7acd68d2fe97a63be06fff985e37abc17f70
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
             <Route exact path="/users/:userId" component={IndividualProfile} />
             <Route exact path="/users" component={UserDashboard} />
+            <Route exact path="/formmap" component={FormMap} />
           </div>
         </div>
       </Router>
