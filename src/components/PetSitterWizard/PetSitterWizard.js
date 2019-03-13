@@ -41,7 +41,8 @@ class PetSitterWizard extends Component {
       visits,
       file,
       positionx,
-      positiony
+      positiony,
+      tmpFile
     } = this.state;
 
     const isValid =
@@ -55,7 +56,7 @@ class PetSitterWizard extends Component {
         .database()
         .ref("users")
         .child(userId)
-        .set({
+        .update({
           name,
           surname,
           age,
@@ -68,8 +69,11 @@ class PetSitterWizard extends Component {
           visits,
           positionx: isNaN(parseFloat(positionx)) ? 0 : parseFloat(positionx),
           positiony: isNaN(parseFloat(positiony)) ? 0 : parseFloat(positiony)
-        }).then(data => { this.setState({success: "Thank You"})})
-        .catch(error => this.setState({ error: error }));
+        })
+        .then(data => {
+          this.setState({ success: "Thank You" });
+        })
+        .catch(error => this.setState({ error }));
     } else {
       this.setState({ error: new Error("Please fill all the inputs!") });
     }
@@ -92,7 +96,7 @@ class PetSitterWizard extends Component {
               .set(url)
           )
         )
-        .catch(error => this.setState({ error: error }))
+        .catch(error => this.setState({ error }));
     } else {
       this.setState({
         error: new Error("Please upload Your photo!")
@@ -100,23 +104,77 @@ class PetSitterWizard extends Component {
     }
   };
 
-  handleChange = ({ name, value }) => {
+  handleChange = ({target: { name, value,  }}) => {
     this.setState({
       [name]: value
     });
   };
 
-  handleFile = file => {
+  handlePosChange = ({target: { name, checked  }}) => {
     this.setState({
-      file: file
+      [name]: checked
     });
   };
+
+  handleFile = event => {
+    const file = event.target.files[0]
+    this.setState({
+      file: file,
+      tmpFile: URL.createObjectURL(file)
+    });
+  };
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user !== null) {
+        firebase
+          .database()
+          .ref("users")
+          .child(user.uid)
+          .once("value", snapshot => {
+            console.log(snapshot.val());
+            const {
+              name,
+              surname,
+              age,
+              adress,
+              phone,
+              photo,
+              description,
+              schedule,
+              daycare,
+              housesitting,
+              visits,
+              positionx,
+              positiony,
+              
+            } = snapshot.val() || {};
+            this.setState({
+              name,
+              surname,
+              age,
+              adress,
+              file: photo,
+              phone,
+              description,
+              schedule,
+              daycare,
+              housesitting,
+              visits,
+              positionx,
+              positiony,
+              
+            });
+          });
+      }
+    });
+  }
 
   render() {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-        {this.state.success && <Redirect to="/users" />}
+          {this.state.success && <Redirect to="/users" />}
           <div className="Error">
             {this.state.error && (
               <Alert color="danger" style={{ color: "red" }}>
@@ -125,10 +183,15 @@ class PetSitterWizard extends Component {
             )}
           </div>
           <PetSitter
+            {...this.state}
             onChange={this.handleChange}
             onFileSelected={this.handleFile}
           />
-          <PetSitterFeatures onChange={this.handleChange} />
+          <PetSitterFeatures
+          {...this.state}
+           onChange={this.handleChange}
+           onPosChange={this.handlePosChange}
+           />
           <Button color="warning" type="submit">
             Submit
           </Button>
