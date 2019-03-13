@@ -1,25 +1,22 @@
- 
-   
 
 .Chat {
 
-background-image: url(../images/puppy.png);
- background-size: cover;
- height: 100vh;
+/* background-image: url(../images/puppy.png); */
+background-size: 50vh, cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+position: relative;
+background-position-y: 80%;
 }  
 
-
-
-
-
- .form input {
-    display: flex;
-    
-
-    
+a {
+    color: black;
+    text-decoration: none;
+    background-color: transparent; 
 }
 
-.logo img {
-    width: 100px;
-    margin-left: 30px;
+.Chat h1 {
+    background-color: #e2b42c;
+    border-radius: 8px 8px 0 0;
+    transition: background-color .4s;
 }
