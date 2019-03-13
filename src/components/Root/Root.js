@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList";
+import MyPets from "../MyPets";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
@@ -56,6 +57,7 @@ class Root extends Component {
            
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
+            <Route path="/my-pets" component={MyPets} />
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
