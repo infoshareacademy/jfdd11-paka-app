@@ -16,12 +16,13 @@ import PetsList from "../PetsList";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
-import MyProfile from "../MyProfile/MyProfile";
+
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import IconChat from "../IconChat/IconChat";
 import FormMap from "../FormMap/FormMap";
+
 
 class Root extends Component {
   state = {
@@ -55,12 +56,11 @@ class Root extends Component {
             <Route exact path="/sign-up" component={SignUp} />
            
             <Route path="/registerpet" component={PetOwnerWizard} />
-            <Route path="/mypets" component={PetsList} />
-            <Route path="/petsitter" component={PetSitterWizard} />
+            <Route path="/pets" component={PetsList} />
+            <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
             <Route exact path="/users/:userId" component={IndividualProfile} />
-            <Route path="/my-profile" component={MyProfile} />
             <Route exact path="/users" component={UserDashboard} />
             <Route exact path="/formmap" component={FormMap} />
           </div>
