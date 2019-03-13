@@ -99,16 +99,6 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Gender"
-                name="gender"
-                onChange={this.handleGender}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Input
-                className="inputSmall"
-                type="text"
                 placeholder=" Breed"
                 name="breed"
                 onChange={this.handleBreed}
