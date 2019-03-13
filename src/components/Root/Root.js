@@ -58,11 +58,7 @@ class Root extends Component {
            
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
-<<<<<<< HEAD
             <Route path="/my-pets" component={MyPets} />
-=======
-           
->>>>>>> a4eb7acd68d2fe97a63be06fff985e37abc17f70
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
