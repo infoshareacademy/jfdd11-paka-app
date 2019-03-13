@@ -61,16 +61,17 @@ class PetOwner extends Component {
     const { file } = this.state;
     return (
       <div className="PetOwnerPage">
-        Info about your dog
+        Info about your dog     
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Dog's name"
+                placeholder=" Dog's name *"
                 name="dogsname"
                 onChange={this.handleDogsname}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -79,9 +80,10 @@ class PetOwner extends Component {
                 type="number"
                 min="1"
                 max="25"
-                placeholder=" Age"
+                placeholder=" Age *"
                 name="age"
                 onChange={this.handleAge}
+                required
               />
             </FormGroup>
 
@@ -89,9 +91,10 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Gender"
+                placeholder=" Gender *"
                 name="gender"
                 onChange={this.handleGender}
+                required
               />
             </FormGroup>
 
@@ -99,20 +102,24 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Breed"
+                placeholder=" Breed *"
                 name="breed"
                 onChange={this.handleBreed}
+                required
               />
+              <p>* - required</p>
             </FormGroup>
+            
           </div>
           <div className="inputFile">
           <Card>
             <CardImg src={file} alt="" />
             <Input
               type="file"
-              name="file"
+              name="file" 
               id="exampleFile"
               onChange={this.handleFileSelected}
+              required
             />
           </Card>
           </div>

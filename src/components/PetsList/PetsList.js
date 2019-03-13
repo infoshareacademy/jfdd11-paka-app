@@ -72,7 +72,7 @@ class PetsList extends Component {
                   <CardTitle>Age: {pet.age}</CardTitle>
                   <CardTitle>Breed: {pet.breed}</CardTitle>
                   <CardTitle>Gender: {pet.gender}</CardTitle>
-                  <CardTitle>Description: {pet.description}</CardTitle>
+                  <CardTitle>Description: {pet.description ? pet.description : "unfilled"}</CardTitle>
                   <CardTitle>
                     Owner: {this.getOwnerById(pet.ownerId)}
                   </CardTitle>
