@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { CustomInput, Input, Col, Row } from "reactstrap";
 
 import "./PetSitterFeatures.css";
+import FormMap from "../FormMap/FormMap";
 
 class PetSitterFeatures extends Component {
   render() {
@@ -75,6 +76,9 @@ class PetSitterFeatures extends Component {
           />
           </Col>
           </Row>
+          <div>
+            <FormMap lat={positionx} lng={positiony} onClick={this.props.onPositionChange}/>
+          </div>
         </div>
       </div>
     );

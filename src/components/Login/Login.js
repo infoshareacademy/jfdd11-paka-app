@@ -3,6 +3,7 @@ import firebase from "firebase";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import "./Login.css";
+import { withAuth } from "../../context/AuthContext";
 
 class Login extends Component {
   state = {
@@ -42,6 +43,12 @@ class Login extends Component {
   };
 
   render() {
+    const { user }= this.props.authContext
+    if (user === null){
+      return(
+        <p>Hello beybe</p>
+      )
+    }
     return (
       <div
         className="login-wrapper"
@@ -100,4 +107,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default withAuth(withRouter(Login));

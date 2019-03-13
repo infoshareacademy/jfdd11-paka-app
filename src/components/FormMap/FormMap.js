@@ -7,8 +7,7 @@ import "./FormMap.css";
 
 class FormMap extends Component {
   state = {
-    lat: 54.424,
-    lng: 18.5956,
+   
     zoom: 13,
     users: null
   };
@@ -22,21 +21,19 @@ class FormMap extends Component {
   };
 
 
-  handleMapClick = (event) => {
+   handleMapClick = (event) => {
     const coords = event && event.latlng  
-    this.setState({
-      lat: coords.lat,
-      lng: coords.lng
-    })
+    
+    this.props.onClick(coords)
   }
 
   render() {
-   const { lat, lng } = this.state
+   const { lat, lng } = this.props
     return (
       <Map
         center={[lat, lng]}
         zoom={this.state.zoom}
-        style={{ width: "90vw", height: "90vh" }}
+        style={{ width: "90vw", height: "50vh" }}
         onClick={this.handleMapClick}
       >
         <TileLayer
@@ -46,7 +43,7 @@ class FormMap extends Component {
         
           <Marker
             //key={user.id}
-            position={[lat, lng]}
+            position={[lat, lng]} 
           />
       
       </Map>
