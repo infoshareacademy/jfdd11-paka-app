@@ -23,33 +23,33 @@ class PetSitterFeatures extends Component {
           <CustomInput
             type="switch"
             id="exampleCustomSwitch"
-            name="customSwitch"
-            onChange={onChange}
-            value={schedule}
+            name="schedule"
+            onChange={onPosChange}
+            checked={schedule}
           />
           <p>Dog walking</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch2"
-            name="customSwitch"
-            onChange={onChange}
-            value={daycare}
+            name="daycare"
+            onChange={onPosChange}
+            checked={daycare}
           />
           <p>Doggy day-care: daytime care in your dog-friendly home.</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch3"
-            name="customSwitch"
-            onChange={onChange}
-            value={housesitting}
+            name="housesitting"
+            onChange={onPosChange}
+            checked={housesitting}
           />
           <p>Daily or overnight house-sitting at the dog owner's place.</p>
           <CustomInput
             type="switch"
             id="exampleCustomSwitch4"
-            name="customSwitch"
-            onChange={onChange}
-            value={visits}
+            name="visits"
+            onChange={onPosChange}
+            checked={visits}
           />
           <p>
             Drop-in visits: for whenever the doggo needs a sitter to check in at
@@ -63,14 +63,14 @@ class PetSitterFeatures extends Component {
             id="positionX"
             name="positionx"
             placeholder="position X"
-            onPosChange={onPosChange}
+            onChange={onChange}
             value={positionx}
           />
           <Input
             id="positionY"
             name="positiony"
             placeholder="position Y"
-            onPosChange={onPosChange}
+            onChange={onChange}
             value={positiony}
           />
           </Col>

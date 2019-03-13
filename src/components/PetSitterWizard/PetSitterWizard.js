@@ -56,7 +56,7 @@ class PetSitterWizard extends Component {
         .database()
         .ref("users")
         .child(userId)
-        .set({
+        .update({
           name,
           surname,
           age,
