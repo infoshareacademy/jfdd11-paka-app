@@ -90,6 +90,10 @@ class PetOwnerWizard extends Component {
     this.setState({ breed });
   };
 
+  handleDescriptionChange = description => {
+    this.setState({description});
+  };
+
   render() {
     return (
       <div className="PetOwnerWizard">

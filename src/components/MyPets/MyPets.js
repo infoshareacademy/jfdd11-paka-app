@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import firebase from "firebase";
 import { Card, CardBody, CardTitle } from "reactstrap";
 
-import "./PetsList.css";
 
-class PetsList extends Component {
+import './MyPets.css'
+
+class MyPets extends Component {
   state = {
     pets: [],
     users: [],
@@ -18,8 +19,10 @@ class PetsList extends Component {
   };
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(currentpet => {
-      if (currentpet !== null) {
+    firebase.auth().onAuthStateChanged(currentUser => {
+      if (currentUser !== null) {
+        const userId = currentUser.uid
+        
         firebase
           .database()
           .ref(`pets`)
@@ -27,7 +30,7 @@ class PetsList extends Component {
           .then(snapshot => snapshot.val())
           .then(pets => {
             this.setState({
-              pets: Object.entries(pets || {}).map(([id, value]) => ({
+              pets: Object.entries(pets || {}).filter(([,{ ownerId}]) => ownerId === userId).map(([id, value]) => ({
                 id,
                 ...value
               }))
@@ -57,11 +60,13 @@ class PetsList extends Component {
     return (user && user.name ? user.name : "not registered")
   }
 
+
   render() {
+    
     return (
       <div
         style={{ display: "flex", flexDirection: "column" }}
-        className="PetsList"
+        className="mypets"
       >
         <div>
           <div>
@@ -89,8 +94,8 @@ class PetsList extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default PetsList;
+export default MyPets
