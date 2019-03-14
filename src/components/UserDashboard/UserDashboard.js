@@ -43,11 +43,12 @@ class UserDashboard extends Component {
     housesitting: false,
     schedule: false,
     visits: false,
+    hasDogs: true,
     name: "",
     surname: "",
     age: "",
     city: "",
-    pets: ''
+    pets: []
   };
 
   handleChange = event => {
@@ -102,13 +103,14 @@ class UserDashboard extends Component {
   
 
   render() {
-    const { users, housesitting, daycare, schedule, visits, pets } = this.state;
-    const isDayCare = daycare ? user => user.daycare : user => [...users];
+    const { users, housesitting, daycare, schedule, hasDogs, visits, pets } = this.state;
+    const isDayCare = daycare ? user => user.daycare : () => true;
     const isHouseSitting = housesitting
       ? user => user.housesitting
-      : user => [...users];
-    const isVisiting = visits ? user => user.visits : user => [...users];
-    const isWalking = schedule ? user => user.schedule : user => [...users];
+      : () => true;
+    const isVisiting = visits ? user => user.visits : () => true;
+    const isWalking = schedule ? user => user.schedule : () => true;
+    const hasDogsPredicate = hasDogs ? user => pets.some(pet => pet.ownerId === user.id) : () => true
     this.state.pets && console.log(this.state.pets)
 
     return (
@@ -180,6 +182,17 @@ class UserDashboard extends Component {
                     <Card>
                       <CardBody>
                         <Form>
+                        <FormGroup check inline>
+                            <Label check>
+                              <Input
+                                type="checkbox"
+                                id="hasDogs"
+                                checked={hasDogs}
+                                onChange={this.handleCheckboxChange}
+                              />{" "}
+                              <FontAwesomeIcon icon={faDog} /> Has dogs
+                            </Label>
+                          </FormGroup>
                           <FormGroup check inline>
                             <Label check>
                               <Input
@@ -253,6 +266,7 @@ class UserDashboard extends Component {
                   .filter(isHouseSitting)
                   .filter(isVisiting)
                   .filter(isWalking)
+                  .filter(hasDogsPredicate)
                   .map(user => (
                     <div key={user.id + Date.now()} style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
                       

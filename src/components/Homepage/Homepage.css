@@ -4,8 +4,9 @@
     flex-direction: column;
     background-image: url(../images/dog.jpg);
     background-position: bottom;
-     background-size: cover;
-     height: 100vh;
+    background-size: 499px;
+    height: 100%;
+    background-repeat: no-repeat;
 }
 .logo img {
     width: 40px;

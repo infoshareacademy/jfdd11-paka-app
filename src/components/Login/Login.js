@@ -66,9 +66,12 @@ class Login extends Component {
           {this.state.success && (
             <p style={{ color: "green" }}>{this.state.success}</p>
           )}
-          <Form
-            onSubmit={this.handleSubmit}
-          >
+         <Form onSubmit={this.handleSubmit}
+         style={{
+          display: "flex",
+          flexDirection: "column"
+          
+         }}>
           
             <FormGroup className="Login-login">
               <Input
