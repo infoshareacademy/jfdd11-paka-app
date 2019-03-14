@@ -62,7 +62,7 @@ class MyPets extends Component {
 
 
   render() {
-    console.log(this.state.pets)
+    
     if(!this.state.pets){
     return (
       
