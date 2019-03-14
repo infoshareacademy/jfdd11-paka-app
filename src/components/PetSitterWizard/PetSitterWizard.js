@@ -85,7 +85,7 @@ class PetSitterWizard extends Component {
       const storageRef = firebase.storage().ref();
       const ref = storageRef.child(`${userId}.jpg`);
       ref
-        .put(tmpFile)
+        .put(file)
         .then(data =>
           data.ref.getDownloadURL().then(url =>
             firebase
@@ -104,27 +104,27 @@ class PetSitterWizard extends Component {
     }
   };
 
-  handleChange = ({target: { name, value,  }}) => {
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value
     });
   };
 
-  handlePosChange = ({target: { name, checked  }}) => {
+  handlePosChange = ({ target: { name, checked } }) => {
     this.setState({
       [name]: checked
     });
   };
 
-  updatePosition = (position) => {
+  updatePosition = position => {
     this.setState({
       positionx: position.lat,
-      positiony: position.lng,
-    })
-  }
+      positiony: position.lng
+    });
+  };
 
   handleFile = event => {
-    const file = event.target.files[0]
+    const file = event.target.files[0];
     this.setState({
       file: file,
       tmpFile: URL.createObjectURL(file)
@@ -141,27 +141,26 @@ class PetSitterWizard extends Component {
           .once("value", snapshot => {
             console.log(snapshot.val());
             const {
-              name,
-              surname,
-              age,
-              adress,
-              phone,
+              name = "",
+              surname = "",
+              age = "",
+              adress = "",
+              phone = "",
               photo,
-              description,
-              schedule,
-              daycare,
-              housesitting,
-              visits,
+              description = "",
+              daycare = false,
+              schedule = false,
+              housesitting = false,
+              visits = false,
               positionx,
-              positiony,
-              
+              positiony
             } = snapshot.val() || {};
             this.setState({
               name,
               surname,
               age,
               adress,
-              file: photo,
+              file: photo,              
               phone,
               description,
               schedule,
@@ -169,8 +168,7 @@ class PetSitterWizard extends Component {
               housesitting,
               visits,
               positionx,
-              positiony,
-              
+              positiony
             });
           });
       }
@@ -195,11 +193,11 @@ class PetSitterWizard extends Component {
             onFileSelected={this.handleFile}
           />
           <PetSitterFeatures
-          {...this.state}
-           onPositionChange={this.updatePosition}
-           onChange={this.handleChange}
-           onPosChange={this.handlePosChange}
-           />
+            {...this.state}
+            onPositionChange={this.updatePosition}
+            onChange={this.handleChange}
+            onPosChange={this.handlePosChange}
+          />
           <Button color="warning" type="submit">
             Submit
           </Button>

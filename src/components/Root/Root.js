@@ -7,12 +7,20 @@ import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
+<<<<<<< HEAD
+=======
+import "bootstrap/dist/css/bootstrap.min.css";
+>>>>>>> bd874cb0b9326b38a8db97cdad6bc96be3e0f124
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList";
+import MyPets from "../MyPets";
 import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.min.css'
+=======
+>>>>>>> bd874cb0b9326b38a8db97cdad6bc96be3e0f124
 import IconChat from "../IconChat/IconChat";
 import FormMap from "../FormMap/FormMap";
 
@@ -49,6 +57,10 @@ class Root extends Component {
             <Route exact path="/sign-up" component={SignUp} />
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
+<<<<<<< HEAD
+=======
+            <Route path="/my-pets" component={MyPets} />
+>>>>>>> bd874cb0b9326b38a8db97cdad6bc96be3e0f124
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
