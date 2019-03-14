@@ -96,8 +96,6 @@ class PetOwnerWizard extends Component {
             onGenderChange={this.handleGender}
             onAgeChange={this.handleAge}
             onDogsnameChange={this.handleDogsname}
-            onSurnameChange={this.handleSurnameChange}
-            onNameChange={this.handleNameChange}
             onFileSelected={this.handleFileSelected}
           />
           
