@@ -16,16 +16,6 @@ const initialState = {
 class PetOwner extends Component {
   state = initialState;
 
-  handleName = event => {
-    const { onNameChange } = this.props;
-    onNameChange && onNameChange(event.target.value);
-  };
-
-  handleSurname = event => {
-    const { onSurnameChange } = this.props;
-    onSurnameChange && onSurnameChange(event.target.value);
-  };
-
   handleDogsname = event => {
     const { onDogsnameChange } = this.props;
     onDogsnameChange && onDogsnameChange(event.target.value);

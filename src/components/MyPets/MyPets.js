@@ -62,8 +62,10 @@ class MyPets extends Component {
 
 
   render() {
-    
+    console.log(this.state.pets)
+    if(!this.state.pets){
     return (
+      
       <div
         style={{ display: "flex", flexDirection: "column" }}
         className="mypets"
@@ -94,7 +96,10 @@ class MyPets extends Component {
           </div>
         </div>
       </div>
-    )
+    )}
+     else{
+       return <h2>You need to register your dog first. Go to Register-Pet in navbar menu.</h2>
+     }         
   }
 }
 
