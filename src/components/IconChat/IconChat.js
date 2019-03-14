@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import paw from "../images/paw.png";
 import Chat from "../Chat";
 import { Button } from "reactstrap";
 

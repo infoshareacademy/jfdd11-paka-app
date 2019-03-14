@@ -20,11 +20,16 @@
   width: 50vw;
 }
 
+.inputFile{
+    width: 100%;
+    height: 100px;  
+}
+
 .inputWraper+p{
     margin-top: 16px;
     margin-bottom: -2px;
 }
-
+/*
 .inputSmall{
     display: block;
     margin-bottom: 6px;
@@ -38,12 +43,4 @@
     border-radius: 5px;
     border: 1px solid #f78d4c;
 }
-
-.submit{
-    width: 88vw;
-    border-radius: 40px;
-    font-size: 1.4rem;
-    padding: 20px;
-    background-color: #f78d4c;
-    color: white;
-}
+*/

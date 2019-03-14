@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 import "./PetOwnerWizard.css";
 import PetOwner from "../PetOwner";
-import PetOwnerFeatures from "../PetOwnerFeatures";
-
+import { Button } from "reactstrap";
 import firebase from "firebase";
 
 class PetOwnerWizard extends Component {
@@ -13,12 +12,7 @@ class PetOwnerWizard extends Component {
     gender: "",
     breed: "",
     description: "",
-    dogWalking: false,
-    dayCare: false,
-    dayNightCare: false,
-    dropIn: false,
-    positionx: "",
-    positiony: ""
+    
   };
 
   handleSubmit = event => {
@@ -29,12 +23,7 @@ class PetOwnerWizard extends Component {
       gender,
       breed,
       description,
-      dogWalking,
-      dayCare,
-      dayNightCare,
-      dropIn,
-      positionx,
-      positiony,
+     
       file
     } = this.state;
 
@@ -55,17 +44,12 @@ class PetOwnerWizard extends Component {
         age,
         gender,
         breed,
-        description,
-        dogWalking,
-        dayCare,
-        dayNightCare,
-        dropIn,
-        positionx: parseFloat(positionx) || 0,
-        positiony: parseFloat(positiony) || 0
+        description
+       
       });
 
     const storageRef = firebase.storage().ref();
-    const ref = storageRef.child(`${userId}.jpg`);
+    const ref = storageRef.child(`${petId}.jpg`);
     ref.put(file).then(data =>
       data.ref.getDownloadURL().then(url =>
         firebase
@@ -106,34 +90,6 @@ class PetOwnerWizard extends Component {
     this.setState({ breed });
   };
 
-  handleDescriptionChange = description => {
-    this.setState({ description });
-  };
-
-  handleDogWalking = dogWalking => {
-    this.setState({ dogWalking });
-  };
-
-  handleDayCare = dayCare => {
-    this.setState({ dayCare });
-  };
-
-  handleDayNightCare = dayNightCare => {
-    this.setState({ dayNightCare });
-  };
-
-  handleDropIn = dropIn => {
-    this.setState({ dropIn });
-  };
-
-  handlePositionXChange = positionx => {
-    this.setState({ positionx });
-  };
-
-  handlePositionYChange = positiony => {
-    this.setState({ positiony });
-  };
-
   render() {
     return (
       <div className="PetOwnerWizard">
@@ -148,17 +104,10 @@ class PetOwnerWizard extends Component {
             onNameChange={this.handleNameChange}
             onFileSelected={this.handleFileSelected}
           />
-          <PetOwnerFeatures
-            onDogWalking={this.handleDogWalking}
-            onDayCare={this.handleDayCare}
-            onDayNightCare={this.handleDayNightCare}
-            onDropIn={this.handleDropIn}
-            onPositionXChange={this.handlePositionXChange}
-            onPositionYChange={this.handlePositionYChange}
-          />
-          <button className="submit" type="submit">
+          
+          <Button type="submit">
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

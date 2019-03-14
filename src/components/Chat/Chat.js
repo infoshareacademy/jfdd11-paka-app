@@ -89,7 +89,7 @@ class Chat extends Component {
         <h1>Chat</h1>
         <Auth cover={() => <p>Chat is only for logged in users.</p>}>
           <form onSubmit={this.handleSubmit}>
-            <Input className='input'
+            <Input className='input' placeholder="Chat with fellow dog-lovers"
               value={this.state.message}
               onChange={this.handleMessageChange}
             />
@@ -106,7 +106,7 @@ class Chat extends Component {
                >
                 <strong
                   style={{
-                    color: "red",
+                    color: "black",
                     fontSize: "25px",
                     marginRight: "10px",
                     width: "60vw"
@@ -124,7 +124,7 @@ class Chat extends Component {
                 </Link>
                   
                 </strong>
-                 <p style={{ fontSize: "8px" }}>
+                 <p style={{ fontSize: "10px" }}>
                 {moment(message.createdAt).fromNow()}
               </p>
               
