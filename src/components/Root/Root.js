@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Login from "../Login";
 import MyMap from "../MyMap";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignUp from '../SignUp';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import SignUp from "../SignUp";
 
-import UserDashboard from '../UserDashboard';
-import NavigationBar from '../NavigationBar'
-import firebase from 'firebase'
-import IndividualProfile from '../IndividualProfile'
+import UserDashboard from "../UserDashboard";
+import NavigationBar from "../NavigationBar";
+import firebase from "firebase";
+import IndividualProfile from "../IndividualProfile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,12 +17,9 @@ import PetOwnerWizard from "../PetOwnerWizard";
 import Chat from "../Chat";
 import Homepage from "../Homepage";
 
-
-
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import IconChat from "../IconChat/IconChat";
 import FormMap from "../FormMap/FormMap";
-
 
 class Root extends Component {
   state = {
@@ -54,14 +51,20 @@ class Root extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
-           
+
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
-           
+
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
-            <Route exact path="/users/:userId" component={IndividualProfile} />
+            <Route
+              exact
+              path="/users/:userId"
+              component={props => (
+                <IndividualProfile {...props} key={props.match.params.userId} />
+              )}
+            />
             <Route exact path="/users" component={UserDashboard} />
             <Route exact path="/formmap" component={FormMap} />
           </div>

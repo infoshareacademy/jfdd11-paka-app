@@ -131,7 +131,7 @@ class Chat extends Component {
               </div >
 
              
-              <p style={{ background: "yellow" }}>{message.content}</p>
+              <p style={{ background: "#f1f3f5", borderRadius: "8px 8px 8px 8px" }}>{message.content}</p>
             </div>
           ))}
         </div>
