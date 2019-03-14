@@ -85,7 +85,7 @@ class MyPets extends Component {
                 <div style={{ textAlign: "center" }}>
                   <img
                     src={pet.photo}
-                    alt="Soon i will add my dog's photo:)"
+                    alt="My dog"
                     style={{ width: "100%" }}
                   />
                 </div>

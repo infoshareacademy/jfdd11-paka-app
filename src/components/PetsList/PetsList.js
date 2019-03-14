@@ -4,8 +4,8 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 
 import "./PetsList.css";
 
-import { NavItem, NavLink } from "reactstrap";
-import { withRouter, NavLink as RNavLink} from "react-router-dom";
+import { NavLink } from "reactstrap";
+import { NavLink as RNavLink} from "react-router-dom";
 class PetsList extends Component {
   state = {
     pets: [],
@@ -98,7 +98,7 @@ class PetsList extends Component {
                 <div style={{ textAlign: "center" }}>
                   <img
                     src={pet.photo}
-                    alt="Soon i will add my dog's photo:)"
+                    alt="My dog"
                     style={{ width: "100%" }}
                   />
                 </div>
