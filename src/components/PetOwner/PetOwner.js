@@ -61,7 +61,7 @@ class PetOwner extends Component {
     const { file } = this.state;
     return (
       <div className="PetOwnerPage">
-        Info about your dog     
+        <h1>Info about your dog</h1>     
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
