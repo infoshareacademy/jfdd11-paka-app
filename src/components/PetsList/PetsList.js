@@ -4,6 +4,8 @@ import { Card, CardBody, CardTitle } from "reactstrap";
 
 import "./PetsList.css";
 
+import { NavItem, NavLink } from "reactstrap";
+import { withRouter, NavLink as RNavLink} from "react-router-dom";
 class PetsList extends Component {
   state = {
     pets: [],
@@ -57,6 +59,12 @@ class PetsList extends Component {
     return (user && user.name ? user.name : "not registered")
   }
 
+  getOwnerByAdress = (ownerId) => {
+   
+    const user = this.state.users.find(user=>user.id ===ownerId)
+    return (user && user.adress ? user.adress : "not filled")
+  }
+
   render() {
     return (
       <div
@@ -73,9 +81,19 @@ class PetsList extends Component {
                   <CardTitle>Breed: {pet.breed}</CardTitle>
                   <CardTitle>Gender: {pet.gender}</CardTitle>
                   <CardTitle>Description: {pet.description ? pet.description : "unfilled"}</CardTitle>
-                  <CardTitle>
-                    Owner: {this.getOwnerById(pet.ownerId)}
-                  </CardTitle>
+                    { this.getOwnerById(pet.ownerId) !== "not registered"?
+                      <CardTitle>
+                        Owner:
+                        <NavLink to={`/users/${pet.ownerId}`} tag={RNavLink} style={{display:'inline-block', color: "blue"}}>
+                          {this.getOwnerById(pet.ownerId)}
+                        </NavLink>
+                      </CardTitle>
+                      : 
+                      <CardTitle>
+                          Owner: {this.getOwnerById(pet.ownerId)}
+                      </CardTitle>
+                    }
+                  <CardTitle>Adress: {this.getOwnerByAdress(pet.ownerId)}</CardTitle>
                 </CardBody>
                 <div style={{ textAlign: "center" }}>
                   <img
