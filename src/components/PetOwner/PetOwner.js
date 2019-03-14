@@ -101,17 +101,18 @@ class PetOwner extends Component {
             </FormGroup>
             
           </div>
-          <div className="inputFile">
-          <Card>
-            <CardImg src={file} alt="" />
-            <Input
-              type="file"
-              name="file" 
-              id="exampleFile"
-              onChange={this.handleFileSelected}
-              required
-            />
-          </Card>
+          <div style={{marginLeft: '10px' }}>
+            <Card style={{borderRadius: '5px'}}>
+              
+              <CardImg src={file} alt="" />
+              <Input className="inputFile"
+                type="file"
+                name="file" 
+                id="exampleFile"
+                onChange={this.handleFileSelected}
+                required
+              />
+            </Card>
           </div>
         </div>
         <p>Short description of your dog:</p>
