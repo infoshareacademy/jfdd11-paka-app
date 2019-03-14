@@ -77,7 +77,7 @@ class PetSitterFeatures extends Component {
           </Col>
           </Row>
           <div>
-            <FormMap lat={positionx} lng={positiony} onClick={this.props.onPositionChange}/>
+            <FormMap lat={positionx || "" } lng={positiony || ""} onClick={this.props.onPositionChange}/>
           </div>
         </div>
       </div>

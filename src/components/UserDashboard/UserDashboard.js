@@ -3,6 +3,7 @@ import firebase from "firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
+  faEye,
   faHome,
   faCouch,
   faWalking,
@@ -45,7 +46,8 @@ class UserDashboard extends Component {
     name: "",
     surname: "",
     age: "",
-    city: ""
+    city: "",
+    pets: ''
   };
 
   handleChange = event => {
@@ -83,16 +85,31 @@ class UserDashboard extends Component {
           });
       }
     });
+    firebase
+    .database()
+    .ref(`pets`)
+    .once("value")
+    .then(snapshot => snapshot.val())
+    .then(pets => {
+      if (pets === null) {
+        return;
+      }
+      this.setState({
+        pets: Object.entries(pets || {}).map(([id, value]) => ({ id, ...value }))
+      });
+    });
   }
+  
 
   render() {
-    const { users, housesitting, daycare, schedule, visits } = this.state;
+    const { users, housesitting, daycare, schedule, visits, pets } = this.state;
     const isDayCare = daycare ? user => user.daycare : user => [...users];
     const isHouseSitting = housesitting
       ? user => user.housesitting
       : user => [...users];
     const isVisiting = visits ? user => user.visits : user => [...users];
     const isWalking = schedule ? user => user.schedule : user => [...users];
+    this.state.pets && console.log(this.state.pets)
 
     return (
       <div
@@ -208,7 +225,7 @@ class UserDashboard extends Component {
                                 checked={visits}
                                 onChange={this.handleCheckboxChange}
                               />{" "}
-                              <FontAwesomeIcon icon={faDog} /> Drop-in visits
+                              <FontAwesomeIcon icon={faEye} /> Drop-in visits
                             </Label>
                           </FormGroup>
                         </Form>
@@ -217,13 +234,6 @@ class UserDashboard extends Component {
                   </UncontrolledCollapse>
                 </div>
               </Card>
-              {/* </Col> */}
-              {/* </Row> */}
-              {/* <Row>
-              <Col sm="12">
-                <h4> </h4>
-              </Col>
-            </Row> */}
               <div>
                 {this.state.users
                   .map(user => ({
@@ -290,6 +300,13 @@ class UserDashboard extends Component {
                           </div>
                           <div>
                             {user.visits ? (
+                              <FontAwesomeIcon icon={faEye} />
+                            ) : (
+                              false
+                            )}
+                          </div>
+                          <div>
+                            {pets.some(pet => pet.ownerId === user.id) ? (
                               <FontAwesomeIcon icon={faDog} />
                             ) : (
                               false

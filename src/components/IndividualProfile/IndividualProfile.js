@@ -273,13 +273,13 @@ class IndividualProfile extends Component {
               />
             </div>
 
-            {userId === currentUserId && (
+            {/* {userId === currentUserId && (
               <Button onClick={() => this.handleEditing()}>
                 Edit My Profile
               </Button>
-            )}
+            )} */}
 
-            {/* <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button> */}
+            <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
           </div>
         </div>
       </div>
