@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import firebase from "firebase";
 import { Card, CardBody, CardTitle } from "reactstrap";
 
-import "./PetsList.css";
 
-import { NavLink } from "reactstrap";
-import { NavLink as RNavLink} from "react-router-dom";
-class PetsList extends Component {
+import './MyPets.css'
+
+class MyPets extends Component {
   state = {
     pets: [],
     users: [],
@@ -20,8 +19,10 @@ class PetsList extends Component {
   };
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(currentpet => {
-      if (currentpet !== null) {
+    firebase.auth().onAuthStateChanged(currentUser => {
+      if (currentUser !== null) {
+        const userId = currentUser.uid
+        
         firebase
           .database()
           .ref(`pets`)
@@ -29,7 +30,7 @@ class PetsList extends Component {
           .then(snapshot => snapshot.val())
           .then(pets => {
             this.setState({
-              pets: Object.entries(pets || {}).map(([id, value]) => ({
+              pets: Object.entries(pets || {}).filter(([,{ ownerId}]) => ownerId === userId).map(([id, value]) => ({
                 id,
                 ...value
               }))
@@ -59,17 +60,15 @@ class PetsList extends Component {
     return (user && user.name ? user.name : "not registered")
   }
 
-  getOwnerByAdress = (ownerId) => {
-   
-    const user = this.state.users.find(user=>user.id ===ownerId)
-    return (user && user.adress ? user.adress : "not filled")
-  }
 
   render() {
+    
+    if(!this.state.pets){
     return (
+      
       <div
         style={{ display: "flex", flexDirection: "column" }}
-        className="PetsList"
+        className="mypets"
       >
         <div>
           <div>
@@ -81,19 +80,9 @@ class PetsList extends Component {
                   <CardTitle>Breed: {pet.breed}</CardTitle>
                   <CardTitle>Gender: {pet.gender}</CardTitle>
                   <CardTitle>Description: {pet.description ? pet.description : "unfilled"}</CardTitle>
-                    { this.getOwnerById(pet.ownerId) !== "not registered"?
-                      <CardTitle>
-                        Owner:
-                        <NavLink to={`/users/${pet.ownerId}`} tag={RNavLink} style={{display:'inline-block', color: "blue"}}>
-                          {this.getOwnerById(pet.ownerId)}
-                        </NavLink>
-                      </CardTitle>
-                      : 
-                      <CardTitle>
-                          Owner: {this.getOwnerById(pet.ownerId)}
-                      </CardTitle>
-                    }
-                  <CardTitle>Adress: {this.getOwnerByAdress(pet.ownerId)}</CardTitle>
+                  <CardTitle>
+                    Owner: {this.getOwnerById(pet.ownerId)}
+                  </CardTitle>
                 </CardBody>
                 <div style={{ textAlign: "center" }}>
                   <img
@@ -107,8 +96,11 @@ class PetsList extends Component {
           </div>
         </div>
       </div>
-    );
+    )}
+     else{
+       return <h2>You need to register your dog first. Go to Register-Pet in navbar menu.</h2>
+     }         
   }
 }
 
-export default PetsList;
+export default MyPets

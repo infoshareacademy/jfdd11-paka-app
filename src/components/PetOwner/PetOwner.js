@@ -16,16 +16,6 @@ const initialState = {
 class PetOwner extends Component {
   state = initialState;
 
-  handleName = event => {
-    const { onNameChange } = this.props;
-    onNameChange && onNameChange(event.target.value);
-  };
-
-  handleSurname = event => {
-    const { onSurnameChange } = this.props;
-    onSurnameChange && onSurnameChange(event.target.value);
-  };
-
   handleDogsname = event => {
     const { onDogsnameChange } = this.props;
     onDogsnameChange && onDogsnameChange(event.target.value);
@@ -61,16 +51,17 @@ class PetOwner extends Component {
     const { file } = this.state;
     return (
       <div className="PetOwnerPage">
-        Info about your dog
+        <h1>Info about your dog</h1>     
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Dog's name"
+                placeholder=" Dog's name *"
                 name="dogsname"
                 onChange={this.handleDogsname}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -79,9 +70,10 @@ class PetOwner extends Component {
                 type="number"
                 min="1"
                 max="25"
-                placeholder=" Age"
+                placeholder=" Age *"
                 name="age"
                 onChange={this.handleAge}
+                required
               />
             </FormGroup>
 
@@ -89,9 +81,10 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Gender"
+                placeholder=" Gender *"
                 name="gender"
                 onChange={this.handleGender}
+                required
               />
             </FormGroup>
 
@@ -99,32 +92,27 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Gender"
-                name="gender"
-                onChange={this.handleGender}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Input
-                className="inputSmall"
-                type="text"
-                placeholder=" Breed"
+                placeholder=" Breed *"
                 name="breed"
                 onChange={this.handleBreed}
+                required
               />
+              <p>* - required</p>
             </FormGroup>
+            
           </div>
-          <div className="inputFile">
-          <Card>
-            <CardImg src={file} alt="" />
-            <Input
-              type="file"
-              name="file"
-              id="exampleFile"
-              onChange={this.handleFileSelected}
-            />
-          </Card>
+          <div style={{marginLeft: '10px' }}>
+            <Card style={{borderRadius: '5px'}}>
+              
+              <CardImg src={file} alt="" />
+              <Input className="inputFile"
+                type="file"
+                name="file" 
+                id="exampleFile"
+                onChange={this.handleFileSelected}
+                required
+              />
+            </Card>
           </div>
         </div>
         <p>Short description of your dog:</p>

@@ -10,8 +10,6 @@ class PetSitter extends Component {
     const { file, tmpFile, name, surname, age, adress, phone, description, onChange, onFileSelected } = this.props;
     return (
       <div className="PetSitter">
-        <h1>PetSitter</h1>
-
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
