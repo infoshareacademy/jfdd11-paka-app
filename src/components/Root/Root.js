@@ -7,7 +7,6 @@ import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
-import "bootstrap/dist/css/bootstrap.min.css";
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList";
 import MyPets from "../MyPets";
