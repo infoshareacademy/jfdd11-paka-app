@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+
 import { Redirect } from "react-router-dom";
+
 import { Button, Alert } from "reactstrap";
+
 import "./PetSitterWizard.css";
+
 import PetSitterFeatures from "../PetSitterFeatures";
+
 import PetSitter from "../PetSitter";
+
 import firebase from "firebase";
+
 import { Form } from "reactstrap";
 
 class PetSitterWizard extends Component {
