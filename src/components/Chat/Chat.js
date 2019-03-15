@@ -99,11 +99,8 @@ class Chat extends Component {
         <div className='chat' >
           {messagesArray.map(message => (
             <div style={{}} key={message.id}>
-              <div 
-              // onClick={() => {
-              //   this.props.history.push("myprofile/user.id")
-              // } }
-               >
+              <div >
+        
                 <strong
                   style={{
                     color: "black",
