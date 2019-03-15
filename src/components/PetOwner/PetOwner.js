@@ -51,7 +51,7 @@ class PetOwner extends Component {
     const { file } = this.state;
     return (
       <div className="PetOwnerPage">
-        <h1>Info about your dog</h1>     
+        <h4>Info about your dog:</h4>     
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
@@ -97,7 +97,7 @@ class PetOwner extends Component {
                 onChange={this.handleBreed}
                 required
               />
-              <p>* - required</p>
+              <h6>* - required</h6>
             </FormGroup>
             
           </div>
@@ -115,8 +115,17 @@ class PetOwner extends Component {
             </Card>
           </div>
         </div>
-        <p>Short description of your dog:</p>
-        <textarea rows="4" onChange={this.handleDescriptionChange} />
+        <h4>Short description of your dog:</h4>
+        <FormGroup>
+          <Input
+            type="textarea"
+            rows="4"
+            name="description"
+            onChange={this.handleDescriptionChange}
+            
+          />
+        </FormGroup>
+       
       </div>
     );
   }
