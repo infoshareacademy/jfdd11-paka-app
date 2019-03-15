@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./PetSitter.css";
 
 import { Input, FormGroup, CardImg, Card } from "reactstrap";
-import { FormMap } from "../FormMap/FormMap"
+
 
 class PetSitter extends Component {
   render() {
