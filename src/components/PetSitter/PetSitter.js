@@ -3,11 +3,21 @@ import React, { Component } from "react";
 import "./PetSitter.css";
 
 import { Input, FormGroup, CardImg, Card } from "reactstrap";
-import { FormMap } from "../FormMap/FormMap"
 
 class PetSitter extends Component {
   render() {
-    const { file, tmpFile, name, surname, age, adress, phone, description, onChange, onFileSelected } = this.props;
+    const {
+      file,
+      tmpFile,
+      name,
+      surname,
+      age,
+      adress,
+      phone,
+      description,
+      onChange,
+      onFileSelected
+    } = this.props;
     return (
       <div className="PetSitter">
         <div className="inputWraper">
@@ -24,7 +34,6 @@ class PetSitter extends Component {
 
             <FormGroup>
               <Input
-                
                 type="text"
                 placeholder="Surname"
                 name="surname"
@@ -35,7 +44,6 @@ class PetSitter extends Component {
 
             <FormGroup>
               <Input
-                
                 type="text"
                 placeholder="Age"
                 name="age"
@@ -46,7 +54,6 @@ class PetSitter extends Component {
 
             <FormGroup>
               <Input
-               
                 type="text"
                 placeholder="Phone Number"
                 name="phone"
@@ -57,7 +64,6 @@ class PetSitter extends Component {
 
             <FormGroup>
               <Input
-                
                 type="text"
                 placeholder="Adress"
                 name="adress"
@@ -86,7 +92,6 @@ class PetSitter extends Component {
             value={description}
           />
         </FormGroup>
-       
       </div>
     );
   }

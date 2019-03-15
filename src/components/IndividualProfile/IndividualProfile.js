@@ -128,6 +128,7 @@ class IndividualProfile extends Component {
     const userId = this.props.match.params.userId;
 
     const { pets } = this.state;
+    console.log(this.state.pets, userId)
     return (
       <div className="IndividualProfile">
         <br />
