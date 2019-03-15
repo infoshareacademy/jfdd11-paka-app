@@ -48,7 +48,7 @@ class UserDashboard extends Component {
     surname: "",
     age: "",
     city: "",
-    phone: '',
+    phone: "",
     pets: []
   };
 
@@ -88,31 +88,43 @@ class UserDashboard extends Component {
       }
     });
     firebase
-    .database()
-    .ref(`pets`)
-    .once("value")
-    .then(snapshot => snapshot.val())
-    .then(pets => {
-      if (pets === null) {
-        return;
-      }
-      this.setState({
-        pets: Object.entries(pets || {}).map(([id, value]) => ({ id, ...value }))
+      .database()
+      .ref(`pets`)
+      .once("value")
+      .then(snapshot => snapshot.val())
+      .then(pets => {
+        if (pets === null) {
+          return;
+        }
+        this.setState({
+          pets: Object.entries(pets || {}).map(([id, value]) => ({
+            id,
+            ...value
+          }))
+        });
       });
-    });
   }
-  
 
   render() {
-    const { users, housesitting, daycare, schedule, hasDogs, visits, pets } = this.state;
+    const {
+      users,
+      housesitting,
+      daycare,
+      schedule,
+      hasDogs,
+      visits,
+      pets
+    } = this.state;
     const isDayCare = daycare ? user => user.daycare : () => true;
     const isHouseSitting = housesitting
       ? user => user.housesitting
       : () => true;
     const isVisiting = visits ? user => user.visits : () => true;
     const isWalking = schedule ? user => user.schedule : () => true;
-    const hasDogsPredicate = hasDogs ? user => pets.some(pet => pet.ownerId === user.id) : () => true
-    this.state.pets && console.log(this.state.pets)
+    const hasDogsPredicate = hasDogs
+      ? user => pets.some(pet => pet.ownerId === user.id)
+      : () => true;
+    this.state.pets && console.log(this.state.pets);
 
     return (
       <div
@@ -126,13 +138,15 @@ class UserDashboard extends Component {
         className="UserDashboard
       "
       >
-        <div className='UserDashboard'
+        <div
+          className="UserDashboard"
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            paddingBottom: "150"
           }}
         >
           <Nav tabs>
@@ -183,7 +197,7 @@ class UserDashboard extends Component {
                     <Card>
                       <CardBody>
                         <Form>
-                        <FormGroup check inline>
+                          <FormGroup check inline>
                             <Label check>
                               <Input
                                 type="checkbox"
@@ -269,71 +283,87 @@ class UserDashboard extends Component {
                   .filter(isWalking)
                   .filter(hasDogsPredicate)
                   .map(user => (
-                    <div key={user.id + Date.now()} style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
-                      
-                        <h5>
-                          {user.name} {user.surname}
-                        </h5>
-                        <div
-                          style={{ textAlign: "center", paddingBottom: "20px" }}
+                    <div
+                      className="userContainer"
+                      key={user.id + Date.now()}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        padding: 20,
+                        boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)",
+                        margin: "20px 0"
+                      }}
+                    >
+                      <h3>
+                        {user.name} {user.surname}
+                      </h3>
+                      <div
+                        style={{ textAlign: "center", paddingBottom: "20px" }}
+                      >
+                        <Link
+                          to={`/users/${user.id}`}
+                          style={{ textAlign: "center" }}
                         >
                           <img
                             src={user.photo}
                             alt="user"
-                            style={{ width: "100%" }}
+                            style={{ maxWidth: "100%", maxHeight: 100 }}
                           />
+                        </Link>
+                      </div>
+                      <div>
+                        {user.adress}
+                        {", "}
+                        {user.age}
+                      </div>
+                      <div
+                        className="iconsContainer"
+                        style={{ display: "flex" }}
+                      >
+                        <div>
+                          {user.housesitting ? (
+                            <FontAwesomeIcon icon={faHome} />
+                          ) : (
+                            false
+                          )}
                         </div>
                         <div>
-                          {user.adress}
-                          {", "}
-                          {user.age}
+                          {user.daycare ? (
+                            <FontAwesomeIcon icon={faCouch} />
+                          ) : (
+                            false
+                          )}
                         </div>
-                        <div
-                          className="iconsContainer"
-                          style={{ display: "flex" }}
-                        >
-                          <div>
-                            {user.housesitting ? (
-                              <FontAwesomeIcon icon={faHome} />
-                            ) : (
-                              false
-                            )}
-                          </div>
-                          <div>
-                            {user.daycare ? (
-                              <FontAwesomeIcon icon={faCouch} />
-                            ) : (
-                              false
-                            )}
-                          </div>
-                          <div>
-                            {user.schedule ? (
-                              <FontAwesomeIcon icon={faWalking} />
-                            ) : (
-                              false
-                            )}
-                          </div>
-                          <div>
-                            {user.visits ? (
-                              <FontAwesomeIcon icon={faEye} />
-                            ) : (
-                              false
-                            )}
-                          </div>
-                          <div>
-                            {pets.some(pet => pet.ownerId === user.id) ? (
-                              <FontAwesomeIcon icon={faDog} />
-                            ) : (
-                              false
-                            )}
-                          </div>
+                        <div>
+                          {user.schedule ? (
+                            <FontAwesomeIcon icon={faWalking} />
+                          ) : (
+                            false
+                          )}
                         </div>
-            
-                        <Link to={`/users/${user.id}`}>
-                          {" "}
-                          See Full Profile of {user.name}
-                        </Link>
-                       
+                        <div>
+                          {user.visits ? (
+                            <FontAwesomeIcon icon={faEye} />
+                          ) : (
+                            false
+                          )}
+                        </div>
+                        <div>
+                          {pets.some(pet => pet.ownerId === user.id) ? (
+                            <FontAwesomeIcon icon={faDog} />
+                          ) : (
+                            false
+                          )}
+                        </div>
+                      </div>
+
+                      <Link
+                        to={`/users/${user.id}`}
+                        style={{ textAlign: "center" }}
+                      >
+                        See Full Profile of {user.name}
+                      </Link>
                     </div>
                   ))}
               </div>
