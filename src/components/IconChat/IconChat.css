@@ -34,12 +34,8 @@
     bottom: 0;
     height: 50vh;
     border: 1px solid #e2b42c;
-    
     width: 98vw;
     background-color:white; 
-    background-image: url(../images/puppy.png);
-    background-size: 50vh, cover;
-    background-repeat: no-repeat;
     border-radius: 10px 10px 0 0;
    
 

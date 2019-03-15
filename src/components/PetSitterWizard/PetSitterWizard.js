@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+
 import { Redirect } from "react-router-dom";
+
 import { Button, Alert } from "reactstrap";
+
 import "./PetSitterWizard.css";
+
 import PetSitterFeatures from "../PetSitterFeatures";
+
 import PetSitter from "../PetSitter";
+
 import firebase from "firebase";
+
 import { Form } from "reactstrap";
 
 class PetSitterWizard extends Component {
@@ -156,6 +163,7 @@ class PetSitterWizard extends Component {
               positiony
             } = snapshot.val() || {};
             this.setState({
+              redirectTo: snapshot.val() === null ? '/users' : `/users/${user.uid}`,
               name,
               surname,
               age,
@@ -179,7 +187,7 @@ class PetSitterWizard extends Component {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-          {this.state.success && <Redirect to="/users" />}
+          {this.state.success && <Redirect to={this.state.redirectTo} />}
           <div className="Error">
             {this.state.error && (
               <Alert color="danger" style={{ color: "red" }}>

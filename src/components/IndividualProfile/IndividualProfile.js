@@ -76,7 +76,7 @@ class IndividualProfile extends Component {
   render() {
     const userId = this.props.match.params.userId;
     const { pets } = this.state
-    console.log(this.state.pets)
+    console.log(this.state.pets, userId)
     return (
       <div className="IndividualProfile">
         <br />

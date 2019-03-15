@@ -17,7 +17,6 @@ import Homepage from "../Homepage";
 import IconChat from "../IconChat/IconChat";
 import FormMap from "../FormMap/FormMap";
 
-
 class Root extends Component {
   state = {
     user: null
@@ -48,14 +47,20 @@ class Root extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
-           
+
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
             <Route path="/my-pets" component={MyPets} />
             <Route path="/my-profile" component={PetSitterWizard} />
             <Route path="/chat" component={Chat} />
             <IconChat />
-            <Route exact path="/users/:userId" component={IndividualProfile} />
+            <Route
+              exact
+              path="/users/:userId"
+              component={props => (
+                <IndividualProfile {...props} key={props.match.params.userId} />
+              )}
+            />
             <Route exact path="/users" component={UserDashboard} />
             <Route exact path="/formmap" component={FormMap} />
           </div>
