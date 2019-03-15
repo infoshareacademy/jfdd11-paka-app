@@ -16,16 +16,6 @@ const initialState = {
 class PetOwner extends Component {
   state = initialState;
 
-  handleName = event => {
-    const { onNameChange } = this.props;
-    onNameChange && onNameChange(event.target.value);
-  };
-
-  handleSurname = event => {
-    const { onSurnameChange } = this.props;
-    onSurnameChange && onSurnameChange(event.target.value);
-  };
-
   handleDogsname = event => {
     const { onDogsnameChange } = this.props;
     onDogsnameChange && onDogsnameChange(event.target.value);
@@ -111,17 +101,18 @@ class PetOwner extends Component {
             </FormGroup>
             
           </div>
-          <div className="inputFile">
-          <Card>
-            <CardImg src={file} alt="" />
-            <Input
-              type="file"
-              name="file" 
-              id="exampleFile"
-              onChange={this.handleFileSelected}
-              required
-            />
-          </Card>
+          <div style={{marginLeft: '10px' }}>
+            <Card style={{borderRadius: '5px'}}>
+              
+              <CardImg src={file} alt="" />
+              <Input className="inputFile"
+                type="file"
+                name="file" 
+                id="exampleFile"
+                onChange={this.handleFileSelected}
+                required
+              />
+            </Card>
           </div>
         </div>
         <p>Short description of your dog:</p>

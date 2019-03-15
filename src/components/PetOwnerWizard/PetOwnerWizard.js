@@ -62,14 +62,6 @@ class PetOwnerWizard extends Component {
     );
   };
 
-  handleNameChange = name => {
-    this.setState({ name });
-  };
-
-  handleSurnameChange = surname => {
-    this.setState({ surname });
-  };
-
   handleDogsname = dogsname => {
     this.setState({ dogsname });
   };
@@ -104,8 +96,6 @@ class PetOwnerWizard extends Component {
             onGenderChange={this.handleGender}
             onAgeChange={this.handleAge}
             onDogsnameChange={this.handleDogsname}
-            onSurnameChange={this.handleSurnameChange}
-            onNameChange={this.handleNameChange}
             onFileSelected={this.handleFileSelected}
           />
           
