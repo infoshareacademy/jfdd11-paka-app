@@ -99,7 +99,7 @@ class PetOwnerWizard extends Component {
             onFileSelected={this.handleFileSelected}
           />
           
-          <Button type="submit" style={{marginLeft: '6px' }}>
+          <Button type="submit" style={{marginLeft: '1%' }}>
             Submit
           </Button>
         </form>
