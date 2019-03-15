@@ -99,11 +99,8 @@ class Chat extends Component {
         <div className='chat' >
           {messagesArray.map(message => (
             <div style={{}} key={message.id}>
-              <div 
-              // onClick={() => {
-              //   this.props.history.push("myprofile/user.id")
-              // } }
-               >
+              <div >
+        
                 <strong
                   style={{
                     color: "black",
@@ -124,14 +121,14 @@ class Chat extends Component {
                 </Link>
                   
                 </strong>
-                 <p style={{ fontSize: "10px" }}>
-                {moment(message.createdAt).fromNow()}
-              </p>
+                <p style={{ fontSize: "10px" }}>
+                  {moment(message.createdAt).fromNow()}
+                </p>
               
               </div >
 
              
-              {message.content}
+              <p style={{ background: "#f1f3f5", borderRadius: "8px 8px 8px 8px" }}>{message.content}</p>
             </div>
           ))}
         </div>
