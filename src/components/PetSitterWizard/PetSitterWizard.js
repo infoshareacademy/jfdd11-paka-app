@@ -163,6 +163,7 @@ class PetSitterWizard extends Component {
               positiony
             } = snapshot.val() || {};
             this.setState({
+              redirectTo: snapshot.val() === null ? '/users' : `/users/${user.uid}`,
               name,
               surname,
               age,
@@ -186,7 +187,7 @@ class PetSitterWizard extends Component {
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
-          {this.state.success && <Redirect to="/users" />}
+          {this.state.success && <Redirect to={this.state.redirectTo} />}
           <div className="Error">
             {this.state.error && (
               <Alert color="danger" style={{ color: "red" }}>
