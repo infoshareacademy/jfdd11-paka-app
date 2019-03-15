@@ -63,7 +63,9 @@ class MyPets extends Component {
 
   render() {
     
+    if(!this.state.pets){
     return (
+      
       <div
         style={{ display: "flex", flexDirection: "column" }}
         className="mypets"
@@ -85,7 +87,7 @@ class MyPets extends Component {
                 <div style={{ textAlign: "center" }}>
                   <img
                     src={pet.photo}
-                    alt="Soon i will add my dog's photo:)"
+                    alt="My dog"
                     style={{ width: "100%" }}
                   />
                 </div>
@@ -94,7 +96,10 @@ class MyPets extends Component {
           </div>
         </div>
       </div>
-    )
+    )}
+     else{
+       return <h2>You need to register your dog first. Go to Register-Pet in navbar menu.</h2>
+     }         
   }
 }
 
