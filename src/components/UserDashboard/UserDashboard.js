@@ -43,11 +43,12 @@ class UserDashboard extends Component {
     housesitting: false,
     schedule: false,
     visits: false,
-    hasDogs: true,
+    hasDogs: false,
     name: "",
     surname: "",
     age: "",
     city: "",
+    phone: '',
     pets: []
   };
 
