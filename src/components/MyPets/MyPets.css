@@ -1,3 +1,16 @@
 .mypets {
-  
+    
+}
+
+.altInfo{
+    margin: 2vh auto ;
+    text-align: center;
+}
+
+.altInfo h6{
+    border: 2px solid #f78d4c;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 15px;
+    color: black;
 }

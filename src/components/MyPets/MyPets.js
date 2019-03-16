@@ -98,7 +98,7 @@ class MyPets extends Component {
       </div>
     )}
      else{
-       return <h2>You need to register your dog first. Go to Register-Pet in navbar menu.</h2>
+       return <div class="altInfo"><h6 >You need to register your dog first. <br></br>Go to Register-Pet in navbar menu.</h6></div>
      }         
   }
 }
