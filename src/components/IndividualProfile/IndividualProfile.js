@@ -141,10 +141,8 @@ class IndividualProfile extends Component {
         <div>
           <Card>
             <CardImg
-              top
-              width="100%"
               src={this.state.photo + "&size=150x150"}
-              alt="My profile"
+              alt="individualProfile"
             />
           </Card>
           <div
@@ -242,17 +240,18 @@ class IndividualProfile extends Component {
               )}
             </div>
             <div>
-              <p>Pets: </p>
+              <p className='petListUserProfile'>Pets: 
 
               {pets.map(pet => (
                 <ul key={pet.ownerId}>
+                <li>
+                    <img src={pet.photo} />
+                  </li>
                   <li>{pet.dogsname}</li>
                   <li>{pet.age}</li>
                   <li>{pet.breed}</li>
                   <li>{pet.gender}</li>
-                  <li>
-                    <img src={pet.photo} />
-                  </li>
+                  <li>{pet.description}</li>
                   <li>
                     <Button onClick={() => this.deletePet(pet.id)}>
                       Delete
@@ -260,6 +259,7 @@ class IndividualProfile extends Component {
                   </li>
                 </ul>
               ))}
+              </p>
             </div>
             <div>
               <p name="description" style={viewStyle}>
@@ -279,9 +279,9 @@ class IndividualProfile extends Component {
                 Edit My Profile
               </Button>
             )} */}
-
+            {userId === currentUserId && (
             <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
-          </div>
+            )}</div>
         </div>
       </div>
     );
