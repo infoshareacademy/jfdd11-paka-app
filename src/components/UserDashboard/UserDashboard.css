@@ -1,7 +1,7 @@
 .card-body {
     display: flex;
     flex-direction: column;
-    /* background-color: #f78d4c; */
+    background-color: #f5ce6f;
     text-align: left;
 }
 .card-title {
@@ -12,4 +12,10 @@ padding-left: 10px;
 }
 .svg-inline--fa {
     margin-right: 6px;
+}
+#root > div > div {
+    padding: 0;
+}
+.nav-tabs .nav-link.active {
+background-color: #f5ce6f;
 }

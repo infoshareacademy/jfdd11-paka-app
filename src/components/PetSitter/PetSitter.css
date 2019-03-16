@@ -7,6 +7,7 @@
 .form-control {
   border: none;
   border-bottom: 2px solid grey;
+  background-color: #f5ce6f;
 }
 
 .inputWraper {

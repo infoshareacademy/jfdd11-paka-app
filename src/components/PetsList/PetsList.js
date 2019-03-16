@@ -78,10 +78,11 @@ class PetsList extends Component {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        padding: '20px',
+                        margin: '20px',
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)",
                         margin: "20px auto",
-                        maxWidth: '80vw'
+                        maxWidth: '80vw',
+                        backgroundColor: '#f5ce6f'
                       }} key={pet.id}>
                 <CardBody>
                 <div style={{ textAlign: "center" }}>

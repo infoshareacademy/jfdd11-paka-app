@@ -5,7 +5,6 @@
     left: 0px;
     align-items: flex-end;
     position: fixed;
-    padding-bottom: 10px;
     width: 100%;
     background-color: white;
     position: relative;
@@ -47,4 +46,5 @@
     left: 3px;
     border: 1px solid #e2b42c;
     box-shadow: 0px 2px 5px black;
+    background-color: #f5ce6f;
 }
