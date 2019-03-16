@@ -7,7 +7,6 @@ import UserDashboard from '../UserDashboard';
 import NavigationBar from '../NavigationBar'
 import firebase from 'firebase'
 import IndividualProfile from '../IndividualProfile'
-import "bootstrap/dist/css/bootstrap.min.css";
 import PetSitterWizard from "../PetSitterWizard";
 import PetsList from "../PetsList";
 import MyPets from "../MyPets";
@@ -47,7 +46,6 @@ class Root extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/map" component={MyMap} />
             <Route exact path="/sign-up" component={SignUp} />
-
             <Route path="/registerpet" component={PetOwnerWizard} />
             <Route path="/pets" component={PetsList} />
             <Route path="/my-pets" component={MyPets} />

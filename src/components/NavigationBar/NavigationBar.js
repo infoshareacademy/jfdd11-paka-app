@@ -13,6 +13,7 @@ import { withRouter, NavLink as RNavLink} from "react-router-dom";
 import homezoonew from "../images/homezoonew.png";
 
 import "./NavigationBar.css";
+import { withAuth } from "../../context/AuthContext";
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -42,11 +43,11 @@ class NavigationBar extends Component {
   };
 
   render() {
-    const currentUser = firebase.auth().currentUser 
-    if (currentUser === null) {
+    const { user } = this.props.authContext
+    if (user === null) {
       return null
     }
-    const userId = currentUser.uid;
+    const userId = user.uid;
     return (
       <div className="NavigationBar">
         <Navbar color="light" light expand="md">
@@ -92,13 +93,10 @@ class NavigationBar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/users/" tag={RNavLink}>Users</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/chat">Chat</NavLink>
+                <NavLink to="/users" tag={RNavLink}>Users</NavLink>
               </NavItem>
               <NavItem onClick={this.logOut}>
-                <NavLink>Log out</NavLink>
+                <NavLink>({user.email}) Log out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -109,4 +107,4 @@ class NavigationBar extends Component {
 }
  
 
-export default withRouter(NavigationBar);
+export default withAuth(withRouter(NavigationBar));
