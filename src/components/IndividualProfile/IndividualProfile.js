@@ -185,9 +185,9 @@ class IndividualProfile extends Component {
             </div>
             <div>
               <p>Phone:</p>{" "}
-              {/* <span name="phone"><a href={`tel:${this.state.phone}`}</a>
-              </span> */}
-
+              <span name="phone">
+                <a href={`tel:${this.state.phone}`}>{this.state.phone}</a>
+              </span>
             </div>
             <h5
               style={{
@@ -254,7 +254,7 @@ class IndividualProfile extends Component {
 
               {pets.map(pet => (
                 <>
-                <div style={{ margin: '0 auto', marginBottom: '25px',  
+                <div style={{ margin: '0 auto', marginBottom: '5px',  
                         padding: 10,
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
                       }} className='petListUserProfile' key={pet.ownerId}>

@@ -78,11 +78,11 @@ class NavigationBar extends Component {
               <NavItem>
                 <NavLink href="/pets">User's pets</NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="/my-pets">My pets</NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
-                <NavLink to="/registerpet" tag={RNavLink}>Register-Pet</NavLink>
+                <NavLink to="/registerpet" tag={RNavLink}>Add a dog</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to="/map/" tag={RNavLink}>Map</NavLink>
