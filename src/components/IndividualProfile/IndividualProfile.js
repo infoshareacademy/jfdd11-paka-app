@@ -185,8 +185,6 @@ class IndividualProfile extends Component {
               {/* <span name="phone"><a href={`tel:${this.state.phone}`}</a>
               </span> */}
 
-              `/users/${userId}`}
-
             </div>
             <h5
               style={{
