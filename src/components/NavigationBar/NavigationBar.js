@@ -8,6 +8,19 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPaw,
+  faGlobeAmericas,
+  faUser,
+ faUsers,
+ faSignOutAlt,
+  faHome,
+  faCouch,
+  faWalking,
+  faDog,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import { withRouter, NavLink as RNavLink} from "react-router-dom";
 import homezoonew from "../images/homezoonew.png";
@@ -30,7 +43,6 @@ class NavigationBar extends Component {
     });
   }
   logOut = () => {
-    console.log('logging out')
     firebase
       .auth()
       .signOut()
@@ -76,27 +88,27 @@ class NavigationBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/pets" tag={RNavLink}>Pets</NavLink>
+                <NavLink to="/pets" tag={RNavLink}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
               </NavItem>
               {/* <NavItem>
                 <NavLink href="/my-pets">My pets</NavLink>
               </NavItem> */}
               <NavItem>
-                <NavLink to="/registerpet" tag={RNavLink}>Add a pet</NavLink>
+                <NavLink to="/registerpet" tag={RNavLink}> <FontAwesomeIcon icon={faDog} />Add a pet</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/map/" tag={RNavLink}>Map</NavLink>
+                <NavLink to="/map/" tag={RNavLink}><FontAwesomeIcon icon={faGlobeAmericas} />Map</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to={`/users/${userId}`} tag={RNavLink}>
-                  My profile
+                <FontAwesomeIcon icon={faUser} />My profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/users" tag={RNavLink}>Users</NavLink>
+                <NavLink to="/users" tag={RNavLink}><FontAwesomeIcon icon={faUsers} />Users</NavLink>
               </NavItem>
               <NavItem onClick={this.logOut}>
-                <NavLink>({user.email}) Log out</NavLink>
+                <NavLink><FontAwesomeIcon icon={faSignOutAlt} />({user.email}) Log out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
