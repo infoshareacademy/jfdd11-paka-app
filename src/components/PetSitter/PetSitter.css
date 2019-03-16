@@ -1,7 +1,12 @@
 .PetSitter {
+  background: url(../images/dog.jpg)
 }
 
 .photoContainer {
   height: 50px;
   width: 50px;
+}
+.form-control {
+  border: none;
+  border-bottom: 1px solid black;
 }

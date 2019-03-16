@@ -1,8 +1,8 @@
 .card-body {
     display: flex;
-    align-items: center;
     flex-direction: column;
     /* background-color: #f78d4c; */
+    text-align: left;
 }
 .card-title {
     font-weight: bold;

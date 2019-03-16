@@ -1,3 +1,10 @@
 .PetsList {
   
 }
+.card-title span{
+font-weight: normal;
+}
+
+.nav-link.NavLinkUser {
+    padding-left: 5px;
+}

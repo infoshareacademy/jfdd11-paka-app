@@ -120,7 +120,6 @@ class UserDashboard extends Component {
     const hasDogsPredicate = hasDogs
       ? user => pets.some(pet => pet.ownerId === user.id)
       : () => true;
-    this.state.pets && console.log(this.state.pets);
 
     return (
       <div
@@ -172,7 +171,7 @@ class UserDashboard extends Component {
               <Card body style={{ textAlign: "center" }}>
                 <FormGroup>
                   <Input
-                    style={{ width: "60vw" }}
+                    style={{ width: "60vw", margin: '0 auto'}}
                     type="search"
                     name="search"
                     id="exampleSearch"
@@ -193,7 +192,7 @@ class UserDashboard extends Component {
                     <Card>
                       <CardBody>
                         <Form>
-                          <FormGroup check inline>
+                          <FormGroup check inline style={{ textAlign: 'left' }}>
                             <Label check>
                               <Input
                                 type="checkbox"
@@ -229,7 +228,7 @@ class UserDashboard extends Component {
                             </Label>
                           </FormGroup>
                         </Form>
-                        <Form style={{ display: "flex", flexDirection: "row" }}>
+                        <Form style={{textAlign: 'left' }}>
                           <FormGroup check inline>
                             <Label check>
                               <Input
@@ -237,7 +236,7 @@ class UserDashboard extends Component {
                                 id="schedule"
                                 checked={schedule}
                                 onChange={this.handleCheckboxChange}
-                              />
+                                />{" "}
                               <FontAwesomeIcon icon={faWalking} /> Walks
                             </Label>
                           </FormGroup>

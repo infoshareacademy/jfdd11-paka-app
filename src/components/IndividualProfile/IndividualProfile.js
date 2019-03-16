@@ -24,34 +24,9 @@ class IndividualProfile extends Component {
     houseSittingAtYourPlace: "",
     availableToDropIn: "",
     availableForWalks: "",
-    pets: [],
-    isEditing: false
+    pets: []
   };
 
-  handleEditing = event => {
-    this.setState({
-      ...this.state,
-      isEditing: true
-    });
-  };
-  handleEditChange = event => {
-    const userId = this.props.match.params.userId;
-    const value = event.target.value;
-    const eventName = event.target.name;
-    if (event.keyCode === 13) {
-      firebase
-        .database()
-        .ref(`users/${userId}`)
-        .child(eventName)
-        .set(value);
-
-      this.setState({
-        ...this.state,
-        [event.target.name]: value,
-        isEditing: false
-      });
-    }
-  };
   componentDidMount() {
     firebase.auth().onAuthStateChanged(currentUser => {
       if (currentUser !== null) {
@@ -101,8 +76,6 @@ class IndividualProfile extends Component {
   }
 
   deletePet = petId => {
-    console.log(petId);
-    console.log(this.state);
     firebase
       .database()
       .ref(`pets`)
@@ -138,6 +111,7 @@ class IndividualProfile extends Component {
           {this.state.surname}
         </h1>
         <br />
+      
         <div>
           <Card style={{ width: '90%', margin: '0 auto', marginBottom: '25px',  
                         padding: 20,
@@ -148,6 +122,11 @@ class IndividualProfile extends Component {
               alt="individualProfile"
             />
           </Card>
+          <div>
+          {userId === currentUserId && (
+            <Button style={{ float: 'right', marginRight: '20px', marginBottom: '20px' }} onClick={() => this.props.history.push('/my-profile')}>Edit</Button>
+            )}
+            </div>
           <div
             className="IndividualProfileText"
             style={{
@@ -160,28 +139,15 @@ class IndividualProfile extends Component {
           >
             <div>
               <p>Age: </p>{" "}
-              <span onDoubleClick={this.handleEditing} style={viewStyle}>
+              <span>
                 {this.state.age}{" "}
               </span>
-              <input
-                type="text"
-                name="age"
-                onKeyDown={this.handleEditChange}
-                style={editStyle}
-                defaultValue={this.state.age}
-              />
             </div>
             <div>
               <p>Address:</p>{" "}
-              <span name="address" style={viewStyle}>
+              <span name="address">
                 {this.state.address}
               </span>
-              <input
-                type="text"
-                onKeyDown={this.handleEditChange}
-                style={editStyle}
-                defaultValue={this.state.address}
-              />
             </div>
             <div>
               <p>Phone:</p>{" "}
@@ -254,7 +220,7 @@ class IndividualProfile extends Component {
 
               {pets.map(pet => (
                 <>
-                <div style={{ margin: '0 auto', marginBottom: '5px',  
+                <div style={{ margin: '20px auto',
                         padding: 10,
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
                       }} className='petListUserProfile' key={pet.ownerId}>
@@ -265,8 +231,9 @@ class IndividualProfile extends Component {
                   <li>Age: {pet.age}</li>
                   <li>Breed: {pet.breed}</li>
                   <li>Gender: {pet.gender}</li>
-                  <li>Description: {pet.description}</li>
+                 {pet.description &&  <li>Description: {pet.description}</li>}
                   </ul>
+  
                   </div>
                   <div>
                     <Button className='deleteDogButton' onClick={() => this.deletePet(pet.id)}>
@@ -281,12 +248,6 @@ class IndividualProfile extends Component {
                 {this.state.description}Additional information:{" "}
               </h5>{" "}
               {this.state.description}
-              <input
-                type="text"
-                onKeyDown={this.handleEditChange}
-                style={editStyle}
-                defaultValue={this.state.description}
-              />
             </div>
 
             {/* {userId === currentUserId && (
@@ -294,9 +255,7 @@ class IndividualProfile extends Component {
                 Edit My Profile
               </Button>
             )} */}
-            {userId === currentUserId && (
-            <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
-            )}
+           
         </div>
       </div>
     );
