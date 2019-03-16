@@ -1,6 +1,4 @@
-.PetSitter {
-  background: url(../images/dog.jpg)
-}
+
 
 .photoContainer {
   height: 50px;
@@ -8,8 +6,9 @@
 }
 .form-control {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid grey;
 }
+
 .inputWraper {
   display: flex;
   flex-direction: column;

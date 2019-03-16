@@ -1,12 +1,14 @@
 
     .Nav-login-logo {
       width: 50px;
-      cursor: pointer;
   }
   .Nav-span{
   font-size: 35px;
   text-align: center;
   }
   .logo {
+    cursor: pointer;
+  }
+  .navbar-light .navbar-nav .nav-link {
     cursor: pointer;
   }
