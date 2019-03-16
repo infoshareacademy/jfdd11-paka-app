@@ -357,7 +357,7 @@ class UserDashboard extends Component {
                         to={`/users/${user.id}`}
                         style={{ textAlign: "center" }}
                       >
-                        See Full Profile of {user.name}
+                        See Full Profile
                       </Link>
                     </div>
                   ))}
