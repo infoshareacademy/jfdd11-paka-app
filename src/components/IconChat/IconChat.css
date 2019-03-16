@@ -10,11 +10,6 @@
     background-color: white;
     position: relative;
      z-index: 9000;
-    
-     
-     
-   
-    
 }
 
 .IconChat-menu {
@@ -32,13 +27,11 @@
 .IconChat-side-menu {
     position: fixed;
     bottom: 0;
-    height: 50vh;
+    height: 70vh;
     border: 1px solid #e2b42c;
     width: 98vw;
     background-color:white; 
     border-radius: 10px 10px 0 0;
-   
-
 }
 
 
@@ -51,6 +44,6 @@
 .IconChat-side-menu.show {
     transform: translate3d(0, 0, 0);
     overflow: scroll;
-    left: 0;
+    left: 3px;
     border: 1px solid #e2b42c;
 }
