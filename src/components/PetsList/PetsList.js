@@ -74,9 +74,23 @@ class PetsList extends Component {
         <div>
           <div>
             {this.state.pets.map(pet => (
-              <Card key={pet.id}>
+              <Card style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        padding: 20,
+                        boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)",
+                        margin: "20px 0"
+                      }} key={pet.id}>
                 <CardBody>
-                  <CardTitle>Dog's name: {pet.dogsname}</CardTitle>
+                <div style={{ textAlign: "center" }}>
+                  <img
+                    src={pet.photo}
+                    alt="My dog"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                  <CardTitle>Name: {pet.dogsname}</CardTitle>
                   <CardTitle>Age: {pet.age}</CardTitle>
                   <CardTitle>Breed: {pet.breed}</CardTitle>
                   <CardTitle>Gender: {pet.gender}</CardTitle>
@@ -95,13 +109,6 @@ class PetsList extends Component {
                     }
                   <CardTitle>Adress: {this.getOwnerByAdress(pet.ownerId)}</CardTitle>
                 </CardBody>
-                <div style={{ textAlign: "center" }}>
-                  <img
-                    src={pet.photo}
-                    alt="My dog"
-                    style={{ width: "100%" }}
-                  />
-                </div>
               </Card>
             ))}
           </div>
