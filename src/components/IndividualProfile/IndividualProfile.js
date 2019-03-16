@@ -173,9 +173,9 @@ class IndividualProfile extends Component {
               <span>
                 {" "}
                 {this.state.dayCareAtPetsitters ? (
-                  <FontAwesomeIcon icon={faCheck} />
+                  <FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} />
                 ) : (
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faTimes} style={{ color: '#f36f5a' }}/>
                 )}
               </span>
             </div>
@@ -187,9 +187,9 @@ class IndividualProfile extends Component {
               </p>{" "}
               <span>
                 {this.state.houseSittingAtYourPlace ? (
-                  <FontAwesomeIcon icon={faCheck} />
+                  <FontAwesomeIcon icon={faCheck} style={{ color: 'green' }}/>
                 ) : (
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faTimes} style={{ color: '#f36f5a' }}/>
                 )}
               </span>
             </div>
@@ -199,9 +199,9 @@ class IndividualProfile extends Component {
                 <FontAwesomeIcon icon={faDog} /> Available to drop in:{" "}
               </p>{" "}
               {this.state.availableToDropIn ? (
-                <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCheck} style={{ color: 'green' }}/>
               ) : (
-                <FontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faTimes} style={{ color: '#f36f5a' }} />
               )}
             </div>
             <div>
@@ -209,9 +209,9 @@ class IndividualProfile extends Component {
                 <FontAwesomeIcon icon={faWalking} /> Walks during the day:{" "}
               </p>{" "}
               {this.state.availableForWalks ? (
-                <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} />
               ) : (
-                <FontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faTimes} style={{ color: '#f36f5a' }} />
               )}
             </div>
             </div>
