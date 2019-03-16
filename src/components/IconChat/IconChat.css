@@ -46,4 +46,5 @@
     overflow: scroll;
     left: 3px;
     border: 1px solid #e2b42c;
+    box-shadow: 0px 2px 5px black;
 }

@@ -270,7 +270,7 @@ class IndividualProfile extends Component {
                   </div>
                   <div>
                     <Button className='deleteDogButton' onClick={() => this.deletePet(pet.id)}>
-                      Delete dog
+                      Delete pet
                     </Button>
                   </div>
                   </>

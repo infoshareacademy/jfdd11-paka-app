@@ -182,8 +182,8 @@ class UserDashboard extends Component {
                   />
                 </FormGroup>
                 <div>
-                  <Button
-                    color="primary"
+                  <Button className='btn btn-secondary'
+                    color="secondary"
                     id="toggler"
                     style={{ marginBottom: "1rem" }}
                   >

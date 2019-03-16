@@ -27,7 +27,6 @@ class PetOwnerWizard extends Component {
       file
     } = this.state;
 
-    console.log("handlesubmit", this.state);
     const userId = firebase.auth().currentUser.uid;
     const petId = firebase
       .database()
@@ -60,6 +59,7 @@ class PetOwnerWizard extends Component {
           .set(url)
       )
     );
+    this.props.history.push(`/users/${userId}`)
   };
 
   handleDogsname = dogsname => {
