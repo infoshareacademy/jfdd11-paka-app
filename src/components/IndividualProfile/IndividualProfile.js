@@ -139,7 +139,10 @@ class IndividualProfile extends Component {
         </h1>
         <br />
         <div>
-          <Card style={{ width: '90%', margin: '0 auto', marginBottom: '25px' }}>
+          <Card style={{ width: '90%', margin: '0 auto', marginBottom: '25px',  
+                        padding: 20,
+                        boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
+                      }}>
             <CardImg
               src={this.state.photo + "&size=150x150"}
               alt="individualProfile"
@@ -251,7 +254,10 @@ class IndividualProfile extends Component {
 
               {pets.map(pet => (
                 <>
-                <div className='petListUserProfile' key={pet.ownerId}>
+                <div style={{ margin: '0 auto', marginBottom: '25px',  
+                        padding: 10,
+                        boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
+                      }} className='petListUserProfile' key={pet.ownerId}>
                
                     <img src={pet.photo} alt='pet photo' />
                  <ul>
