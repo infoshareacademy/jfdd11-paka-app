@@ -65,7 +65,7 @@ class PetSitter extends Component {
             <FormGroup>
               <Input
                 type="text"
-                placeholder="Adress"
+                placeholder="Address"
                 name="adress"
                 onChange={onChange}
                 value={adress}

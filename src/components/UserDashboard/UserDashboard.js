@@ -237,7 +237,7 @@ class UserDashboard extends Component {
                                 checked={schedule}
                                 onChange={this.handleCheckboxChange}
                                 />{" "}
-                              <FontAwesomeIcon icon={faWalking} /> Walks
+                              <FontAwesomeIcon icon={faWalking} /> Daily walks
                             </Label>
                           </FormGroup>
                           <FormGroup check>
@@ -248,7 +248,7 @@ class UserDashboard extends Component {
                                 checked={visits}
                                 onChange={this.handleCheckboxChange}
                               />{" "}
-                              <FontAwesomeIcon icon={faEye} /> Drop-in visits
+                              <FontAwesomeIcon icon={faEye} />Drop-in visits
                             </Label>
                           </FormGroup>
                         </Form>

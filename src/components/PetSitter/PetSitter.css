@@ -10,3 +10,8 @@
   border: none;
   border-bottom: 1px solid black;
 }
+.inputWraper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
