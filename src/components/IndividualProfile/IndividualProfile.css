@@ -17,12 +17,17 @@
   }
   .petListUserProfile {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: flex-start;
   }
   .petListUserProfile ul {
       list-style: none;
   }
-  .petListUserProfile ul li img {
-      max-width: 80%;
+  .petListUserProfile img {
+      max-width: 50%;
+      line-height: 0px;
   }
-  
+ .petListUserProfileContainer {
+ width: 80vw;
+ margin: 0 auto;
+ }

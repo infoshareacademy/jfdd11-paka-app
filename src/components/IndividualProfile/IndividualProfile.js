@@ -10,8 +10,6 @@ import {
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
-import { Redirect } from "react-router-dom";
-
 import "./IndividualProfile.css";
 
 class IndividualProfile extends Component {
@@ -19,6 +17,7 @@ class IndividualProfile extends Component {
     name: "",
     surname: "",
     age: "",
+    phone: '',
     address: "",
     description: "",
     dayCareAtPetsitters: "",
@@ -70,6 +69,7 @@ class IndividualProfile extends Component {
               ...this.state,
               name: user.name,
               surname: user.surname,
+              phone: user.phone,
               age: user.age,
               photo: user.photo,
               address: user.adress,
@@ -128,7 +128,7 @@ class IndividualProfile extends Component {
     const userId = this.props.match.params.userId;
 
     const { pets } = this.state;
-    console.log(this.state.pets, userId)
+   
     return (
       <div className="IndividualProfile">
         <br />
@@ -139,7 +139,7 @@ class IndividualProfile extends Component {
         </h1>
         <br />
         <div>
-          <Card>
+          <Card style={{ width: '90%', margin: '0 auto', marginBottom: '25px' }}>
             <CardImg
               src={this.state.photo + "&size=150x150"}
               alt="individualProfile"
@@ -179,6 +179,14 @@ class IndividualProfile extends Component {
                 style={editStyle}
                 defaultValue={this.state.address}
               />
+            </div>
+            <div>
+              <p>Phone:</p>{" "}
+              {/* <span name="phone"><a href={`tel:${this.state.phone}`}</a>
+              </span> */}
+
+              `/users/${userId}`}
+
             </div>
             <h5
               style={{
@@ -239,32 +247,35 @@ class IndividualProfile extends Component {
                 <FontAwesomeIcon icon={faTimes} />
               )}
             </div>
-            <div>
-              <p className='petListUserProfile'>Pets: 
+            </div>
+            <div className='petListUserProfileContainer'>
+              <h5>Pets: </h5>
 
               {pets.map(pet => (
-                <ul key={pet.ownerId}>
-                <li>
-                    <img src={pet.photo} />
-                  </li>
-                  <li>{pet.dogsname}</li>
-                  <li>{pet.age}</li>
-                  <li>{pet.breed}</li>
-                  <li>{pet.gender}</li>
-                  <li>{pet.description}</li>
-                  <li>
-                    <Button onClick={() => this.deletePet(pet.id)}>
-                      Delete
+                <>
+                <div className='petListUserProfile' key={pet.ownerId}>
+               
+                    <img src={pet.photo} alt='pet photo' />
+                 <ul>
+                  <li>Name: {pet.dogsname}</li>
+                  <li>Age: {pet.age}</li>
+                  <li>Breed: {pet.breed}</li>
+                  <li>Gender: {pet.gender}</li>
+                  <li>Description: {pet.description}</li>
+                  </ul>
+                  </div>
+                  <div>
+                    <Button className='deleteDogButton' onClick={() => this.deletePet(pet.id)}>
+                      Delete dog
                     </Button>
-                  </li>
-                </ul>
+                  </div>
+                  </>
               ))}
-              </p>
             </div>
-            <div>
-              <p name="description" style={viewStyle}>
-                {this.state.description} > Additional information:{" "}
-              </p>{" "}
+            <div style={{ padding: '30px' }}>
+              <h5 name="description" style={viewStyle}>
+                {this.state.description}Additional information:{" "}
+              </h5>{" "}
               {this.state.description}
               <input
                 type="text"
@@ -281,7 +292,7 @@ class IndividualProfile extends Component {
             )} */}
             {userId === currentUserId && (
             <Button onClick={() => this.props.history.push('/my-profile')}>Edit My Profile</Button>
-            )}</div>
+            )}
         </div>
       </div>
     );

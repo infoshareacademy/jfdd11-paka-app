@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faEye,
   faHome,
   faCouch,
@@ -19,14 +18,11 @@ import {
   CardBody,
   UncontrolledCollapse,
   Button,
-  CardLink,
-  CardSubtitle,
   TabContent,
   TabPane,
   Nav,
   NavItem,
-  NavLink,
-  CardTitle
+  NavLink
 } from "reactstrap";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
