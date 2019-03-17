@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPaw,
@@ -25,19 +17,16 @@ import "./NavigationBar.css";
 import { withAuth } from "../../context/AuthContext";
 
 class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
+  state = {
+    collapsed: true
   }
-  toggle() {
+  toggleNavbar = () => {
     this.setState({
-      isOpen: !this.state.isOpen
-    });
+       collapsed: !this.state.collapsed
+    })
   }
+
   logOut = () => {
     firebase
       .auth()
@@ -60,11 +49,12 @@ class NavigationBar extends Component {
       <div className="NavigationBar">
         <Navbar style={{ display: 'flex',
     justifyContent: 'space-between' }} color="light" light expand="md">
-          <NavbarBrand
+          <NavbarBrand className="mr-auto"
             style={{
               display: "flex",
               flexDirection: "row",
-              alignItems: "baseline"
+              alignItems: "baseline",
+              cursor: 'pointer'
             }}
           >
             {" "}
@@ -81,28 +71,25 @@ class NavigationBar extends Component {
               HomeZoo
             </span>
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={this.toggleNavbar} className="mr-2"/>
+          <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/pets" tag={RNavLink}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
-              </NavItem>
-              {/* <NavItem>
-                <NavLink href="/my-pets">My pets</NavLink>
-              </NavItem> */}
-              <NavItem>
-                <NavLink to="/registerpet" tag={RNavLink}> <FontAwesomeIcon icon={faDog} />Add a pet</NavLink>
+                <NavLink to="/pets" tag={RNavLink} onClick={this.toggleNavbar}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/map/" tag={RNavLink}><FontAwesomeIcon icon={faGlobeAmericas} />Map</NavLink>
+                <NavLink to="/registerpet" tag={RNavLink} onClick={this.toggleNavbar}> <FontAwesomeIcon icon={faDog} />Add a pet</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to={`/users/${userId}`} tag={RNavLink}>
+                <NavLink to="/map/" tag={RNavLink} onClick={this.toggleNavbar}><FontAwesomeIcon icon={faGlobeAmericas} />Map</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={`/users/${userId}`} tag={RNavLink} onClick={this.toggleNavbar}>
                 <FontAwesomeIcon icon={faUser} />My profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/users" tag={RNavLink}><FontAwesomeIcon icon={faUsers} />Users</NavLink>
+                <NavLink to="/users" tag={RNavLink} onClick={this.toggleNavbar}><FontAwesomeIcon icon={faUsers} />Users</NavLink>
               </NavItem>
               <NavItem onClick={this.logOut}>
                 <NavLink><FontAwesomeIcon icon={faSignOutAlt} />({user.email}) Log out</NavLink>
