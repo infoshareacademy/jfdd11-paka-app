@@ -26,7 +26,7 @@ class NavigationBar extends Component {
        collapsed: !this.state.collapsed
     })
   }
-  
+
   logOut = () => {
     firebase
       .auth()
@@ -53,7 +53,8 @@ class NavigationBar extends Component {
             style={{
               display: "flex",
               flexDirection: "row",
-              alignItems: "baseline"
+              alignItems: "baseline",
+              cursor: 'pointer'
             }}
           >
             {" "}
@@ -74,24 +75,21 @@ class NavigationBar extends Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/pets" tag={RNavLink}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
-              </NavItem>
-              {/* <NavItem>
-                <NavLink href="/my-pets">My pets</NavLink>
-              </NavItem> */}
-              <NavItem>
-                <NavLink to="/registerpet" tag={RNavLink}> <FontAwesomeIcon icon={faDog} />Add a pet</NavLink>
+                <NavLink to="/pets" tag={RNavLink} onClick={this.toggleNavbar}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/map/" tag={RNavLink}><FontAwesomeIcon icon={faGlobeAmericas} />Map</NavLink>
+                <NavLink to="/registerpet" tag={RNavLink} onClick={this.toggleNavbar}> <FontAwesomeIcon icon={faDog} />Add a pet</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to={`/users/${userId}`} tag={RNavLink}>
+                <NavLink to="/map/" tag={RNavLink} onClick={this.toggleNavbar}><FontAwesomeIcon icon={faGlobeAmericas} />Map</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={`/users/${userId}`} tag={RNavLink} onClick={this.toggleNavbar}>
                 <FontAwesomeIcon icon={faUser} />My profile
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/users" tag={RNavLink}><FontAwesomeIcon icon={faUsers} />Users</NavLink>
+                <NavLink to="/users" tag={RNavLink} onClick={this.toggleNavbar}><FontAwesomeIcon icon={faUsers} />Users</NavLink>
               </NavItem>
               <NavItem onClick={this.logOut}>
                 <NavLink><FontAwesomeIcon icon={faSignOutAlt} />({user.email}) Log out</NavLink>
