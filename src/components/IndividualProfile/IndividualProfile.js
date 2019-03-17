@@ -9,6 +9,7 @@ import {
   faDog,
   faTimes
 } from "@fortawesome/free-solid-svg-icons";
+import avataaars from '../images/avataaars.png'
 import firebase from "firebase";
 import "./IndividualProfile.css";
 
@@ -117,10 +118,10 @@ class IndividualProfile extends Component {
                         padding: 20,
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
                       }}>
-            <CardImg
+           {this.state.photo ? <CardImg
               src={this.state.photo + "&size=150x150"}
               alt="individualProfile"
-            />
+            /> : <img src={avataaars} alt='user avatar'  style={{ width: '100%' }}></img> }
           </Card>
           <div>
           {userId === currentUserId && (

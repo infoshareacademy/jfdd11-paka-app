@@ -8,6 +8,7 @@ import {
   faWalking,
   faDog
 } from "@fortawesome/free-solid-svg-icons";
+import avataaars from '../../components/images/avataaars.png'
 
 import {
   Card,
@@ -300,11 +301,11 @@ class UserDashboard extends Component {
                           to={`/users/${user.id}`}
                           style={{ textAlign: "center" }}
                         >
-                          <img
+                         {user.photo ? <img
                             src={user.photo}
                             alt="user"
                             style={{ maxWidth: "100%", maxHeight: 100 }}
-                          />
+                          /> : <img src={avataaars} alt='user avatar'  style={{ maxWidth: "100%", maxHeight: 100 }}></img> } 
                         </Link>
                       </div>
                       <div>
