@@ -59,7 +59,7 @@ class NavigationBar extends Component {
     return (
       <div className="NavigationBar">
         <Navbar style={{ display: 'flex',
-    justifyContent: 'space-around' }} color="light" light expand="md">
+    justifyContent: 'space-between' }} color="light" light expand="md">
           <NavbarBrand
             style={{
               display: "flex",

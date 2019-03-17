@@ -28,7 +28,7 @@ class FormMap extends Component {
   }
 
   render() {
-   const { lat = 54, lng = 15 } = this.props
+   const { lat = 54.4047, lng = 18.5319 } = this.props
 
     return (
       <Map
