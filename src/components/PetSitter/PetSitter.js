@@ -78,7 +78,7 @@ class PetSitter extends Component {
               type="file"
               name="file"
               id="exampleFile"
-              onChange={onFileSelected} style={{backgroundColor: '#f5ce6f'}}
+              onChange={onFileSelected}
             />
           </Card>
         </div>

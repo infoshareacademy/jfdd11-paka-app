@@ -32,7 +32,7 @@ class Root extends Component {
     const loggedIn = this.state.user !== null;
     return (
       <Router>
-        <div style={{ display: "flex", width: "100%", backgroundColor: '#f5ce6f' }}>
+        <div style={{ display: "flex", width: "100%" }}>
           <div
             style={{
               flexGrow: 1,

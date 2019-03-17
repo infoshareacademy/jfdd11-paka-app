@@ -114,7 +114,7 @@ class IndividualProfile extends Component {
       
         <div>
           <Card style={{ width: '90%', margin: '0 auto', marginBottom: '25px',  
-                        padding: 20, backgroundColor: '#f5ce6f',
+                        padding: 20,
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)"
                       }}>
             <CardImg
