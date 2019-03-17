@@ -58,7 +58,8 @@ class NavigationBar extends Component {
     const userId = user.uid;
     return (
       <div className="NavigationBar">
-        <Navbar color="light" light expand="md">
+        <Navbar style={{ display: 'flex',
+    justifyContent: 'space-around' }} color="light" light expand="md">
           <NavbarBrand
             style={{
               display: "flex",
