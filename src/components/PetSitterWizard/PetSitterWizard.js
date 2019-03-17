@@ -206,7 +206,7 @@ class PetSitterWizard extends Component {
             onChange={this.handleChange}
             onPosChange={this.handlePosChange}
           />
-          <Button color="warning" type="submit">
+          <Button type="submit">
             Submit
           </Button>
         </Form>
