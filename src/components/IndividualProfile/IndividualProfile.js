@@ -149,7 +149,7 @@ class IndividualProfile extends Component {
                 {this.state.address}
               </span>
             </div>
-            <div>
+            <div style ={{ paddingBottom: '30px' }}>
               <p>Phone:</p>{" "}
               <span name="phone">
                 <a href={`tel:${this.state.phone}`}>{this.state.phone}</a>
