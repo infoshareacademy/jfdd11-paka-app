@@ -71,10 +71,10 @@ class NavigationBar extends Component {
             <span
               className="Nav-span"
               style={{
-                fontSize: "60",
+                fontSize: "50",
                 color: "#f36f5a",
                 fontWeight: "bolder",
-                fontFamily: 'monospace'
+                fontFamily: "'Chango', cursive"
               }}
             >
               HomeZoo

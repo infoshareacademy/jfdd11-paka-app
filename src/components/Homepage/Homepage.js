@@ -25,7 +25,7 @@ class Homepage extends Component {
     return (
       <div className="Homepage" style={{ display: 'flex', backgroundColor: 'white'}}>
          <div>
-        <Nav tabs style={{ justifyContent: 'center'}}>
+        <Nav tabs style={{ justifyContent: 'center', alignItems: 'center'}}>
           <NavItem>
             <NavLink style={{backgroundColor: 'white'}}
               className={classnames({ active: this.state.activeTab === '1' })}
@@ -42,12 +42,12 @@ class Homepage extends Component {
               Sign up
             </NavLink>
           </NavItem>
-          <div className="logo" style={{ paddingLeft: '20'}}>
+          <div className="logo" style={{ paddingLeft: '20', paddingTop: '18px'}}>
             <img className="login-logo" src={homezoonew} alt="logo" />
             <h4
               style={{
                 color: "#f36f5a",
-                fontFamily: 'monospace',
+                fontFamily: "'Chango', cursive",
                 fontWeight: "bold",
                 fontSize: "50",
                 lineHeight: "0",

@@ -78,7 +78,6 @@ class PetsList extends Component {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        margin: '20px',
                         boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)",
                         margin: "20px auto",
                         maxWidth: '80vw'
