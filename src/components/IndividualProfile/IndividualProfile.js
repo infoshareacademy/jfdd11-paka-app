@@ -216,7 +216,7 @@ class IndividualProfile extends Component {
             </div>
             </div>
             <div className='petListUserProfileContainer'>
-              <h5>Pets: </h5>
+             {pets && <h5>Pets: </h5>} 
 
               {pets.map(pet => (
                 <>
