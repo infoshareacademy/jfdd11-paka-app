@@ -106,7 +106,8 @@ class Chat extends Component {
                     color: "black",
                     fontSize: "25px",
                     marginRight: "10px",
-                    width: "60vw"
+                    width: "60vw",
+                    paddingLeft: '6px'
                   }}
                 >
                 <Link to={`/users/${message.authorId}`}>
@@ -121,14 +122,14 @@ class Chat extends Component {
                 </Link>
                   
                 </strong>
-                <p style={{ fontSize: "10px" }}>
+                <p style={{ fontSize: "10px", paddingLeft: '6px'}}>
                   {moment(message.createdAt).fromNow()}
                 </p>
               
               </div >
 
              
-              <p style={{ background: "#f1f3f5", borderRadius: "8px 8px 8px 8px" }}>{message.content}</p>
+              <p style={{ background: "#f1f3f5", borderRadius: "8px 8px 8px 8px", padding: '6px'}}>{message.content}</p>
             </div>
           ))}
         </div>
