@@ -252,13 +252,6 @@ class IndividualProfile extends Component {
               </h5>{" "}
               {this.state.description}
             </div>
-
-            {/* {userId === currentUserId && (
-              <Button onClick={() => this.handleEditing()}>
-                Edit My Profile
-              </Button>
-            )} */}
-           
         </div>
       </div>
     );
