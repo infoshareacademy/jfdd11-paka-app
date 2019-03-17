@@ -1,7 +1,6 @@
 
     .Nav-login-logo {
       width: 50px;
-        box-shadow: 2px 2px 4px black;
   }
   .Nav-span{
   font-size: 35px;
@@ -18,9 +17,6 @@
   }
 .navbar-light .navbar-nav .nav-link {
   color: black;
-}
-a.navbar-brand {
-  text-shadow: 2px 2px 8px black;
 }
 .navbar-light .navbar-nav .nav-link:hover {
 color: #f36f5a;
