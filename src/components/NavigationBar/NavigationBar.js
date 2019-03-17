@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPaw,
@@ -25,19 +17,16 @@ import "./NavigationBar.css";
 import { withAuth } from "../../context/AuthContext";
 
 class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
+  state = {
+    collapsed: true
   }
-  toggle() {
+  toggleNavbar = () => {
     this.setState({
-      isOpen: !this.state.isOpen
-    });
+       collapsed: !this.state.collapsed
+    })
   }
+  
   logOut = () => {
     firebase
       .auth()
@@ -60,7 +49,7 @@ class NavigationBar extends Component {
       <div className="NavigationBar">
         <Navbar style={{ display: 'flex',
     justifyContent: 'space-between' }} color="light" light expand="md">
-          <NavbarBrand
+          <NavbarBrand className="mr-auto"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -81,8 +70,8 @@ class NavigationBar extends Component {
               HomeZoo
             </span>
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={this.toggleNavbar} className="mr-2"/>
+          <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink to="/pets" tag={RNavLink}>  <FontAwesomeIcon icon={faPaw} />Pets</NavLink>
