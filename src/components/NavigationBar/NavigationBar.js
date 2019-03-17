@@ -58,7 +58,8 @@ class NavigationBar extends Component {
     const userId = user.uid;
     return (
       <div className="NavigationBar">
-        <Navbar color="light" light expand="md">
+        <Navbar style={{ display: 'flex',
+    justifyContent: 'space-between' }} color="light" light expand="md">
           <NavbarBrand
             style={{
               display: "flex",
@@ -71,10 +72,10 @@ class NavigationBar extends Component {
             <span
               className="Nav-span"
               style={{
-                fontSize: "60",
+                fontSize: "50",
                 color: "#f36f5a",
                 fontWeight: "bolder",
-                fontFamily: 'monospace'
+                fontFamily: "'Chango', cursive"
               }}
             >
               HomeZoo

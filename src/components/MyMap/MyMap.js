@@ -67,7 +67,7 @@ class MyMap extends Component {
             <Link to={`/users/${user.id}`}>
             
               <img src={user.photo} style={{ width: "100%" }} alt="user" />{" "}
-              {user.name} <br /> {user.adress}</Link>
+              {user.name}, <br /> {user.adress}</Link>
             </Popup>
           </Marker>
         ))}

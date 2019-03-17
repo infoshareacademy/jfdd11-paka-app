@@ -86,7 +86,7 @@ class Chat extends Component {
 
     return (
       <div className="Chat">
-        <h1>Chat</h1>
+        <h1 style={{ fontSize: '30px' }}>Chat</h1>
         <Auth cover={() => <p>Chat is only for logged in users.</p>}>
           <form onSubmit={this.handleSubmit}>
             <Input className='input' placeholder="Chat with fellow dog-lovers"

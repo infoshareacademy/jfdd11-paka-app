@@ -258,7 +258,7 @@ class UserDashboard extends Component {
                 </div>
               </Card>
               <div>
-                {this.state.users
+                {users
                   .map(user => ({
                     ...user,
                     searchData: (
