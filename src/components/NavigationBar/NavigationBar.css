@@ -25,3 +25,6 @@ a.navbar-brand {
 .navbar-light .navbar-nav .nav-link:hover {
 color: #f36f5a;
 }
+.navbar {
+  border-bottom: 1px solid black;
+}
