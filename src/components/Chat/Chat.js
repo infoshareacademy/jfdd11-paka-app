@@ -113,11 +113,11 @@ class Chat extends Component {
                 {(users &&
                     users[message.authorId] &&
                     users[message.authorId].name) ||
-                    message.authorId}{" "}
+                    'Unnamed'}{" "}
                   {(users &&
                     users[message.authorId] &&
                     users[message.authorId].surname) ||
-                    message.authorId}
+                   ''}
                 </Link>
                   
                 </strong>

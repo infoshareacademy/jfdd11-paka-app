@@ -23,11 +23,11 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div className="Homepage" style={{ display: 'flex'}}>
+      <div className="Homepage" style={{ display: 'flex', backgroundColor: 'white'}}>
          <div>
         <Nav tabs style={{ justifyContent: 'center'}}>
           <NavItem>
-            <NavLink
+            <NavLink style={{backgroundColor: 'white'}}
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
@@ -35,7 +35,7 @@ class Homepage extends Component {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink
+            <NavLink style={{backgroundColor: 'white'}}
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >

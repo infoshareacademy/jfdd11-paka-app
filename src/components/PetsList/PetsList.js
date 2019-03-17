@@ -74,27 +74,17 @@ class PetsList extends Component {
         <div>
           <div>
             {this.state.pets.map(pet => (
-              <Card key={pet.id}>
+              <Card style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        margin: '20px',
+                        boxShadow: "0 3px 8px rgba(0, 0, 0, 0.5)",
+                        margin: "20px auto",
+                        maxWidth: '80vw',
+                        backgroundColor: '#f5ce6f'
+                      }} key={pet.id}>
                 <CardBody>
-                  <CardTitle>Dog's name: {pet.dogsname}</CardTitle>
-                  <CardTitle>Age: {pet.age}</CardTitle>
-                  <CardTitle>Breed: {pet.breed}</CardTitle>
-                  <CardTitle>Gender: {pet.gender}</CardTitle>
-                  <CardTitle>Description: {pet.description ? pet.description : "unfilled"}</CardTitle>
-                    { this.getOwnerById(pet.ownerId) !== "not registered"?
-                      <CardTitle>
-                        Owner:
-                        <NavLink to={`/users/${pet.ownerId}`} tag={RNavLink} style={{display:'inline-block', color: "blue"}}>
-                          {this.getOwnerById(pet.ownerId)}
-                        </NavLink>
-                      </CardTitle>
-                      : 
-                      <CardTitle>
-                          Owner: {this.getOwnerById(pet.ownerId)}
-                      </CardTitle>
-                    }
-                  <CardTitle>Adress: {this.getOwnerByAdress(pet.ownerId)}</CardTitle>
-                </CardBody>
                 <div style={{ textAlign: "center" }}>
                   <img
                     src={pet.photo}
@@ -102,6 +92,23 @@ class PetsList extends Component {
                     style={{ width: "100%" }}
                   />
                 </div>
+                  <CardTitle>Name: <span>{pet.dogsname}</span></CardTitle>
+                  <CardTitle>Age: <span>{pet.age}</span></CardTitle>
+                  <CardTitle>Breed: <span>{pet.breed}</span></CardTitle>
+                  <CardTitle>Gender: <span>{pet.gender}</span></CardTitle>
+                  <CardTitle>Description: <span>{pet.description ? pet.description : "blank"}</span></CardTitle>
+                    { this.getOwnerById(pet.ownerId) !== "not registered"?
+                      <CardTitle>
+                        Owner:<span><NavLink to={`/users/${pet.ownerId}`} className='NavLinkUser' tag={RNavLink} style={{display: 'inline-block'}}>
+                          {this.getOwnerById(pet.ownerId)}
+                        </NavLink></span> 
+                      </CardTitle>
+                      : 
+                      <CardTitle>Owner:<span>{this.getOwnerById(pet.ownerId)}</span>
+                      </CardTitle>
+                    }
+                  <CardTitle>Adress: <span>{this.getOwnerByAdress(pet.ownerId)}</span></CardTitle>
+                </CardBody>
               </Card>
             ))}
           </div>

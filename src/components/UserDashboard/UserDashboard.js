@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
   faEye,
   faHome,
   faCouch,
@@ -19,14 +18,11 @@ import {
   CardBody,
   UncontrolledCollapse,
   Button,
-  CardLink,
-  CardSubtitle,
   TabContent,
   TabPane,
   Nav,
   NavItem,
-  NavLink,
-  CardTitle
+  NavLink
 } from "reactstrap";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
@@ -124,7 +120,6 @@ class UserDashboard extends Component {
     const hasDogsPredicate = hasDogs
       ? user => pets.some(pet => pet.ownerId === user.id)
       : () => true;
-    this.state.pets && console.log(this.state.pets);
 
     return (
       <div
@@ -176,7 +171,7 @@ class UserDashboard extends Component {
               <Card body style={{ textAlign: "center" }}>
                 <FormGroup>
                   <Input
-                    style={{ width: "60vw" }}
+                    style={{ width: "60vw", margin: '0 auto'}}
                     type="search"
                     name="search"
                     id="exampleSearch"
@@ -186,8 +181,8 @@ class UserDashboard extends Component {
                   />
                 </FormGroup>
                 <div>
-                  <Button
-                    color="primary"
+                  <Button className='btn btn-secondary'
+                    color="secondary"
                     id="toggler"
                     style={{ marginBottom: "1rem" }}
                   >
@@ -197,7 +192,7 @@ class UserDashboard extends Component {
                     <Card>
                       <CardBody>
                         <Form>
-                          <FormGroup check inline>
+                          <FormGroup check inline style={{ textAlign: 'left' }}>
                             <Label check>
                               <Input
                                 type="checkbox"
@@ -233,7 +228,7 @@ class UserDashboard extends Component {
                             </Label>
                           </FormGroup>
                         </Form>
-                        <Form style={{ display: "flex", flexDirection: "row" }}>
+                        <Form style={{textAlign: 'left' }}>
                           <FormGroup check inline>
                             <Label check>
                               <Input
@@ -241,8 +236,8 @@ class UserDashboard extends Component {
                                 id="schedule"
                                 checked={schedule}
                                 onChange={this.handleCheckboxChange}
-                              />
-                              <FontAwesomeIcon icon={faWalking} /> Walks
+                                />{" "}
+                              <FontAwesomeIcon icon={faWalking} /> Daily walks
                             </Label>
                           </FormGroup>
                           <FormGroup check>
@@ -253,7 +248,7 @@ class UserDashboard extends Component {
                                 checked={visits}
                                 onChange={this.handleCheckboxChange}
                               />{" "}
-                              <FontAwesomeIcon icon={faEye} /> Drop-in visits
+                              <FontAwesomeIcon icon={faEye} />Drop-in visits
                             </Label>
                           </FormGroup>
                         </Form>
@@ -362,7 +357,7 @@ class UserDashboard extends Component {
                         to={`/users/${user.id}`}
                         style={{ textAlign: "center" }}
                       >
-                        See Full Profile of {user.name}
+                        See Full Profile
                       </Link>
                     </div>
                   ))}

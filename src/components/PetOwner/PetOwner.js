@@ -50,15 +50,14 @@ class PetOwner extends Component {
   render() {
     const { file } = this.state;
     return (
-      <div className="PetOwnerPage">
-        <h6>Info about your dog:</h6>     
+      <div className="PetOwnerPage">   
         <div className="inputWraper">
           <div className="inputSmallWraper">
             <FormGroup>
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Dog's name *"
+                placeholder="* Dog's name"
                 name="dogsname"
                 onChange={this.handleDogsname}
                 required
@@ -70,7 +69,7 @@ class PetOwner extends Component {
                 type="number"
                 min="1"
                 max="25"
-                placeholder=" Age *"
+                placeholder="* Age"
                 name="age"
                 onChange={this.handleAge}
                 required
@@ -81,7 +80,7 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Gender *"
+                placeholder="* Gender"
                 name="gender"
                 onChange={this.handleGender}
                 required
@@ -92,7 +91,7 @@ class PetOwner extends Component {
               <Input
                 className="inputSmall"
                 type="text"
-                placeholder=" Breed *"
+                placeholder="* Breed"
                 name="breed"
                 onChange={this.handleBreed}
                 required
@@ -105,7 +104,7 @@ class PetOwner extends Component {
             <Card style={{borderRadius: '5px'}}>
               
               <CardImg src={file} alt="" />
-              <Input className="inputFile"
+              <Input style ={{ backgroundColor: '#f5ce6f'}} className="inputFile"
                 type="file"
                 name="file" 
                 id="exampleFile"

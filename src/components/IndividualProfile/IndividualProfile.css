@@ -15,4 +15,19 @@
   .svg-inline--fa {
       margin-right: 10px;
   }
-  
+  .petListUserProfile {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+  }
+  .petListUserProfile ul li{
+     font-size: 15px;
+  }
+  .petListUserProfile img {
+      max-width: 50%;
+      line-height: 0px;
+  }
+ .petListUserProfileContainer {
+ width: 80vw;
+ margin: 0 auto;
+ }

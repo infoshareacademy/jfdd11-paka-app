@@ -65,7 +65,7 @@ class PetSitter extends Component {
             <FormGroup>
               <Input
                 type="text"
-                placeholder="Adress"
+                placeholder="Address"
                 name="adress"
                 onChange={onChange}
                 value={adress}
@@ -78,7 +78,7 @@ class PetSitter extends Component {
               type="file"
               name="file"
               id="exampleFile"
-              onChange={onFileSelected}
+              onChange={onFileSelected} style={{backgroundColor: '#f5ce6f'}}
             />
           </Card>
         </div>

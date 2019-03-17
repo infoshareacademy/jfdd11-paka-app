@@ -1,7 +1,17 @@
-.PetSitter {
-}
+
 
 .photoContainer {
   height: 50px;
   width: 50px;
+}
+.form-control {
+  border: none;
+  border-bottom: 2px solid grey;
+  background-color: #f5ce6f;
+}
+
+.inputWraper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
