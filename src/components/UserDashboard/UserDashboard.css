@@ -1,7 +1,6 @@
 .card-body {
     display: flex;
     flex-direction: column;
-    background-color: #f5ce6f;
     text-align: left;
 }
 .card-title {
@@ -16,6 +15,6 @@ padding-left: 10px;
 #root > div > div {
     padding: 0;
 }
-.nav-tabs .nav-link.active {
+/* .nav-tabs .nav-link.active {
 background-color: #f5ce6f;
-}
+} */

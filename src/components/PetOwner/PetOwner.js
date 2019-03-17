@@ -104,7 +104,7 @@ class PetOwner extends Component {
             <Card style={{borderRadius: '5px'}}>
               
               <CardImg src={file} alt="" />
-              <Input style ={{ backgroundColor: '#f5ce6f'}} className="inputFile"
+              <Input className="inputFile"
                 type="file"
                 name="file" 
                 id="exampleFile"
