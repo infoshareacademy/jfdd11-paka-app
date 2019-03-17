@@ -15,11 +15,7 @@ import {
   faUser,
  faUsers,
  faSignOutAlt,
-  faHome,
-  faCouch,
-  faWalking,
-  faDog,
-  faTimes
+  faDog
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import { withRouter, NavLink as RNavLink} from "react-router-dom";
